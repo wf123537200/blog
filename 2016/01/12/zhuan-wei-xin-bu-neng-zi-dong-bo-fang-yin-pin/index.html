@@ -1,0 +1,333 @@
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>微信音频自动播放（转）</title>
+    <meta name="description" content="微信音频自动播放问题">
+    <meta name="HandheldFriendly" content="True">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="baidu-site-verification" content="1B8AemIXSQ">
+    <!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/ie.html"><![endif]-->
+    <link rel="canonical" href="http://127.0.0.1/2016/01/12/zhuan-wei-xin-bu-neng-zi-dong-bo-fang-yin-pin/">
+    
+    <meta property="og:site_name" content="zakwu的成长记录">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="微信音频自动播放（转）">
+    <meta property="og:description" content="微信音频自动播放问题...">
+    <meta property="og:url" content="http://127.0.0.1/2016/01/12/zhuan-wei-xin-bu-neng-zi-dong-bo-fang-yin-pin/">
+    <meta property="article:published_time" content="2016-01-12T08:22:07.000Z">
+    <meta property="article:modified_time" content="2016-01-12T08:31:28.000Z">
+    <meta property="article:tag" content="js">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="微信音频自动播放（转）">
+    <meta name="twitter:description" content="微信音频自动播放问题...">
+    <meta name="twitter:url" content="http://127.0.0.1/2016/01/12/zhuan-wei-xin-bu-neng-zi-dong-bo-fang-yin-pin/">
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "zakwu的成长记录",
+    "author": {
+        "@type": "Person",
+        "name": "zakwu",
+        "url": "http://127.0.0.1/author/zakwu",
+        "sameAs": null
+    },
+    "headline": "微信音频自动播放（转）",
+    "url": "http://127.0.0.1/2016/01/12/zhuan-wei-xin-bu-neng-zi-dong-bo-fang-yin-pin/",
+    "datePublished": "2016-01-12T08:22:07.000Z",
+    "dateModified": "2016-01-12T08:31:28.000Z",
+    "keywords": "js",
+    "description": "微信音频自动播放问题..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.5">
+    <link rel="alternate" type="application/rss+xml" title="zakwu的成长记录" href="http://127.0.0.1/rss/">
+
+    <!-- link -->
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/style.css">
+  </head>
+  <body>
+    <aside id="sidebar">
+      <nav id="tags">
+        <a href="http://zakwu.me/node/assets/about/about.html" target="_blank" title="about me" id="avatar"></a>
+
+        <ul id="tags__ul">
+          <!--&lt;!&ndash; connect &ndash;&gt;-->
+          <!--<li id="sthfuns" class="tags__li tags-btn">作品集</li>-->
+          <!--<li id="shareppt" class="tags__li tags-btn">分享ppt</li>-->
+
+          <!-- acts -->
+          <li id="js-label1" class="tags__li tags-btn active">全部文章</li>
+          <li id="js-label2" class="tags__li tags-btn">ghost</li>
+          <li id="js-label3" class="tags__li tags-btn">js 技术</li>
+          <li id="js-label4" class="tags__li tags-btn">css 技术</li>
+          <li id="js-label5" class="tags__li tags-btn">前端架构</li>
+          <li id="js-label6" class="tags__li tags-btn">心随意转</li>
+        </ul>
+
+        <div id="tags__bottom">
+          <a href="http://github.com/wf123537200/" target="_blank" class="tags-btn show-icon-right fa fa-github" title="加我github"></a>
+          <a href="http://zakwu.me/node/assets/about/about.html" target="_blank" class="tags-btn show-icon-right fa fa-user" title="关于我"></a>
+          <a href="mailto:wfsheep@163.com" title="给我邮件" class="tags-btn show-icon-right fa fa-envelope-o"></a>
+          <a href="http://zakwu.me/rss/" title="订阅我的blog" class="tags-btn fa fa-rss"></a>
+        </div>
+      </nav> <!-- end #tags -->
+
+      <div id="posts-list">
+        <form action="index.html" id="search-form">
+          <a href="http://127.0.0.1" id="mobile-avatar"></a>
+          <!-- NOTE: input field is disabled by default -->
+          <input id="search-input" type="text" placeholder="Search...">
+        </form>
+
+        <nav id="pl__container">
+        </nav>
+      </div> <!-- end #posts-list -->
+    </aside> <!-- end #sidebar -->
+
+    <div id="post">
+      <div id="pjax">
+        
+    <article id="post__content">
+      <h1 id="post__title" data-identifier="20160112">（转）微信不能自动播放音频</h1>
+      <h4 id="">一.问题重述</h4>
+
+<p>有的公众号消息点进去之后能够自动播放音乐，不需要用户手动触发再play，这是怎么实现的？</p>
+
+<h4 id="">二.方案尝试</h4>
+
+<h5 id="1audioautoplay">1.audio设置autoplay属性播放</h5>
+
+<p>给audio标签设置autoplay="autoplay"</p>
+
+<p>结果：在某些Android机上可以自动播放，IOS不支持</p>
+
+<h5 id="2settimeout">2.setTimeout播放</h5>
+
+<p>进入页面后延迟执行audio.play()</p>
+
+<p>结果：Safari，IOS微信不支持</p>
+
+<h5 id="3">3.按钮播放</h5>
+
+<p>通过点击按钮或者touch事件触发播放</p>
+
+<p>结果：某些Android微信不支持</p>
+
+<h5 id="4api">4.用旧微信API回调播放</h5>
+
+<p>通过获取网络状态的接口回调播放（无论成功失败，都执行play）</p>
+
+<pre>js code<code class="language-javascript">
+var audio = document.getElementById('audio');<br>
+
+if (window.WeixinJSBridge) {<br>
+
+    WeixinJSBridge.invoke('getNetworkType', {}, function(e) {
+
+        audio.play();
+
+    }, false);
+
+}else{
+
+    document.addEventListener("WeixinJSBridgeReady", function() {
+
+        WeixinJSBridge.invoke('getNetworkType', {}, function(e) {
+
+            audio.play();
+        });
+
+    }, false);
+
+}</code></pre>
+
+<p>结果：IOS 微信不支持，Safari不支持（未做兼容性处理）</p>
+
+<h5 id="5api">5.用新微信API回调播放</h5>
+
+<p>原理同上，只是用了新的微信API，详细信息请查看微信JS-SDK说明文档</p>
+
+<pre>js code<code class="language-javascript">var audio = document.getElementById('audio');
+
+if (window.WeixinJSBridge) {
+    wx.getNetworkType({
+        success: function (res) {
+            audio.play();
+        },
+        fail: function (res) {
+            audio.play();
+        }
+    });
+}else{
+    document.addEventListener("WeixinJSBridgeReady", function() {
+        wx.getNetworkType({
+            success: function (res) {
+                audio.play();
+            },
+            fail: function (res) {
+                audio.play();
+            }
+        });
+    }, false);
+}</code></pre>
+
+<p>结果：IOS支持性未知</p>
+
+<h5 id="6apiaudioapi">6.微信API回调用AudioAPI播放</h5>
+
+<p>AudioAPI无法打破IOS系统不让自动下载音频的限制（具体见后文），所以尝试在回调中用AudioAPI播放音频</p>
+
+<p>注意：低版本IOS不支持AudioAPI，Android支持性未知</p>
+
+<pre>js code<code class="language-javascript">
+// 获取AudioContext
+window.context = getAudiocontext();
+// 获取音频数据
+window.source = null;
+window.bufs = [];
+
+// 执行
+getBufs();
+
+
+/**
+ * 获取AudioContext
+ * @return {AudioContext} andio元素相关的环境对象
+ */
+function getAudiocontext() {
+    window.AudioContext = (window.AudioContext || window.webkitAudioContext);
+    if(window.AudioContext) {
+        return new window.AudioContext();
+    } else {
+        console.log('not support web audio api');
+    }
+}
+
+/**
+ * 播放
+ * @param {Integer} 1: 多个source直接连接输出设备 2: 多个source通过GainNode再连接输出设备
+ * @return nth
+ */
+function getBufs() {
+    var audioURL = 'didi.mp3'; // 这里替换为音频文件URL
+    var xhr1 = new XMLHttpRequest();
+
+    xhr1.open('GET', audioURL, true);
+    xhr1.responseType = 'arraybuffer'; // XMLHttpRequest 2的新东西
+    xhr1.onload = function() {
+        // 音频数据在xhr.response中，而不是xhr.requestText
+        bufs.push(xhr1.response);
+    }
+    xhr1.send();
+}
+
+//////////
+// 微信回调 //
+//////////
+
+var audio = document.getElementById('audio');
+
+function runNow() {
+    context.decodeAudioData(bufs[0], function(buffer) {
+        source = context.createBufferSource();
+        source.buffer = buffer;
+        // 源直接连接到输出设备
+        source.connect(context.destination);
+        source.start(0);
+    });
+}
+
+if (window.WeixinJSBridge) {
+    WeixinJSBridge.invoke('getNetworkType', {}, function(e) {
+        setTimeout(runNow, 3000);
+    }, false);
+}else{
+    document.addEventListener("WeixinJSBridgeReady", function() {
+        WeixinJSBridge.invoke('getNetworkType', {}, function(e) {
+            setTimeout(runNow, 3000);
+        });
+    }, false);
+}
+</code></pre>
+
+<p>结果：iPhnoe5不支持，6p未知，能触发回调，但play代码无效</p>
+
+<h6 id="7">7.其他可能能实现的方法</h6>
+
+<p>模拟事件触发（trigger）</p>
+
+<p>手动触发事件，在事件处理器中播放音频，未经测试</p>
+
+<p>新API</p>
+
+<p>官方公开的1.0.0版本API不支持播放音频（仅仅支持播放录音），后续可能会开放更多音频API，当然，都是后话</p>
+
+<h4 id="">三.解决方案</h4>
+
+<p>没有完美兼容的解决方案，经测试，iPhone 5S及6上可以用JS API回调方式播放，Android自动播放比较容易，但某些深度定制机型仍然无法播放</p>
+
+<p>自动播放的难点主要来自IOS，因为IOS系统限制不能自动下载音频视频，必须由用户动作触发播放：</p>
+
+<p>In Safari on iOS (for all devices, including iPad), where the user may be on a cellular network and be charged per data unit, preload and autoplay are disabled. No data is loaded until the user initiates it. This means the JavaScript play() and load() methods are also inactive until the user initiates playback, unless the play() or load() method is triggered by user action. In other words, a user-initiated Play button works, but an onLoad=”play()” event does not.</p>
+
+<p>(引自Safari HTML5 Audio and Video Guide)</p>
+
+<p>关于IOS自动播放音频的更多解决方案，请查看Autoplay audio files on an iPad with HTML5</p>
+
+<p>还看到一种解决方案：</p>
+
+<pre>js code<code class="language-javascript">
+if ("wView" in window) {
+    window.wView.allowsInlineMediaPlayback = "YES";
+    window.wView.mediaPlaybackRequiresUserAction = "NO";
+}</code></pre>
+
+<p>据说添加上面代码之后，直接preload、autoplay就可以了</p>
+
+<p>注意：未经测试，效果未知</p>
+
+<p><a href="http://www.ayqy.net/blog/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%B9%B3%E5%8F%B0%E6%B7%BB%E5%8A%A0%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90/">原文链接</a></p>
+    </article> <!-- end #post__content -->
+
+    <!--<div id="post__share">-->
+      <!--<a id="icon-twitter" href="https://twitter.com/intent/tweet?url=http://127.0.0.1/2016/01/2016/01/12/zhuan-wei-xin-bu-neng-zi-dong-bo-fang-yin-pin/&text=（转）微信不能自动播放音频" target="_blank"></a>-->
+      <!--<a id="icon-cc" href="http://creativecommons.org/licenses/by-nc-sa/3.0" target="_blank"></a>-->
+      <!--<a id="icon-weibo" href="http://v.t.sina.com.cn/share/share.php?url=http://127.0.0.1/2016/01/2016/01/12/zhuan-wei-xin-bu-neng-zi-dong-bo-fang-yin-pin/&title=（转）微信不能自动播放音频" target="_blank"></a>-->
+    <!--</div> &lt;!&ndash; end #post__share &ndash;&gt;-->
+    <div id="dsData" data-id="29" data-title="（转）微信不能自动播放音频" data-url="/2016/01/12/zhuan-wei-xin-bu-neng-zi-dong-bo-fang-yin-pin/"></div>
+    <!--PC版-->
+    <div id="cyss" sid="/2016/01/12/zhuan-wei-xin-bu-neng-zi-dong-bo-fang-yin-pin/"></div>
+    <div id="SOHUCS" sid="/2016/01/12/zhuan-wei-xin-bu-neng-zi-dong-bo-fang-yin-pin/"></div>
+
+      </div> <!-- end #pjax -->
+
+      <div id="post__toc-trigger">
+        <div id="post__toc">
+          <span id="post__toc-title">Table of Contents</span>
+          <ul id="post__toc-ul"></ul>
+        </div>
+      </div>
+    </div> <!-- end #post -->
+
+    <!-- 收缩箭头 -->
+    <button id="js-fullscreen"><span class="fa fa-chevron-right" id="icon-arrow"></span></button>
+
+    <footer>
+      <div>Powered by <a href="https://ghost.org" target="_blank">Ghost</a>  |  ©zak wu 2015<a href="http://www.miitbeian.gov.cn/">粤ICP备15007095</a></div>
+    </footer>
+
+    <script src="../../../../assets/js/jquery-2.0.3.min.js"></script>
+    <script src="../../../../assets/js/jquery.pjax.js"></script>
+    <script src="../../../../assets/js/nprogress.js"></script>
+    <script src="../../../../assets/js/prism.js"></script>
+    <script src="../../../../assets/js/script.js"></script>
+    <script src="../../../../public/jquery.js?v=fdf87e4899"></script>
+  </body>

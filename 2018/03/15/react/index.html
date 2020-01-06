@@ -1,0 +1,174 @@
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>react 和 vue</title>
+    <meta name="description" content="react vue 框架比较">
+    <meta name="HandheldFriendly" content="True">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="baidu-site-verification" content="1B8AemIXSQ">
+    <!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/ie.html"><![endif]-->
+    <link rel="canonical" href="http://127.0.0.1/2018/03/15/react/">
+    
+    <meta property="og:site_name" content="zakwu的成长记录">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="react 和 vue">
+    <meta property="og:description" content="react vue 框架比较...">
+    <meta property="og:url" content="http://127.0.0.1/2018/03/15/react/">
+    <meta property="article:published_time" content="2018-03-15T03:28:55.000Z">
+    <meta property="article:modified_time" content="2018-03-15T03:29:00.000Z">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="react 和 vue">
+    <meta name="twitter:description" content="react vue 框架比较...">
+    <meta name="twitter:url" content="http://127.0.0.1/2018/03/15/react/">
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "zakwu的成长记录",
+    "author": {
+        "@type": "Person",
+        "name": "zakwu",
+        "url": "http://127.0.0.1/author/zakwu",
+        "sameAs": null
+    },
+    "headline": "react 和 vue",
+    "url": "http://127.0.0.1/2018/03/15/react/",
+    "datePublished": "2018-03-15T03:28:55.000Z",
+    "dateModified": "2018-03-15T03:29:00.000Z",
+    "description": "react vue 框架比较..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.5">
+    <link rel="alternate" type="application/rss+xml" title="zakwu的成长记录" href="http://127.0.0.1/rss/">
+
+    <!-- link -->
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/style.css">
+  </head>
+  <body>
+    <aside id="sidebar">
+      <nav id="tags">
+        <a href="http://zakwu.me/node/assets/about/about.html" target="_blank" title="about me" id="avatar"></a>
+
+        <ul id="tags__ul">
+          <!--&lt;!&ndash; connect &ndash;&gt;-->
+          <!--<li id="sthfuns" class="tags__li tags-btn">作品集</li>-->
+          <!--<li id="shareppt" class="tags__li tags-btn">分享ppt</li>-->
+
+          <!-- acts -->
+          <li id="js-label1" class="tags__li tags-btn active">全部文章</li>
+          <li id="js-label2" class="tags__li tags-btn">ghost</li>
+          <li id="js-label3" class="tags__li tags-btn">js 技术</li>
+          <li id="js-label4" class="tags__li tags-btn">css 技术</li>
+          <li id="js-label5" class="tags__li tags-btn">前端架构</li>
+          <li id="js-label6" class="tags__li tags-btn">心随意转</li>
+        </ul>
+
+        <div id="tags__bottom">
+          <a href="http://github.com/wf123537200/" target="_blank" class="tags-btn show-icon-right fa fa-github" title="加我github"></a>
+          <a href="http://zakwu.me/node/assets/about/about.html" target="_blank" class="tags-btn show-icon-right fa fa-user" title="关于我"></a>
+          <a href="mailto:wfsheep@163.com" title="给我邮件" class="tags-btn show-icon-right fa fa-envelope-o"></a>
+          <a href="http://zakwu.me/rss/" title="订阅我的blog" class="tags-btn fa fa-rss"></a>
+        </div>
+      </nav> <!-- end #tags -->
+
+      <div id="posts-list">
+        <form action="index.html" id="search-form">
+          <a href="http://127.0.0.1" id="mobile-avatar"></a>
+          <!-- NOTE: input field is disabled by default -->
+          <input id="search-input" type="text" placeholder="Search...">
+        </form>
+
+        <nav id="pl__container">
+        </nav>
+      </div> <!-- end #posts-list -->
+    </aside> <!-- end #sidebar -->
+
+    <div id="post">
+      <div id="pjax">
+        
+    <article id="post__content">
+      <h1 id="post__title" data-identifier="20180315">react 和 vue</h1>
+      <p>    作为一个在前端圈子里摸爬滚打快7年的老程序员，经历了从前端技术    <strong>原生 -&gt; jquery -&gt; ng -&gt; vue -&gt; react 的</strong>的变迁，支持的浏览器也随着业务的不断提升，从支持 <em>*ie6 -&gt; ie8 -&gt; ie10 *</em>.</p>
+
+<p>    现在想来，我从13年开始接触ng框架以来，也算深入使用过所谓的前端三大框架。今天突然想聊聊 react 和 vue 两个框架。</p>
+
+<p>    2016年以来，react/vue两大框架发展都非常迅速，社区成长很快，各种ui框架也层出不穷。现在站在一个使用者的角度，比比这两个框架。</p>
+
+<h4 id="1">1、社区</h4>
+
+<p>    从社区的角度来看，react完爆vue，开发中需要的组件基本到github上一找，可以找出一堆react的相关组件，而对于vue来说，相对的组件就比较少了。比如同样是拖拽组件，github 上<strong>drag react</strong>的结果比<em>* drag vue *</em>的结果要多出1.5倍（700 ：258）的样子。所以，从组件（轮子）的丰富程度来说，react 远胜 vue。</p>
+
+<p>    当然，很多组件不一定能完全满足业务，可能需要包装或者二次开发，但这个确实是react 社区比vue 社区繁荣的一个证据。另外，从google的搜索量上来看，react也比vue要高出两倍以上。</p>
+
+<h4 id="2">2、入门难度</h4>
+
+<p>    无论作为团队管理者还是作为选型的架构师，团队的技术栈和能力，都是一个需要考量的因素，从入门（学习曲线的角度上来看），个人认为，react和vue相当（别急着吐槽，往下看）。</p>
+
+<p>    但是!react 作为view 层的框架，本身使用甚至比vue简单一些，但是如果需要在稍微复杂或者说大型一点的项目里面使用，基本是不够用的，这时候，全家桶就在你面前展示出了绚丽的图景。redux或者mobx或者dva，基本都是往react上不断的叠加概念，刚刚进入的开发者会被虐的死去活来，各种文档，每个一两周是比较难上手的。</p>
+
+<p>    对于vue来说，也存在类似react全家桶的东西，不过，如果只是稍微复杂的项目，使用vue+一些最佳实践基本能cover。</p>
+
+<p>    所以在这一方面来说，我认为vue还有很有优势的。</p>
+
+<h4 id="3">3、开发体验和代码维护</h4>
+
+<p>    对于一个老码农来说，开发体验绝对是很值得关心的，从我的角度上来说，维护react和维护vue代码的成本相当。这得从两个框架的出发点说起。</p>
+
+<p>    对于vue，出发点是html模板，对于没有太接触过后端的前端开发来说，可能是一个蛮好体验，通过html模板，可以很清晰的看到整个页面的结构。但是，vue会把业务逻辑的复杂度用html的复杂度来消化掉，如果设计的不好，一堆的 v-if，v-for 看起来也是蛮痛苦的事情。</p>
+
+<p>    对于react，触发点的是js代码，一切都是js生成的，对于懂得设计模式或者有后端开发经验并转入前端的开发，会更友好一些。同样的，react吧相关的业务复杂度整合到js代码的复杂度中来，如果开发水平一般，或者没有遵从一些最佳实践，很可能写出一团shit。</p>
+
+<p>    所以，就个人看来，react比vue对开发人员的水平要求高一些，vue更亲民一些。但反过来说，vue写出来的代码也更不可控。所以，对于维护两个框架产出的代码来说，如果人的素质可以，react比vue更优一些，反之vue比react好。</p>
+
+<h4 id="4">4、文档</h4>
+
+<p>    总的来说react的全家桶文档比vue的文档难看，vue有优秀的文档体系，虽然react也有，但是用react的话，你可能还要参考，react-redux或者其他各个用到的全家桶成员的文档。而且，vue升级时的破坏性也没那么强，比如vue1 -&gt; vue2 提供了蛮好的升级指引。</p>
+
+<p>    反观react，虽然项目本身提供了指引。但是很多相关库升级的时候，指引就很少了。</p>
+
+<p>    所以，从文档的角度来说，vue还是要优于react的。</p>
+
+<p>    总之，两大框架各有优劣，能够根据需要选型和使用才是正确的看法。不要被知乎上的口水战左右~~</p>
+    </article> <!-- end #post__content -->
+
+    <!--<div id="post__share">-->
+      <!--<a id="icon-twitter" href="https://twitter.com/intent/tweet?url=http://127.0.0.1/2018/03/2018/03/15/react/&text=react 和 vue" target="_blank"></a>-->
+      <!--<a id="icon-cc" href="http://creativecommons.org/licenses/by-nc-sa/3.0" target="_blank"></a>-->
+      <!--<a id="icon-weibo" href="http://v.t.sina.com.cn/share/share.php?url=http://127.0.0.1/2018/03/2018/03/15/react/&title=react 和 vue" target="_blank"></a>-->
+    <!--</div> &lt;!&ndash; end #post__share &ndash;&gt;-->
+    <div id="dsData" data-id="56" data-title="react 和 vue" data-url="/2018/03/15/react/"></div>
+    <!--PC版-->
+    <div id="cyss" sid="/2018/03/15/react/"></div>
+    <div id="SOHUCS" sid="/2018/03/15/react/"></div>
+
+      </div> <!-- end #pjax -->
+
+      <div id="post__toc-trigger">
+        <div id="post__toc">
+          <span id="post__toc-title">Table of Contents</span>
+          <ul id="post__toc-ul"></ul>
+        </div>
+      </div>
+    </div> <!-- end #post -->
+
+    <!-- 收缩箭头 -->
+    <button id="js-fullscreen"><span class="fa fa-chevron-right" id="icon-arrow"></span></button>
+
+    <footer>
+      <div>Powered by <a href="https://ghost.org" target="_blank">Ghost</a>  |  ©zak wu 2015<a href="http://www.miitbeian.gov.cn/">粤ICP备15007095</a></div>
+    </footer>
+
+    <script src="../../../../assets/js/jquery-2.0.3.min.js"></script>
+    <script src="../../../../assets/js/jquery.pjax.js"></script>
+    <script src="../../../../assets/js/nprogress.js"></script>
+    <script src="../../../../assets/js/prism.js"></script>
+    <script src="../../../../assets/js/script.js"></script>
+    <script src="../../../../public/jquery.js?v=fdf87e4899"></script>
+  </body>

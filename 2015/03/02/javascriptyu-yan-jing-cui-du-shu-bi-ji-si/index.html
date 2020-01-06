@@ -1,0 +1,222 @@
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>《javascript语言精粹》读书笔记四</title>
+    <meta name="description" content="包含读书笔记的最后三章，分别为 第七章 正则表达式，第八章 函数和第九章，代码风格">
+    <meta name="HandheldFriendly" content="True">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="baidu-site-verification" content="1B8AemIXSQ">
+    <!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/ie.html"><![endif]-->
+    <link rel="canonical" href="http://127.0.0.1/2015/03/02/javascriptyu-yan-jing-cui-du-shu-bi-ji-si/">
+    
+    <meta property="og:site_name" content="zakwu的成长记录">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="《javascript语言精粹》读书笔记四">
+    <meta property="og:description" content="包含读书笔记的最后三章，分别为 第七章 正则表达式，第八章 函数和第九章，代码风格...">
+    <meta property="og:url" content="http://127.0.0.1/2015/03/02/javascriptyu-yan-jing-cui-du-shu-bi-ji-si/">
+    <meta property="article:published_time" content="2015-03-02T15:04:15.000Z">
+    <meta property="article:modified_time" content="2015-03-02T15:15:22.000Z">
+    <meta property="article:tag" content="js">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="《javascript语言精粹》读书笔记四">
+    <meta name="twitter:description" content="包含读书笔记的最后三章，分别为 第七章 正则表达式，第八章 函数和第九章，代码风格...">
+    <meta name="twitter:url" content="http://127.0.0.1/2015/03/02/javascriptyu-yan-jing-cui-du-shu-bi-ji-si/">
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "zakwu的成长记录",
+    "author": {
+        "@type": "Person",
+        "name": "zakwu",
+        "url": "http://127.0.0.1/author/zakwu",
+        "sameAs": null
+    },
+    "headline": "《javascript语言精粹》读书笔记四",
+    "url": "http://127.0.0.1/2015/03/02/javascriptyu-yan-jing-cui-du-shu-bi-ji-si/",
+    "datePublished": "2015-03-02T15:04:15.000Z",
+    "dateModified": "2015-03-02T15:15:22.000Z",
+    "keywords": "js",
+    "description": "包含读书笔记的最后三章，分别为 第七章 正则表达式，第八章 函数和第九章，代码风格..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.5">
+    <link rel="alternate" type="application/rss+xml" title="zakwu的成长记录" href="http://127.0.0.1/rss/">
+
+    <!-- link -->
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/style.css">
+  </head>
+  <body>
+    <aside id="sidebar">
+      <nav id="tags">
+        <a href="http://zakwu.me/node/assets/about/about.html" target="_blank" title="about me" id="avatar"></a>
+
+        <ul id="tags__ul">
+          <!--&lt;!&ndash; connect &ndash;&gt;-->
+          <!--<li id="sthfuns" class="tags__li tags-btn">作品集</li>-->
+          <!--<li id="shareppt" class="tags__li tags-btn">分享ppt</li>-->
+
+          <!-- acts -->
+          <li id="js-label1" class="tags__li tags-btn active">全部文章</li>
+          <li id="js-label2" class="tags__li tags-btn">ghost</li>
+          <li id="js-label3" class="tags__li tags-btn">js 技术</li>
+          <li id="js-label4" class="tags__li tags-btn">css 技术</li>
+          <li id="js-label5" class="tags__li tags-btn">前端架构</li>
+          <li id="js-label6" class="tags__li tags-btn">心随意转</li>
+        </ul>
+
+        <div id="tags__bottom">
+          <a href="http://github.com/wf123537200/" target="_blank" class="tags-btn show-icon-right fa fa-github" title="加我github"></a>
+          <a href="http://zakwu.me/node/assets/about/about.html" target="_blank" class="tags-btn show-icon-right fa fa-user" title="关于我"></a>
+          <a href="mailto:wfsheep@163.com" title="给我邮件" class="tags-btn show-icon-right fa fa-envelope-o"></a>
+          <a href="http://zakwu.me/rss/" title="订阅我的blog" class="tags-btn fa fa-rss"></a>
+        </div>
+      </nav> <!-- end #tags -->
+
+      <div id="posts-list">
+        <form action="index.html" id="search-form">
+          <a href="http://127.0.0.1" id="mobile-avatar"></a>
+          <!-- NOTE: input field is disabled by default -->
+          <input id="search-input" type="text" placeholder="Search...">
+        </form>
+
+        <nav id="pl__container">
+        </nav>
+      </div> <!-- end #posts-list -->
+    </aside> <!-- end #sidebar -->
+
+    <div id="post">
+      <div id="pjax">
+        
+    <article id="post__content">
+      <h1 id="post__title" data-identifier="20150302">《javascript语言精粹》读书笔记四</h1>
+      <h2 id="">第七章 正则表达式</h2>
+
+<p>正则表达式是处理字符串的最强道具，没有之一。
+通过正则表达式，我们可以非常简便的对字符串进行各种操作，这里就对此就不对这章进行总结，之后对正则表达式进行一次专门的总结。</p>
+
+<h2 id="">第八章 方法</h2>
+
+<p>‘+’运算符在较新的浏览器中，进行过较多的优化，会对该运算符进行优化，比array.join函数运行速度要快的多。</p>
+
+<h3 id="__array__"><strong>array</strong></h3>
+
+<p>Array.concat和Array.slice函数可以生成新的数组。</p>
+
+<p>Array.shift函数通常比pop速度要快。</p>
+
+<p>在使用Array.sort回调函数中，默认会将数组元素当做字符串进行比较。同样，该方法是不稳定的（其方法稳定性根据不同的浏览器实现不同），使用sort().sort(),这样的链式操作，是无法获得稳定的排序，所以，应该避免使用sort函数的链式操作。</p>
+
+<p>Array.unshift方法将返回新数组的长度，而ie6浏览器对unshift函数的实现有错误，总是返回undefined。</p>
+
+<h3 id="__number__"><strong>number</strong></h3>
+
+<p>number.toFixed方法和number.toPrecision方法的差别在于，toFixed方法支持的参数值在0~20，而toPrecision函数支持的参数范围为0~21。</p>
+
+<p>number.toString函数的参数代表进制，默认为10，可以给他设定为任意数字，当然通常设定为整数，通过这个方法可以很简单的生成随机数，比如<code>Math.random().toString(36).substr(3)</code>,即可生成一个随机数。</p>
+
+<h3 id="__regexp__"><strong>regexp</strong></h3>
+
+<p>regExp.exec方法虽然强大，但是也是最慢的函数，他会使用前向匹配的技术，不断的重新扫描已扫描过的字符串，当有g这个修饰符的时候，其性能会进一步降低。</p>
+
+<p>regexp.text方法虽然简单，但是是最快的函数，不要对他使用g标识，因为没有用。</p>
+
+<h3 id="__string__"><strong>string</strong></h3>
+
+<p>string.match方法会对一个正则表达式进行匹配，如果表达式没有待用g标识，那么他的效果和regexp.test相同，如果他带有g标识，那么它生成一个包含所有匹配（<strong>非捕获分组之外</strong>）的数组。</p>
+
+<p>如果string.replace方法在当第二参数是字符串，那么字符$有特别的含义，具体如下：</p>
+
+<table style="border: 1px solid #ccc">  
+    <tr>
+        <th style="border: 1px solid #ccc; width: 50%">美元符号序列</th>
+        <th style="border: 1px solid #ccc; width: 50%">替换对象</th>
+    </tr>
+    <tr>
+        <td style="border: 1px solid #ccc; width: 50%">$$</td>
+        <td style="border: 1px solid #ccc; width: 50%">$字符的转义</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid #ccc; width: 50%">$&amp;</td>
+        <td style="border: 1px solid #ccc; width: 50%">整个匹配的文本</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid #ccc; width: 50%">$number</td>
+        <td style="border: 1px solid #ccc; width: 50%">分组捕获的文本</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid #ccc; width: 50%">$`</td>
+        <td style="border: 1px solid #ccc; width: 50%">匹配之前的文本</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid #ccc; width: 50%">$'</td>
+        <td style="border: 1px solid #ccc; width: 50%">匹配之后的文本</td>
+    </tr>
+</table>
+
+<p>而当第二个参数为函数时，其参数为 ($&amp;, $1……$9)的排列。</p>
+
+<p>string.split方法有第二个参数，用于限制返回数组的大小。当第一参数为正则表达式时，将会把来自分组捕获的文本包含到分割后的数组中。同时，<strong>ie8之前的浏览器会在输出数组中排除空字符串</strong>。</p>
+
+<p>string.toLocalLowerCase，主要用在土耳其语上，因为在土耳其语中‘I’转义为‘l’而不是i。 </p>
+
+<h2 id="">第九章 代码风格</h2>
+
+<p><strong>优秀的程序拥有前瞻性的结构，它会预见未来可能需要的修改，而又不会让其成为过度的负担。</strong></p>
+
+<p>注意把<strong>{</strong>放在一行的结尾而不是下一样的开头，因为它会避免js的return语句中一个可怕的设计错误。</p>
+
+<p>努力保持注释是最新的，错误的注释甚至比没有注释更加糟糕。</p>
+
+<p>当程序不能自我说明的时候，需要编写注释，注释必须时有意义的，显而易见的代码无需注释。</p>
+
+<p>代码中应该更多的使用行注释，块注释往往用于正式的文档记录和注释。</p>
+
+<p>对于脚本应用和工具库，我只使用唯一一个全局变量。每个对象都有自己的命名空间，以方便管理代码。</p>
+
+<p>更多编码风格可以参见第五部分</p>
+
+<p>最后本读书笔记将于第五部分结束，第五部分将总结被本书作者认为是优美的特性，以及毒瘤和糟粕，同时给出个人总结的javascript代码编写规范ppt。</p>
+    </article> <!-- end #post__content -->
+
+    <!--<div id="post__share">-->
+      <!--<a id="icon-twitter" href="https://twitter.com/intent/tweet?url=http://127.0.0.1/2015/03/2015/03/02/javascriptyu-yan-jing-cui-du-shu-bi-ji-si/&text=《javascript语言精粹》读书笔记四" target="_blank"></a>-->
+      <!--<a id="icon-cc" href="http://creativecommons.org/licenses/by-nc-sa/3.0" target="_blank"></a>-->
+      <!--<a id="icon-weibo" href="http://v.t.sina.com.cn/share/share.php?url=http://127.0.0.1/2015/03/2015/03/02/javascriptyu-yan-jing-cui-du-shu-bi-ji-si/&title=《javascript语言精粹》读书笔记四" target="_blank"></a>-->
+    <!--</div> &lt;!&ndash; end #post__share &ndash;&gt;-->
+    <div id="dsData" data-id="13" data-title="《javascript语言精粹》读书笔记四" data-url="/2015/03/02/javascriptyu-yan-jing-cui-du-shu-bi-ji-si/"></div>
+    <!--PC版-->
+    <div id="cyss" sid="/2015/03/02/javascriptyu-yan-jing-cui-du-shu-bi-ji-si/"></div>
+    <div id="SOHUCS" sid="/2015/03/02/javascriptyu-yan-jing-cui-du-shu-bi-ji-si/"></div>
+
+      </div> <!-- end #pjax -->
+
+      <div id="post__toc-trigger">
+        <div id="post__toc">
+          <span id="post__toc-title">Table of Contents</span>
+          <ul id="post__toc-ul"></ul>
+        </div>
+      </div>
+    </div> <!-- end #post -->
+
+    <!-- 收缩箭头 -->
+    <button id="js-fullscreen"><span class="fa fa-chevron-right" id="icon-arrow"></span></button>
+
+    <footer>
+      <div>Powered by <a href="https://ghost.org" target="_blank">Ghost</a>  |  ©zak wu 2015<a href="http://www.miitbeian.gov.cn/">粤ICP备15007095</a></div>
+    </footer>
+
+    <script src="../../../../assets/js/jquery-2.0.3.min.js"></script>
+    <script src="../../../../assets/js/jquery.pjax.js"></script>
+    <script src="../../../../assets/js/nprogress.js"></script>
+    <script src="../../../../assets/js/prism.js"></script>
+    <script src="../../../../assets/js/script.js"></script>
+    <script src="../../../../public/jquery.js?v=fdf87e4899"></script>
+  </body>

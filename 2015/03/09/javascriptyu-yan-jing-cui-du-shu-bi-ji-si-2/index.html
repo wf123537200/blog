@@ -1,0 +1,246 @@
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>《javascript语言精粹》读书笔记五</title>
+    <meta name="description" content="本节包括，第十章 优美的特性 附录A 毒瘤
+附录B 糟粕">
+    <meta name="HandheldFriendly" content="True">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="baidu-site-verification" content="1B8AemIXSQ">
+    <!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/ie.html"><![endif]-->
+    <link rel="canonical" href="http://127.0.0.1/2015/03/09/javascriptyu-yan-jing-cui-du-shu-bi-ji-si-2/">
+    
+    <meta property="og:site_name" content="zakwu的成长记录">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="《javascript语言精粹》读书笔记五">
+    <meta property="og:description" content="本节包括，第十章 优美的特性 附录A 毒瘤
+附录B 糟粕...">
+    <meta property="og:url" content="http://127.0.0.1/2015/03/09/javascriptyu-yan-jing-cui-du-shu-bi-ji-si-2/">
+    <meta property="article:published_time" content="2015-03-09T02:40:19.000Z">
+    <meta property="article:modified_time" content="2015-03-09T02:41:06.000Z">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="《javascript语言精粹》读书笔记五">
+    <meta name="twitter:description" content="本节包括，第十章 优美的特性 附录A 毒瘤
+附录B 糟粕...">
+    <meta name="twitter:url" content="http://127.0.0.1/2015/03/09/javascriptyu-yan-jing-cui-du-shu-bi-ji-si-2/">
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "zakwu的成长记录",
+    "author": {
+        "@type": "Person",
+        "name": "zakwu",
+        "url": "http://127.0.0.1/author/zakwu",
+        "sameAs": null
+    },
+    "headline": "《javascript语言精粹》读书笔记五",
+    "url": "http://127.0.0.1/2015/03/09/javascriptyu-yan-jing-cui-du-shu-bi-ji-si-2/",
+    "datePublished": "2015-03-09T02:40:19.000Z",
+    "dateModified": "2015-03-09T02:41:06.000Z",
+    "description": "本节包括，第十章 优美的特性 附录A 毒瘤\n附录B 糟粕..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.5">
+    <link rel="alternate" type="application/rss+xml" title="zakwu的成长记录" href="http://127.0.0.1/rss/">
+
+    <!-- link -->
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/style.css">
+  </head>
+  <body>
+    <aside id="sidebar">
+      <nav id="tags">
+        <a href="http://zakwu.me/node/assets/about/about.html" target="_blank" title="about me" id="avatar"></a>
+
+        <ul id="tags__ul">
+          <!--&lt;!&ndash; connect &ndash;&gt;-->
+          <!--<li id="sthfuns" class="tags__li tags-btn">作品集</li>-->
+          <!--<li id="shareppt" class="tags__li tags-btn">分享ppt</li>-->
+
+          <!-- acts -->
+          <li id="js-label1" class="tags__li tags-btn active">全部文章</li>
+          <li id="js-label2" class="tags__li tags-btn">ghost</li>
+          <li id="js-label3" class="tags__li tags-btn">js 技术</li>
+          <li id="js-label4" class="tags__li tags-btn">css 技术</li>
+          <li id="js-label5" class="tags__li tags-btn">前端架构</li>
+          <li id="js-label6" class="tags__li tags-btn">心随意转</li>
+        </ul>
+
+        <div id="tags__bottom">
+          <a href="http://github.com/wf123537200/" target="_blank" class="tags-btn show-icon-right fa fa-github" title="加我github"></a>
+          <a href="http://zakwu.me/node/assets/about/about.html" target="_blank" class="tags-btn show-icon-right fa fa-user" title="关于我"></a>
+          <a href="mailto:wfsheep@163.com" title="给我邮件" class="tags-btn show-icon-right fa fa-envelope-o"></a>
+          <a href="http://zakwu.me/rss/" title="订阅我的blog" class="tags-btn fa fa-rss"></a>
+        </div>
+      </nav> <!-- end #tags -->
+
+      <div id="posts-list">
+        <form action="index.html" id="search-form">
+          <a href="http://127.0.0.1" id="mobile-avatar"></a>
+          <!-- NOTE: input field is disabled by default -->
+          <input id="search-input" type="text" placeholder="Search...">
+        </form>
+
+        <nav id="pl__container">
+        </nav>
+      </div> <!-- end #posts-list -->
+    </aside> <!-- end #sidebar -->
+
+    <div id="post">
+      <div id="pjax">
+        
+    <article id="post__content">
+      <h1 id="post__title" data-identifier="20150309">《javascript语言精粹》读书笔记五</h1>
+      <h2 id="">第十章 优美的特性</h2>
+
+<p>在本章开头 老道写到：“我想避开不谈浏览器和其他适合javascript的地方。”我想要强调其更有分量的内容，以显示它是值得尊敬的语言。</p>
+
+<p>我也这么认为，虽然我了解的语言种类不多，但是js强大的表现力还是使我深深的爱上了它。</p>
+
+<p>以下是老道认为js种最精粹的部分:</p>
+
+<p><strong>函数是顶级对象</strong>    函数是有词法作用域的闭包。 <br>
+<strong>基于原型继承的动态对象</strong> 对象是无类别的。我们可以通过普通的属性赋值给任何对象增加一个新成员属性，一个对象可以从另一个对象继承成员属性。 <br>
+<strong>对象字面量和数组字面量</strong> 这对创建新的对象和数组来说是一种非常方便的表示法。javascript字面量是数据交换格式JSON的灵感之源。</p>
+
+<h2 id="a">附录A 毒瘤</h2>
+
+<p>在很多书中附录往往冗长而缺乏价值（干货），本书的附录才是真正的精华所在，它阐述了js这门语言的毒瘤，糟粕和精华所在。非常值得细细品味和了解。</p>
+
+<h3 id="">全局变量</h3>
+
+<p>全局变量的三种声明方式：
+1、var foo = value； <br>
+2、global.foo = value; <br>
+3、foo = value;</p>
+
+<h3 id="">自动插入分号</h3>
+
+<p>js有自动插入分好的习惯，它试图通过自动插入分好来修正有缺损的程序。但是，这可能会掩盖更为严重的错误。</p>
+
+<p>比如对于以下语句就是错误的，ex:</p>
+
+<pre><code class="language-javascript">return // this will return undefined;
+{
+    state : true;
+}</code></pre>
+
+<p>通过一些编程约定能够避免这个问题，比如上例应该写作,就能返回正确的结果：</p>
+
+<pre><code class="language-javascript">return {
+    state : true;
+}</code></pre>
+
+<h3 id="typeof">typeof</h3>
+
+<p>typeof null返回为‘object’，这说明typeof不能辨别出null对象，但你可以像下面这样做，已达到目的：  </p>
+
+<pre><code class="language-javascript">if(x &amp;&amp; typeof x === 'object') {
+    // x 是一个对象或者数组
+}</code></pre>
+
+<h3 id="parseint">parseInt</h3>
+
+<p>parseInt("08")回0，而不是8,因为这里按照8进制来处理"08"字符串，所以建议无论何时都为parseInt函数加上基数参数。</p>
+
+<h3 id="">+</h3>
+
+<p>+号可以用来被连接字符串，这里导致一系列问题，想必你一定也碰到过100 + '11' --&gt; 10011的时候吧。所以如果打算做加法运算，请确保两个运算数都是整数。</p>
+
+<h3 id="">浮点数</h3>
+
+<p>浮点数的小数点后运算不精确，比如0.1+0.2=0.30000000000000004,这个结果是遵循二进制浮点数算数运算标准的（IEEE 754），可以通过乘法来对其进行避免<a href="http://zakwu.me/2015/03/09/jsjing-que-si-ze-yun-suan/">此处可参看(js精确四则运算)</a>。</p>
+
+<h3 id="nan">NAN</h3>
+
+<p>NAN不是一个数字，尽管<code>typeof NAN === 'number' // true</code>。NAN不等于它自己，它和任意数进行运算， 结果为NAN。 <br>
+可以使用 <code>typeof value === 'number' &amp;&amp; isFinite(value)</code>对数字进行判断，这是因为isFinite函数将会筛除掉NAN和Infinity。</p>
+
+<h3 id="">假值</h3>
+
+<p>js种有一个很大的假值空间：“0， NAN， '', false, null, undefined”都等同于假值，又不可互换，所以判断时应该使用<code>'==='</code>而不是<code>'=='</code>。</p>
+
+<p><strong>这里需要说明的是，在ie8及以下浏览器中，NAN和undefined不是常量，他们的是值是可以改变的，你可以将undefiend赋值成任何你想要的对象。</strong></p>
+
+<h2 id="b">附录B 糟粕</h2>
+
+<h3 id="">==</h3>
+
+<p>由于js中的"<code>==</code>"运算符会对左值和右值进行类型转换，所以他违反了传递性这种编程约定，所以如同前文提到的一样尽量使用"<code>===</code>"和"<code>!==</code>"来代替"<code>==</code>"和"<code>!=</code>"。</p>
+
+<h3 id="witheval">with和eval</h3>
+
+<p>这两个兄弟对js的运算速度有很大的影响，而又降低的js的可读性和可检测性，所以应该尽量避免使用。</p>
+
+<h3 id="continue">continue语句</h3>
+
+<p>代码中移除continue后性能会得到提升。</p>
+
+<h3 id="">++ --</h3>
+
+<p>当使用这两者时，代码变得拥挤，复杂和隐晦。因此，为了代码风格整洁，不建议使用他。</p>
+
+<h3 id="">位运算符</h3>
+
+<p>由于js的运行环境导致其运行时基本解除不到硬件，位运算符在js种执行速度很慢，建议不要使用它。</p>
+
+<h3 id="functionfunction">function语句和function表达式</h3>
+
+<p>推荐使用function表达式，使用示例如下：</p>
+
+<pre><code class="language-javascript">var foo = function foo() {}</code></pre>
+
+<p><strong>这种方式可以明确的表示foo是一个包含一个函数值的变量</strong>。</p>
+
+<h3 id="new">new</h3>
+
+<p>new运算符帮助我们创建一个继承原型的新对象，然后调用该运算数，将新创建的对象绑定给this，使得运算数可以返回前者自定义创建的新对象，而当你忘记使用new的时候，得到的是一个普通的函数调用结果，并且this会保存到全局对象上，对其造成污染。</p>
+
+<p>所以建议在可能的时候不要使用new运算符。</p>
+
+<h3 id="void">void</h3>
+
+<p>void是一个运算符，它接受一个运算数并返回undefined。这没有什么用，应该尽量避免使用它。在ie8及以下浏览器中为了防止undefined关键字被覆盖，常常使用void 0来代替undefined。</p>
+    </article> <!-- end #post__content -->
+
+    <!--<div id="post__share">-->
+      <!--<a id="icon-twitter" href="https://twitter.com/intent/tweet?url=http://127.0.0.1/2015/03/2015/03/09/javascriptyu-yan-jing-cui-du-shu-bi-ji-si-2/&text=《javascript语言精粹》读书笔记五" target="_blank"></a>-->
+      <!--<a id="icon-cc" href="http://creativecommons.org/licenses/by-nc-sa/3.0" target="_blank"></a>-->
+      <!--<a id="icon-weibo" href="http://v.t.sina.com.cn/share/share.php?url=http://127.0.0.1/2015/03/2015/03/09/javascriptyu-yan-jing-cui-du-shu-bi-ji-si-2/&title=《javascript语言精粹》读书笔记五" target="_blank"></a>-->
+    <!--</div> &lt;!&ndash; end #post__share &ndash;&gt;-->
+    <div id="dsData" data-id="17" data-title="《javascript语言精粹》读书笔记五" data-url="/2015/03/09/javascriptyu-yan-jing-cui-du-shu-bi-ji-si-2/"></div>
+    <!--PC版-->
+    <div id="cyss" sid="/2015/03/09/javascriptyu-yan-jing-cui-du-shu-bi-ji-si-2/"></div>
+    <div id="SOHUCS" sid="/2015/03/09/javascriptyu-yan-jing-cui-du-shu-bi-ji-si-2/"></div>
+
+      </div> <!-- end #pjax -->
+
+      <div id="post__toc-trigger">
+        <div id="post__toc">
+          <span id="post__toc-title">Table of Contents</span>
+          <ul id="post__toc-ul"></ul>
+        </div>
+      </div>
+    </div> <!-- end #post -->
+
+    <!-- 收缩箭头 -->
+    <button id="js-fullscreen"><span class="fa fa-chevron-right" id="icon-arrow"></span></button>
+
+    <footer>
+      <div>Powered by <a href="https://ghost.org" target="_blank">Ghost</a>  |  ©zak wu 2015<a href="http://www.miitbeian.gov.cn/">粤ICP备15007095</a></div>
+    </footer>
+
+    <script src="../../../../assets/js/jquery-2.0.3.min.js"></script>
+    <script src="../../../../assets/js/jquery.pjax.js"></script>
+    <script src="../../../../assets/js/nprogress.js"></script>
+    <script src="../../../../assets/js/prism.js"></script>
+    <script src="../../../../assets/js/script.js"></script>
+    <script src="../../../../public/jquery.js?v=fdf87e4899"></script>
+  </body>

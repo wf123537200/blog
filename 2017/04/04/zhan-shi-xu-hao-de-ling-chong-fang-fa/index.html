@@ -1,0 +1,173 @@
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>css counter</title>
+    <meta name="description" content="css序号展示 序号展示">
+    <meta name="HandheldFriendly" content="True">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="baidu-site-verification" content="1B8AemIXSQ">
+    <!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/ie.html"><![endif]-->
+    <link rel="canonical" href="http://127.0.0.1/2017/04/04/zhan-shi-xu-hao-de-ling-chong-fang-fa/">
+    
+    <meta property="og:site_name" content="zakwu的成长记录">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="css counter">
+    <meta property="og:description" content="css序号展示 序号展示...">
+    <meta property="og:url" content="http://127.0.0.1/2017/04/04/zhan-shi-xu-hao-de-ling-chong-fang-fa/">
+    <meta property="article:published_time" content="2017-04-04T02:20:25.000Z">
+    <meta property="article:modified_time" content="2017-04-24T01:08:39.000Z">
+    <meta property="article:tag" content="css">
+    <meta property="article:tag" content="js">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="css counter">
+    <meta name="twitter:description" content="css序号展示 序号展示...">
+    <meta name="twitter:url" content="http://127.0.0.1/2017/04/04/zhan-shi-xu-hao-de-ling-chong-fang-fa/">
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "zakwu的成长记录",
+    "author": {
+        "@type": "Person",
+        "name": "zakwu",
+        "url": "http://127.0.0.1/author/zakwu",
+        "sameAs": null
+    },
+    "headline": "css counter",
+    "url": "http://127.0.0.1/2017/04/04/zhan-shi-xu-hao-de-ling-chong-fang-fa/",
+    "datePublished": "2017-04-04T02:20:25.000Z",
+    "dateModified": "2017-04-24T01:08:39.000Z",
+    "keywords": "css, js",
+    "description": "css序号展示 序号展示..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.5">
+    <link rel="alternate" type="application/rss+xml" title="zakwu的成长记录" href="http://127.0.0.1/rss/">
+
+    <!-- link -->
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/style.css">
+  </head>
+  <body>
+    <aside id="sidebar">
+      <nav id="tags">
+        <a href="http://zakwu.me/node/assets/about/about.html" target="_blank" title="about me" id="avatar"></a>
+
+        <ul id="tags__ul">
+          <!--&lt;!&ndash; connect &ndash;&gt;-->
+          <!--<li id="sthfuns" class="tags__li tags-btn">作品集</li>-->
+          <!--<li id="shareppt" class="tags__li tags-btn">分享ppt</li>-->
+
+          <!-- acts -->
+          <li id="js-label1" class="tags__li tags-btn active">全部文章</li>
+          <li id="js-label2" class="tags__li tags-btn">ghost</li>
+          <li id="js-label3" class="tags__li tags-btn">js 技术</li>
+          <li id="js-label4" class="tags__li tags-btn">css 技术</li>
+          <li id="js-label5" class="tags__li tags-btn">前端架构</li>
+          <li id="js-label6" class="tags__li tags-btn">心随意转</li>
+        </ul>
+
+        <div id="tags__bottom">
+          <a href="http://github.com/wf123537200/" target="_blank" class="tags-btn show-icon-right fa fa-github" title="加我github"></a>
+          <a href="http://zakwu.me/node/assets/about/about.html" target="_blank" class="tags-btn show-icon-right fa fa-user" title="关于我"></a>
+          <a href="mailto:wfsheep@163.com" title="给我邮件" class="tags-btn show-icon-right fa fa-envelope-o"></a>
+          <a href="http://zakwu.me/rss/" title="订阅我的blog" class="tags-btn fa fa-rss"></a>
+        </div>
+      </nav> <!-- end #tags -->
+
+      <div id="posts-list">
+        <form action="index.html" id="search-form">
+          <a href="http://127.0.0.1" id="mobile-avatar"></a>
+          <!-- NOTE: input field is disabled by default -->
+          <input id="search-input" type="text" placeholder="Search...">
+        </form>
+
+        <nav id="pl__container">
+        </nav>
+      </div> <!-- end #posts-list -->
+    </aside> <!-- end #sidebar -->
+
+    <div id="post">
+      <div id="pjax">
+        
+    <article id="post__content">
+      <h1 id="post__title" data-identifier="20170404">展示序号的另一种方法</h1>
+      <p>    在前端开发中，我们时常会碰到，需要展示序号的场景，对于现在的react，vue类框架,可以简单地把index写入，但是对于数据需要部分展示和隐藏带来的一些复杂逻辑，最近开发中发现了一种css的计数和展示序号的方法，那就是CSS counter-increment Property。</p>
+
+<p>例子如下：</p>
+
+<pre><code class="language-css">
+body {
+    counter-reset: log;
+}
+
+h1 {
+    counter-reset: subsection;
+}
+
+h1:before {
+    counter-increment: log;
+    content: "Section " counter(log) ". ";
+}
+
+h2:before {
+    counter-increment: subsection;
+    content: counter(log) "." counter(subsection) " ";
+}
+</code></pre>
+
+<p>展示结果如下：</p>
+
+<p><img src="../../../../content/images/2017/04/x-pic.jpg" alt="alt"></p>
+
+<p>参数说明：</p>
+
+<p>1、counter-reset: 这个属性要放在需要计数的对象的父对象上，放在当前对象上的计数会一直为1 <br>
+2、counter-increment: 指示计数的对象是哪一个对象，和conter-reset对应 <br>
+3、content: 这个代表计数的展示字符串，counter(target) 是计数器</p>
+
+<p>总之，通过这种方式，可以简单实现页面元素计数，浏览器会自动处理显示隐藏相关计数的问题，完全不需要我们来操心。这种方式的不好，却是逻辑不便管理。</p>
+
+<p>现在看来，css能做的事情也越来越多了，也给开发者提供了另一个选择。</p>
+    </article> <!-- end #post__content -->
+
+    <!--<div id="post__share">-->
+      <!--<a id="icon-twitter" href="https://twitter.com/intent/tweet?url=http://127.0.0.1/2017/04/2017/04/04/zhan-shi-xu-hao-de-ling-chong-fang-fa/&text=展示序号的另一种方法" target="_blank"></a>-->
+      <!--<a id="icon-cc" href="http://creativecommons.org/licenses/by-nc-sa/3.0" target="_blank"></a>-->
+      <!--<a id="icon-weibo" href="http://v.t.sina.com.cn/share/share.php?url=http://127.0.0.1/2017/04/2017/04/04/zhan-shi-xu-hao-de-ling-chong-fang-fa/&title=展示序号的另一种方法" target="_blank"></a>-->
+    <!--</div> &lt;!&ndash; end #post__share &ndash;&gt;-->
+    <div id="dsData" data-id="52" data-title="展示序号的另一种方法" data-url="/2017/04/04/zhan-shi-xu-hao-de-ling-chong-fang-fa/"></div>
+    <!--PC版-->
+    <div id="cyss" sid="/2017/04/04/zhan-shi-xu-hao-de-ling-chong-fang-fa/"></div>
+    <div id="SOHUCS" sid="/2017/04/04/zhan-shi-xu-hao-de-ling-chong-fang-fa/"></div>
+
+      </div> <!-- end #pjax -->
+
+      <div id="post__toc-trigger">
+        <div id="post__toc">
+          <span id="post__toc-title">Table of Contents</span>
+          <ul id="post__toc-ul"></ul>
+        </div>
+      </div>
+    </div> <!-- end #post -->
+
+    <!-- 收缩箭头 -->
+    <button id="js-fullscreen"><span class="fa fa-chevron-right" id="icon-arrow"></span></button>
+
+    <footer>
+      <div>Powered by <a href="https://ghost.org" target="_blank">Ghost</a>  |  ©zak wu 2015<a href="http://www.miitbeian.gov.cn/">粤ICP备15007095</a></div>
+    </footer>
+
+    <script src="../../../../assets/js/jquery-2.0.3.min.js"></script>
+    <script src="../../../../assets/js/jquery.pjax.js"></script>
+    <script src="../../../../assets/js/nprogress.js"></script>
+    <script src="../../../../assets/js/prism.js"></script>
+    <script src="../../../../assets/js/script.js"></script>
+    <script src="../../../../public/jquery.js?v=fdf87e4899"></script>
+  </body>

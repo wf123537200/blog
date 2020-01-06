@@ -1,0 +1,180 @@
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>vue组件使用</title>
+    <meta name="description" content="vue 组件使用 参数传递">
+    <meta name="HandheldFriendly" content="True">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="baidu-site-verification" content="1B8AemIXSQ">
+    <!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/ie.html"><![endif]-->
+    <link rel="canonical" href="http://127.0.0.1/2017/04/18/vuede-shi-jian-chuan-ru-wai-bu-chan-shu/">
+    
+    <meta property="og:site_name" content="zakwu的成长记录">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="vue组件使用">
+    <meta property="og:description" content="vue 组件使用 参数传递...">
+    <meta property="og:url" content="http://127.0.0.1/2017/04/18/vuede-shi-jian-chuan-ru-wai-bu-chan-shu/">
+    <meta property="article:published_time" content="2017-04-18T06:25:02.000Z">
+    <meta property="article:modified_time" content="2017-04-18T06:27:02.000Z">
+    <meta property="article:tag" content="js">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="vue组件使用">
+    <meta name="twitter:description" content="vue 组件使用 参数传递...">
+    <meta name="twitter:url" content="http://127.0.0.1/2017/04/18/vuede-shi-jian-chuan-ru-wai-bu-chan-shu/">
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "zakwu的成长记录",
+    "author": {
+        "@type": "Person",
+        "name": "zakwu",
+        "url": "http://127.0.0.1/author/zakwu",
+        "sameAs": null
+    },
+    "headline": "vue组件使用",
+    "url": "http://127.0.0.1/2017/04/18/vuede-shi-jian-chuan-ru-wai-bu-chan-shu/",
+    "datePublished": "2017-04-18T06:25:02.000Z",
+    "dateModified": "2017-04-18T06:27:02.000Z",
+    "keywords": "js",
+    "description": "vue 组件使用 参数传递..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.5">
+    <link rel="alternate" type="application/rss+xml" title="zakwu的成长记录" href="http://127.0.0.1/rss/">
+
+    <!-- link -->
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/style.css">
+  </head>
+  <body>
+    <aside id="sidebar">
+      <nav id="tags">
+        <a href="http://zakwu.me/node/assets/about/about.html" target="_blank" title="about me" id="avatar"></a>
+
+        <ul id="tags__ul">
+          <!--&lt;!&ndash; connect &ndash;&gt;-->
+          <!--<li id="sthfuns" class="tags__li tags-btn">作品集</li>-->
+          <!--<li id="shareppt" class="tags__li tags-btn">分享ppt</li>-->
+
+          <!-- acts -->
+          <li id="js-label1" class="tags__li tags-btn active">全部文章</li>
+          <li id="js-label2" class="tags__li tags-btn">ghost</li>
+          <li id="js-label3" class="tags__li tags-btn">js 技术</li>
+          <li id="js-label4" class="tags__li tags-btn">css 技术</li>
+          <li id="js-label5" class="tags__li tags-btn">前端架构</li>
+          <li id="js-label6" class="tags__li tags-btn">心随意转</li>
+        </ul>
+
+        <div id="tags__bottom">
+          <a href="http://github.com/wf123537200/" target="_blank" class="tags-btn show-icon-right fa fa-github" title="加我github"></a>
+          <a href="http://zakwu.me/node/assets/about/about.html" target="_blank" class="tags-btn show-icon-right fa fa-user" title="关于我"></a>
+          <a href="mailto:wfsheep@163.com" title="给我邮件" class="tags-btn show-icon-right fa fa-envelope-o"></a>
+          <a href="http://zakwu.me/rss/" title="订阅我的blog" class="tags-btn fa fa-rss"></a>
+        </div>
+      </nav> <!-- end #tags -->
+
+      <div id="posts-list">
+        <form action="index.html" id="search-form">
+          <a href="http://127.0.0.1" id="mobile-avatar"></a>
+          <!-- NOTE: input field is disabled by default -->
+          <input id="search-input" type="text" placeholder="Search...">
+        </form>
+
+        <nav id="pl__container">
+        </nav>
+      </div> <!-- end #posts-list -->
+    </aside> <!-- end #sidebar -->
+
+    <div id="post">
+      <div id="pjax">
+        
+    <article id="post__content">
+      <h1 id="post__title" data-identifier="20170418">vue父组件怎么使用外部对象</h1>
+      <p>    由于思维定式，我们常常犯一些奇怪的错误，有时候看似简单的问题却给出了复杂的解决方案。</p>
+
+<p>    最近在碰到有同学问我，vue父组件怎么使用外部对象，具体例子如下：</p>
+
+<p>有组件a：</p>
+
+<p><code>&lt;div @click="onClick"&gt;component a&lt;/div&gt;</code></p>
+
+<pre><code class="language-javascript">// componet a
+...
+methods: {
+    onClick(evt) {
+        // doSomething 这里只能拿到 mouseEvent
+        this.outsideClickHandler(evt); // 调用外部处理函数
+    }
+}
+...
+</code></pre>
+
+<p>有组件B，引用组件a，并传入outsideClickHandler方法：</p>
+
+<p><code>&lt;v-componetA :outside-click-handler="onClick"&gt;componentB&lt;/v-componetA&gt;</code></p>
+
+<p>    对以上这种封装是组件库中再常见不过的封装了，实际使用中，有时候会需在component B传入component A的outsideClickHandler方法中使用component B中的数据对象，而component的代码又不能更改，这时候怎么办呢？</p>
+
+<p>    其实解决方案也是非常简单，但是有时候我们会"执迷不悟"。废话不说，上代码!</p>
+
+<pre><code class="language-javascript">// componet b
+...
+data() {
+    a: {} // 数据
+},
+methods: {
+    onClick(evt) {
+        // 关键在于返回一个函数哦
+        return (evt) =&gt; {
+            // 这里也可以直接闭包使用
+            console.log(this.a);
+        }
+    }
+}
+...
+</code></pre>
+
+<p>    总之,对于vue函数来说，当无法直接传入参数的时候，可以考虑闭包实现，本文所说的也只是一个简单例子，js的函数作为一等公民还有很多有趣的应用。</p>
+    </article> <!-- end #post__content -->
+
+    <!--<div id="post__share">-->
+      <!--<a id="icon-twitter" href="https://twitter.com/intent/tweet?url=http://127.0.0.1/2017/04/2017/04/18/vuede-shi-jian-chuan-ru-wai-bu-chan-shu/&text=vue父组件怎么使用外部对象" target="_blank"></a>-->
+      <!--<a id="icon-cc" href="http://creativecommons.org/licenses/by-nc-sa/3.0" target="_blank"></a>-->
+      <!--<a id="icon-weibo" href="http://v.t.sina.com.cn/share/share.php?url=http://127.0.0.1/2017/04/2017/04/18/vuede-shi-jian-chuan-ru-wai-bu-chan-shu/&title=vue父组件怎么使用外部对象" target="_blank"></a>-->
+    <!--</div> &lt;!&ndash; end #post__share &ndash;&gt;-->
+    <div id="dsData" data-id="51" data-title="vue父组件怎么使用外部对象" data-url="/2017/04/18/vuede-shi-jian-chuan-ru-wai-bu-chan-shu/"></div>
+    <!--PC版-->
+    <div id="cyss" sid="/2017/04/18/vuede-shi-jian-chuan-ru-wai-bu-chan-shu/"></div>
+    <div id="SOHUCS" sid="/2017/04/18/vuede-shi-jian-chuan-ru-wai-bu-chan-shu/"></div>
+
+      </div> <!-- end #pjax -->
+
+      <div id="post__toc-trigger">
+        <div id="post__toc">
+          <span id="post__toc-title">Table of Contents</span>
+          <ul id="post__toc-ul"></ul>
+        </div>
+      </div>
+    </div> <!-- end #post -->
+
+    <!-- 收缩箭头 -->
+    <button id="js-fullscreen"><span class="fa fa-chevron-right" id="icon-arrow"></span></button>
+
+    <footer>
+      <div>Powered by <a href="https://ghost.org" target="_blank">Ghost</a>  |  ©zak wu 2015<a href="http://www.miitbeian.gov.cn/">粤ICP备15007095</a></div>
+    </footer>
+
+    <script src="../../../../assets/js/jquery-2.0.3.min.js"></script>
+    <script src="../../../../assets/js/jquery.pjax.js"></script>
+    <script src="../../../../assets/js/nprogress.js"></script>
+    <script src="../../../../assets/js/prism.js"></script>
+    <script src="../../../../assets/js/script.js"></script>
+    <script src="../../../../public/jquery.js?v=fdf87e4899"></script>
+  </body>

@@ -1,0 +1,274 @@
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>手机UA useragent</title>
+    <meta name="description" content="从日志中的手机ＵＡ区别各厂手机，透视各厂开发规范和严谨性">
+    <meta name="HandheldFriendly" content="True">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="baidu-site-verification" content="1B8AemIXSQ">
+    <!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/ie.html"><![endif]-->
+    <link rel="canonical" href="http://127.0.0.1/2015/12/15/an-zhuo-shou-ji-uashou-ji/">
+    
+    <meta property="og:site_name" content="zakwu的成长记录">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="手机UA useragent">
+    <meta property="og:description" content="从日志中的手机ＵＡ区别各厂手机，透视各厂开发规范和严谨性...">
+    <meta property="og:url" content="http://127.0.0.1/2015/12/15/an-zhuo-shou-ji-uashou-ji/">
+    <meta property="article:published_time" content="2015-12-15T01:26:39.000Z">
+    <meta property="article:modified_time" content="2015-12-15T01:26:39.000Z">
+    <meta property="article:tag" content="js">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="手机UA useragent">
+    <meta name="twitter:description" content="从日志中的手机ＵＡ区别各厂手机，透视各厂开发规范和严谨性...">
+    <meta name="twitter:url" content="http://127.0.0.1/2015/12/15/an-zhuo-shou-ji-uashou-ji/">
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "zakwu的成长记录",
+    "author": {
+        "@type": "Person",
+        "name": "zakwu",
+        "url": "http://127.0.0.1/author/zakwu",
+        "sameAs": null
+    },
+    "headline": "手机UA useragent",
+    "url": "http://127.0.0.1/2015/12/15/an-zhuo-shou-ji-uashou-ji/",
+    "datePublished": "2015-12-15T01:26:39.000Z",
+    "dateModified": "2015-12-15T01:26:39.000Z",
+    "keywords": "js",
+    "description": "从日志中的手机ＵＡ区别各厂手机，透视各厂开发规范和严谨性..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.5">
+    <link rel="alternate" type="application/rss+xml" title="zakwu的成长记录" href="http://127.0.0.1/rss/">
+
+    <!-- link -->
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/style.css">
+  </head>
+  <body>
+    <aside id="sidebar">
+      <nav id="tags">
+        <a href="http://zakwu.me/node/assets/about/about.html" target="_blank" title="about me" id="avatar"></a>
+
+        <ul id="tags__ul">
+          <!--&lt;!&ndash; connect &ndash;&gt;-->
+          <!--<li id="sthfuns" class="tags__li tags-btn">作品集</li>-->
+          <!--<li id="shareppt" class="tags__li tags-btn">分享ppt</li>-->
+
+          <!-- acts -->
+          <li id="js-label1" class="tags__li tags-btn active">全部文章</li>
+          <li id="js-label2" class="tags__li tags-btn">ghost</li>
+          <li id="js-label3" class="tags__li tags-btn">js 技术</li>
+          <li id="js-label4" class="tags__li tags-btn">css 技术</li>
+          <li id="js-label5" class="tags__li tags-btn">前端架构</li>
+          <li id="js-label6" class="tags__li tags-btn">心随意转</li>
+        </ul>
+
+        <div id="tags__bottom">
+          <a href="http://github.com/wf123537200/" target="_blank" class="tags-btn show-icon-right fa fa-github" title="加我github"></a>
+          <a href="http://zakwu.me/node/assets/about/about.html" target="_blank" class="tags-btn show-icon-right fa fa-user" title="关于我"></a>
+          <a href="mailto:wfsheep@163.com" title="给我邮件" class="tags-btn show-icon-right fa fa-envelope-o"></a>
+          <a href="http://zakwu.me/rss/" title="订阅我的blog" class="tags-btn fa fa-rss"></a>
+        </div>
+      </nav> <!-- end #tags -->
+
+      <div id="posts-list">
+        <form action="index.html" id="search-form">
+          <a href="http://127.0.0.1" id="mobile-avatar"></a>
+          <!-- NOTE: input field is disabled by default -->
+          <input id="search-input" type="text" placeholder="Search...">
+        </form>
+
+        <nav id="pl__container">
+        </nav>
+      </div> <!-- end #posts-list -->
+    </aside> <!-- end #sidebar -->
+
+    <div id="post">
+      <div id="pjax">
+        
+    <article id="post__content">
+      <h1 id="post__title" data-identifier="20151215">从UA看厂商</h1>
+      <p>    最近手上的H5平台要兼容各种屏幕大小，又由于平台生产出的图片尺寸的限制，为了使图片不变形，不裁切，只能采用宽方向压缩的方案进行处理，具体适配方案讨论可以参看另一篇BLOG。如果有好的屏幕适配方案，可以联系我一起讨论哈。</p>
+
+<p>    现在我们进入正题，看看各大厂商的UA：
+首先来看</p>
+
+<p>    三星：三星不愧是大厂，各系列产品清晰的呈现在UA里面，而且UA的规则也是非常统一的，根据不同产品线，分为GT-，SM-，SCH-开头的UA，可以通过<strong>/GT-|SM-|SCH-/ig</strong>直接选择出三星系列的手机。</p>
+
+<p>    小米：小米的UA简直是一团乱，各种奇葩特征，简直不忍直视，看起来使用机型来命名的，但也不全是，比如红米有几种：redmi， HM，2014501之类的各种命名规则，对小米的UA检测，估计只能使用枚举的正则了：<strong>/HM|RedMi|Mi/ig</strong>,不过这种方式难保完整和齐全。</p>
+
+<p>    华为：作为国内一线大厂，华为的UA可圈可点，和三星有些类似，华为的UA是按照产品线来进行标注识别的，主要分为huawei（华为）和honor（荣耀）两个系列，所以华为的UA识别也和简单:<strong>/huawei|honor/ig</strong>一个正则足够了。</p>
+
+<p>    OPPO：出乎意料的oppo手机相当的多，看来oppo的营销做得相当不错啊，不过他们家的UA已经超越小米到了令人发指的程度，同一款手机有各种不同的表达，简直崩溃，更可怕的是，根本没法通过简单正则判断是不是oppo手机。</p>
+
+<p>    vivo：这个厂的手机UA做的相当规范，不管什么型号，至少都是以vivo开头，这样就可以通过简单正则判断他了，比如<strong>/vivo/ig</strong></p>
+
+<p>另外一些杂牌手机，确实很多，android的痛点也就在这里了，各种碎片化，完全没有章法。</p>
+
+<p>【附录】从访问日志里提取的<strong>货真价实</strong>ua</p>
+
+<p>三星：</p>
+
+<p>GT-I9152P Build/JLS36C <br>
+SM-E7000 Build/KTU84P <br>
+SM-G9200 Build/LMY47X <br>
+GT-I9128I Build/JDQ39 <br>
+GT-I9500 Build/JDQ39 <br>
+SM-N9008V Build/LRX21V <br>
+SM-N7506V Build/JLS36C <br>
+SM-G3609 Build/KTU84P <br>
+SCH-W2013 Build/IMM76D</p>
+
+<p>小米：</p>
+
+<p>HM NOTE 1LTE Build/KTU84P <br>
+Redmi Note 2 Build/LRX22G <br>
+m1 Build/KTU84P <br>
+2014501 Build/KOT49H <br>
+2014011 Build/HM2014011 <br>
+2013022 Build/HM2013022 <br>
+MI-ONE Plus Build/GINGERBREAD</p>
+
+<p>华为：</p>
+
+<p>HUAWEI G6-C00 Build/HuaweiG6-C00 <br>
+HUAWEI C8816D Build/HuaweiC8816D <br>
+PE-TL00M Build/HuaweiPE-TL00M <br>
+PLK-AL10 Build/HONORPLK-AL10（荣耀系列） <br>
+Che2-TL00 Build/HonorChe2-TL00 <br>
+H30-U10 Build/HuaweiH30-U10 <br>
+SCL-AL00 Build/HonorSCL-AL00 <br>
+PE-TL20 Build/HuaweiPE-TL20 <br>
+H30-U10 Build/HuaweiH30-U10 <br>
+H60-L01 Build/HDH60-L01</p>
+
+<p>OPPO：</p>
+
+<p>OPPO R7 Build/KTU84P <br>
+OPPO R7t Build/KTU84P <br>
+R7007 Build/JLS36C <br>
+R2017 Build/JLS36C <br>
+R6007 Build/JLS36C <br>
+1105 Build/KTU84P <br>
+N5117 Build/JLS36C <br>
+M571C Build/LMY47D <br>
+R7Plus Build/LRX21M <br>
+X909T Build/JDQ39 <br>
+A31t Build/KTU84P <br>
+A31 Build/KTU84P <br>
+R8207 Build/KTU84P <br>
+R833T Build/JDQ39</p>
+
+<p>vivo：</p>
+
+<p>vivo Y13iL Build/KTU84P <br>
+vivo X5Pro D Build/LRX21M <br>
+vivo Y22L Build/JLS36C <br>
+vivo Y13T Build/JDQ39 <br>
+vivo X5Max  Build/KTU84P</p>
+
+<p>一加：</p>
+
+<p>ONE A2001 Build/LMY48W</p>
+
+<p>酷派：</p>
+
+<p>Coolpad 8297 Build/JDQ39 <br>
+SK1-02 Build/KTU84P</p>
+
+<p>华硕：</p>
+
+<p>ASUS_Z00ADB Build/LRX21V</p>
+
+<p>魅族：</p>
+
+<p>M578C Build/LMY47D <br>
+MX5 Build/LRX22C <br>
+M571C Build/LMY47D</p>
+
+<p>HTC： <br>
+HTC T528d Build/IMM76D <br>
+HTC One X Build/IML74K <br>
+HTC M8t Build/LRX22G</p>
+
+<p>联想：</p>
+
+<p>Lenovo A360t Build/KOT49H</p>
+
+<p>美图：</p>
+
+<p>MeituM2 Build/JDQ39 <br>
+MeituM4 Build/JDQ39</p>
+
+<p>SOYN： <br>
+L50t Build/17.1.E.2.67</p>
+
+<p>uimi： <br>
+UIMI F7 Build/KOT49H</p>
+
+<p>乐视:
+X600 Build/ABXCNOP5000609151S</p>
+
+<p>努比亚：
+NX505J Build/KVT49L <br>
+NX511J Build/LRX22G</p>
+
+<p>金立：
+F103 Build/LRX21M <br>
+V188 Build/KOT49H <br>
+NX601J Build/KVT49L</p>
+
+<p>中兴：</p>
+
+<p>ZTE G718C Build/KVT49L</p>
+
+<p>杂牌：
+Q001 Build/KOT49H（欧沃） <br>
+Aquaris M5 Build/LRX22G <br>
+ZZBAO_Z5E Build/KTU84M（掌中宝） <br>
+Nexus 4 Build/LRX22C（google）</p>
+    </article> <!-- end #post__content -->
+
+    <!--<div id="post__share">-->
+      <!--<a id="icon-twitter" href="https://twitter.com/intent/tweet?url=http://127.0.0.1/2015/12/2015/12/15/an-zhuo-shou-ji-uashou-ji/&text=从UA看厂商" target="_blank"></a>-->
+      <!--<a id="icon-cc" href="http://creativecommons.org/licenses/by-nc-sa/3.0" target="_blank"></a>-->
+      <!--<a id="icon-weibo" href="http://v.t.sina.com.cn/share/share.php?url=http://127.0.0.1/2015/12/2015/12/15/an-zhuo-shou-ji-uashou-ji/&title=从UA看厂商" target="_blank"></a>-->
+    <!--</div> &lt;!&ndash; end #post__share &ndash;&gt;-->
+    <div id="dsData" data-id="25" data-title="从UA看厂商" data-url="/2015/12/15/an-zhuo-shou-ji-uashou-ji/"></div>
+    <!--PC版-->
+    <div id="cyss" sid="/2015/12/15/an-zhuo-shou-ji-uashou-ji/"></div>
+    <div id="SOHUCS" sid="/2015/12/15/an-zhuo-shou-ji-uashou-ji/"></div>
+
+      </div> <!-- end #pjax -->
+
+      <div id="post__toc-trigger">
+        <div id="post__toc">
+          <span id="post__toc-title">Table of Contents</span>
+          <ul id="post__toc-ul"></ul>
+        </div>
+      </div>
+    </div> <!-- end #post -->
+
+    <!-- 收缩箭头 -->
+    <button id="js-fullscreen"><span class="fa fa-chevron-right" id="icon-arrow"></span></button>
+
+    <footer>
+      <div>Powered by <a href="https://ghost.org" target="_blank">Ghost</a>  |  ©zak wu 2015<a href="http://www.miitbeian.gov.cn/">粤ICP备15007095</a></div>
+    </footer>
+
+    <script src="../../../../assets/js/jquery-2.0.3.min.js"></script>
+    <script src="../../../../assets/js/jquery.pjax.js"></script>
+    <script src="../../../../assets/js/nprogress.js"></script>
+    <script src="../../../../assets/js/prism.js"></script>
+    <script src="../../../../assets/js/script.js"></script>
+    <script src="../../../../public/jquery.js?v=fdf87e4899"></script>
+  </body>

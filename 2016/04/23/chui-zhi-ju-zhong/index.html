@@ -1,0 +1,198 @@
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>垂直居中 css垂直居中</title>
+    <meta name="description" content="css 垂直居中">
+    <meta name="HandheldFriendly" content="True">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="baidu-site-verification" content="1B8AemIXSQ">
+    <!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/ie.html"><![endif]-->
+    <link rel="canonical" href="http://127.0.0.1/2016/04/23/chui-zhi-ju-zhong/">
+    
+    <meta property="og:site_name" content="zakwu的成长记录">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="垂直居中 css垂直居中">
+    <meta property="og:description" content="css 垂直居中...">
+    <meta property="og:url" content="http://127.0.0.1/2016/04/23/chui-zhi-ju-zhong/">
+    <meta property="article:published_time" content="2016-04-23T12:05:03.000Z">
+    <meta property="article:modified_time" content="2016-04-23T12:05:03.000Z">
+    <meta property="article:tag" content="css">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="垂直居中 css垂直居中">
+    <meta name="twitter:description" content="css 垂直居中...">
+    <meta name="twitter:url" content="http://127.0.0.1/2016/04/23/chui-zhi-ju-zhong/">
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "zakwu的成长记录",
+    "author": {
+        "@type": "Person",
+        "name": "zakwu",
+        "url": "http://127.0.0.1/author/zakwu",
+        "sameAs": null
+    },
+    "headline": "垂直居中 css垂直居中",
+    "url": "http://127.0.0.1/2016/04/23/chui-zhi-ju-zhong/",
+    "datePublished": "2016-04-23T12:05:03.000Z",
+    "dateModified": "2016-04-23T12:05:03.000Z",
+    "keywords": "css",
+    "description": "css 垂直居中..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.5">
+    <link rel="alternate" type="application/rss+xml" title="zakwu的成长记录" href="http://127.0.0.1/rss/">
+
+    <!-- link -->
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/style.css">
+  </head>
+  <body>
+    <aside id="sidebar">
+      <nav id="tags">
+        <a href="http://zakwu.me/node/assets/about/about.html" target="_blank" title="about me" id="avatar"></a>
+
+        <ul id="tags__ul">
+          <!--&lt;!&ndash; connect &ndash;&gt;-->
+          <!--<li id="sthfuns" class="tags__li tags-btn">作品集</li>-->
+          <!--<li id="shareppt" class="tags__li tags-btn">分享ppt</li>-->
+
+          <!-- acts -->
+          <li id="js-label1" class="tags__li tags-btn active">全部文章</li>
+          <li id="js-label2" class="tags__li tags-btn">ghost</li>
+          <li id="js-label3" class="tags__li tags-btn">js 技术</li>
+          <li id="js-label4" class="tags__li tags-btn">css 技术</li>
+          <li id="js-label5" class="tags__li tags-btn">前端架构</li>
+          <li id="js-label6" class="tags__li tags-btn">心随意转</li>
+        </ul>
+
+        <div id="tags__bottom">
+          <a href="http://github.com/wf123537200/" target="_blank" class="tags-btn show-icon-right fa fa-github" title="加我github"></a>
+          <a href="http://zakwu.me/node/assets/about/about.html" target="_blank" class="tags-btn show-icon-right fa fa-user" title="关于我"></a>
+          <a href="mailto:wfsheep@163.com" title="给我邮件" class="tags-btn show-icon-right fa fa-envelope-o"></a>
+          <a href="http://zakwu.me/rss/" title="订阅我的blog" class="tags-btn fa fa-rss"></a>
+        </div>
+      </nav> <!-- end #tags -->
+
+      <div id="posts-list">
+        <form action="index.html" id="search-form">
+          <a href="http://127.0.0.1" id="mobile-avatar"></a>
+          <!-- NOTE: input field is disabled by default -->
+          <input id="search-input" type="text" placeholder="Search...">
+        </form>
+
+        <nav id="pl__container">
+        </nav>
+      </div> <!-- end #posts-list -->
+    </aside> <!-- end #sidebar -->
+
+    <div id="post">
+      <div id="pjax">
+        
+    <article id="post__content">
+      <h1 id="post__title" data-identifier="20160423">一问就蒙(1)--垂直居中</h1>
+      <p>最近老是面试，面别人和被人面，有很多常常考察的知识点，准备总结一下，写一个一问就蒙系列。</p>
+
+<p>如何将一个子div<strong>垂直居中</strong>，这是一个常被问到的题目。直接进入正题，其实有这么几种方案：</p>
+
+<h5 id="1paddingmargin">1、padding/margin</h5>
+
+<p>这是最土的方案，比如外部div包裹高度为固定的30px，内部div高度为固定的10px，那么居中方案很简单，只要给内部的div设置一个padding/margin就可以了。</p>
+
+<p>代码如下:</p>
+
+<pre><code class="language-css">    .inner-div {
+        padding(margin)： (( 外层高度 - 内层高度 ) / 2) 0;
+    }
+</code></pre>
+
+<h5 id="2">2、绝对定位</h5>
+
+<p>使用绝对定位来进行垂直居中的设置，可能是最常用的了，基本原理是：将子元素相对于父元素移动50%，但由于绝对定位的坐标原点为左上角，所以要再将子元素向回修正该元素宽度的一半,这样则元素刚好居中：</p>
+
+<p>代码如下（假设子元素宽度为200px）：</p>
+
+<pre><code class="language-css">    .inner-div {
+        position: absolate;
+        top: 50%;
+        margin-top: -100px;
+    }
+</code></pre>
+
+<p>以上方法是传统方法，如果继续深究，当不知道子元素高度的情况怎么办呢？毕竟有很多时候，我们是没法直接知道元素的宽度的。</p>
+
+<p>所以有了以下这种进阶方案，这个需要用到css3的一些属性，具体浏览器兼容请戳<a href="http://caniuse.com/#search=Transforms">这里</a>；</p>
+
+<p>具体方法如下：</p>
+
+<pre><code class="language-css">    .inner-div {
+        position: absolate;
+        top: 50%;
+        /*利用css3的属性，进行移动,就不需要知道元素具体高度了*/
+        transform： translateY(-50%);
+    }
+</code></pre>
+
+<h5 id="3">3、终极解决方案</h5>
+
+<p>使用css3中提供的flexible box来解决问题，具体兼容性请戳
+<a href="http://caniuse.com/#search=flexible%20box">这里</a>；
+由于兼容性问题，代码需要增加前缀：</p>
+
+<pre><code class="language-css">    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    display: -moz-box;
+    -moz-box-pack: center;
+    -moz-box-align: center;     
+    display: -ms-flexbox;
+    -ms-flex-pack: center;
+    -ms-flex-align: center;
+</code></pre>
+
+<p>一般来说，如上代码增加到子元素上即时生效，如果出现问题，放到外层试试
+：P</p>
+
+<p>综上，这就是我了解到的几种常用的垂直居中的方式，如果有一些别的方式，希望不吝赐教，谢谢！</p>
+    </article> <!-- end #post__content -->
+
+    <!--<div id="post__share">-->
+      <!--<a id="icon-twitter" href="https://twitter.com/intent/tweet?url=http://127.0.0.1/2016/04/2016/04/23/chui-zhi-ju-zhong/&text=一问就蒙(1)--垂直居中" target="_blank"></a>-->
+      <!--<a id="icon-cc" href="http://creativecommons.org/licenses/by-nc-sa/3.0" target="_blank"></a>-->
+      <!--<a id="icon-weibo" href="http://v.t.sina.com.cn/share/share.php?url=http://127.0.0.1/2016/04/2016/04/23/chui-zhi-ju-zhong/&title=一问就蒙(1)--垂直居中" target="_blank"></a>-->
+    <!--</div> &lt;!&ndash; end #post__share &ndash;&gt;-->
+    <div id="dsData" data-id="35" data-title="一问就蒙(1)--垂直居中" data-url="/2016/04/23/chui-zhi-ju-zhong/"></div>
+    <!--PC版-->
+    <div id="cyss" sid="/2016/04/23/chui-zhi-ju-zhong/"></div>
+    <div id="SOHUCS" sid="/2016/04/23/chui-zhi-ju-zhong/"></div>
+
+      </div> <!-- end #pjax -->
+
+      <div id="post__toc-trigger">
+        <div id="post__toc">
+          <span id="post__toc-title">Table of Contents</span>
+          <ul id="post__toc-ul"></ul>
+        </div>
+      </div>
+    </div> <!-- end #post -->
+
+    <!-- 收缩箭头 -->
+    <button id="js-fullscreen"><span class="fa fa-chevron-right" id="icon-arrow"></span></button>
+
+    <footer>
+      <div>Powered by <a href="https://ghost.org" target="_blank">Ghost</a>  |  ©zak wu 2015<a href="http://www.miitbeian.gov.cn/">粤ICP备15007095</a></div>
+    </footer>
+
+    <script src="../../../../assets/js/jquery-2.0.3.min.js"></script>
+    <script src="../../../../assets/js/jquery.pjax.js"></script>
+    <script src="../../../../assets/js/nprogress.js"></script>
+    <script src="../../../../assets/js/prism.js"></script>
+    <script src="../../../../assets/js/script.js"></script>
+    <script src="../../../../public/jquery.js?v=fdf87e4899"></script>
+  </body>

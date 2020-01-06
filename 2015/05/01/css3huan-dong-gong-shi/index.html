@@ -1,0 +1,207 @@
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>css3动画方案 贝塞尔曲线 缓动公式</title>
+    <meta name="description" content="css3 anination-time-function属性中当值为cubic-bezier时的公式说明">
+    <meta name="HandheldFriendly" content="True">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="baidu-site-verification" content="1B8AemIXSQ">
+    <!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/ie.html"><![endif]-->
+    <link rel="canonical" href="http://127.0.0.1/2015/05/01/css3huan-dong-gong-shi/">
+    
+    <meta property="og:site_name" content="zakwu的成长记录">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="css3动画方案 贝塞尔曲线 缓动公式">
+    <meta property="og:description" content="css3 anination-time-function属性中当值为cubic-bezier时的公式说明...">
+    <meta property="og:url" content="http://127.0.0.1/2015/05/01/css3huan-dong-gong-shi/">
+    <meta property="article:published_time" content="2015-05-01T02:26:00.000Z">
+    <meta property="article:modified_time" content="2015-05-01T02:28:07.000Z">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="css3动画方案 贝塞尔曲线 缓动公式">
+    <meta name="twitter:description" content="css3 anination-time-function属性中当值为cubic-bezier时的公式说明...">
+    <meta name="twitter:url" content="http://127.0.0.1/2015/05/01/css3huan-dong-gong-shi/">
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "zakwu的成长记录",
+    "author": {
+        "@type": "Person",
+        "name": "zakwu",
+        "url": "http://127.0.0.1/author/zakwu",
+        "sameAs": null
+    },
+    "headline": "css3动画方案 贝塞尔曲线 缓动公式",
+    "url": "http://127.0.0.1/2015/05/01/css3huan-dong-gong-shi/",
+    "datePublished": "2015-05-01T02:26:00.000Z",
+    "dateModified": "2015-05-01T02:28:07.000Z",
+    "description": "css3 anination-time-function属性中当值为cubic-bezier时的公式说明..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.5">
+    <link rel="alternate" type="application/rss+xml" title="zakwu的成长记录" href="http://127.0.0.1/rss/">
+
+    <!-- link -->
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/style.css">
+  </head>
+  <body>
+    <aside id="sidebar">
+      <nav id="tags">
+        <a href="http://zakwu.me/node/assets/about/about.html" target="_blank" title="about me" id="avatar"></a>
+
+        <ul id="tags__ul">
+          <!--&lt;!&ndash; connect &ndash;&gt;-->
+          <!--<li id="sthfuns" class="tags__li tags-btn">作品集</li>-->
+          <!--<li id="shareppt" class="tags__li tags-btn">分享ppt</li>-->
+
+          <!-- acts -->
+          <li id="js-label1" class="tags__li tags-btn active">全部文章</li>
+          <li id="js-label2" class="tags__li tags-btn">ghost</li>
+          <li id="js-label3" class="tags__li tags-btn">js 技术</li>
+          <li id="js-label4" class="tags__li tags-btn">css 技术</li>
+          <li id="js-label5" class="tags__li tags-btn">前端架构</li>
+          <li id="js-label6" class="tags__li tags-btn">心随意转</li>
+        </ul>
+
+        <div id="tags__bottom">
+          <a href="http://github.com/wf123537200/" target="_blank" class="tags-btn show-icon-right fa fa-github" title="加我github"></a>
+          <a href="http://zakwu.me/node/assets/about/about.html" target="_blank" class="tags-btn show-icon-right fa fa-user" title="关于我"></a>
+          <a href="mailto:wfsheep@163.com" title="给我邮件" class="tags-btn show-icon-right fa fa-envelope-o"></a>
+          <a href="http://zakwu.me/rss/" title="订阅我的blog" class="tags-btn fa fa-rss"></a>
+        </div>
+      </nav> <!-- end #tags -->
+
+      <div id="posts-list">
+        <form action="index.html" id="search-form">
+          <a href="http://127.0.0.1" id="mobile-avatar"></a>
+          <!-- NOTE: input field is disabled by default -->
+          <input id="search-input" type="text" placeholder="Search...">
+        </form>
+
+        <nav id="pl__container">
+        </nav>
+      </div> <!-- end #posts-list -->
+    </aside> <!-- end #sidebar -->
+
+    <div id="post">
+      <div id="pjax">
+        
+    <article id="post__content">
+      <h1 id="post__title" data-identifier="20150501">Css3动画思路和缓动公式</h1>
+      <h3 id="">前面的废话</h3>
+
+<p>最近由于公司的项目进入关键期，忙的昏天黑地，都没有时间陪伴我心爱的球球妈和小球球，心里愧疚很多。同时，blog也有很多时间没有更新了，对不起自己在年初定下的多写一些东西的目标，今晚终于能够再拿起书本看一章书，非常开心平静。</p>
+
+<h3 id="">出处</h3>
+
+<p>写这篇文章主要是看司徒正美大神的《javascript框架设计》想到的一些东西，记录下来，以便以后使用，说来惭愧，一个书看了大半年还没有读完。
+不过这并不妨碍这是一本前端工程师都应该读一下的好书。其中很多框架级的知识点和理论都非常值得推崇和学习。
+今天看到动画引擎一节，同时想起在项目中的各种动画应用，发现确实有很多共鸣。</p>
+
+<h3 id="">动画的思路</h3>
+
+<p>实现动画无非就是两种思路，一种用js不断的改变元素的位置和大小，形状等等参数，达到快速展示，以欺骗人眼实现动画的效果，另一种是使用css3提供的动画函数（translate, animetion）。</p>
+
+<p>在我们的项目初期由于不熟悉css3的动画，同时也对css3的兼容性抱有一定疑问，我们采用了一个小巧的js动画库，<a href="http://VelocityJS.org">velocity.js</a>,结果虽然能用，但是也是非悲剧，在最近的chrome浏览器上，js动画会留下拖影，不得已，只能转而使用第二种方案---css3动画。</p>
+
+<h3 id="css3">css3 动画库</h3>
+
+<p>现在业界有很多优秀的css3动画库，比如 <a href="http://daneden.github.io/animate.css/">animation</a>,这个动画库提供了很多常用的动画，使用起来也很方便。</p>
+
+<p>不过要是需要使用一些动画库里没有的css3动画效果，就需要用到自己的缓动公式和组合型css3动画。</p>
+
+<h3 id="">缓动公式</h3>
+
+<p>缓动公式其实是animation属性中对于动画执行样式的说明，它的样式名称为animation-time-function，这个函数有多种值，ease，linear，ease-in，ease-out，ease-in-out，cubic-bezier具体这些属性值是什么，可以参看<a href="http://www.w3school.com.cn/cssref/pr_animation-timing-function.asp">animation-time-function</a>属性，所谓缓动公式，就是使用cubic-bezier参数，这个参数允许自定义一个时间曲线，一共需要传入四个值,分别代表[p1x, p1y, p2x, p2y],这两个点加上[0, 0], [1, 1],组成的四个点，代表了贝塞尔曲线的走势。</p>
+
+<p><img src="../../../../content/images/2015/05/---1.png" alt="贝塞尔曲线说明"></p>
+
+<p>下图是默认值的贝塞尔曲线。</p>
+
+<p><img src="../../../../content/images/2015/05/--.png" alt="贝塞尔曲线说明"></p>
+
+<p>有些网站提供可视化贝塞尔曲线的可视化调整和导出，<a href="http://cubic-bezier.com/">这里</a>或者<a href="http://www.roblaplaca.com/examples/bezierBuilder/">这里</a>。</p>
+
+<p>下面的代码来自司徒正美的mass框架动画模块，特意提取出来，以备后续查找，有兴趣的同学可以将以下map中的数据放到可视化网站中即可看到map中的贝塞尔曲线。</p>
+
+<pre><code class="javascript">
+var easingMap = {
+        "linear": [0.250, 0.250, 0.750, 0.750],
+        "ease": [0.250, 0.100, 0.250, 1.000],
+        "easeIn": [0.420, 0.000, 1.000, 1.000],
+        "easeOut": [0.000, 0.000, 0.580, 1.000],
+        "easeInOut": [0.420, 0.000, 0.580, 1.000],
+        "easeInQuad": [0.550, 0.085, 0.680, 0.530],
+        "easeInCubic": [0.550, 0.055, 0.675, 0.190],
+        "easeInQuart": [0.895, 0.030, 0.685, 0.220],
+        "easeInQuint": [0.755, 0.050, 0.855, 0.060],
+        "easeInSine": [0.470, 0.000, 0.745, 0.715],
+        "easeInExpo": [0.950, 0.050, 0.795, 0.035],
+        "easeInCirc": [0.600, 0.040, 0.980, 0.335],
+        "easeInBack": [0.600, -0.280, 0.735, 0.045],
+        "easeOutQuad": [0.250, 0.460, 0.450, 0.940],
+        "easeOutCubic": [0.215, 0.610, 0.355, 1.000],
+        "easeOutQuart": [0.165, 0.840, 0.440, 1.000],
+        "easeOutQuint": [0.230, 1.000, 0.320, 1.000],
+        "easeOutSine": [0.390, 0.575, 0.565, 1.000],
+        "easeOutExpo": [0.190, 1.000, 0.220, 1.000],
+        "easeOutCirc": [0.075, 0.820, 0.165, 1.000],
+        "easeOutBack": [0.175, 0.885, 0.320, 1.275],
+        "easeInOutQuad": [0.455, 0.030, 0.515, 0.955],
+        "easeInOutCubic": [0.645, 0.045, 0.355, 1.000],
+        "easeInOutQuart": [0.770, 0.000, 0.175, 1.000],
+        "easeInOutQuint": [0.860, 0.000, 0.070, 1.000],
+        "easeInOutSine": [0.445, 0.050, 0.550, 0.950],
+        "easeInOutExpo": [1.000, 0.000, 0.000, 1.000],
+        "easeInOutCirc": [0.785, 0.135, 0.150, 0.860],
+        "easeInOutBack": [0.680, -0.550, 0.265, 1.550],
+        "custom": [0.000, 0.350, 0.500, 1.300],
+        "random": [Math.random().toFixed(3),
+            Math.random().toFixed(3),
+            Math.random().toFixed(3),
+            Math.random().toFixed(3)]
+    }
+   </code></pre>
+    </article> <!-- end #post__content -->
+
+    <!--<div id="post__share">-->
+      <!--<a id="icon-twitter" href="https://twitter.com/intent/tweet?url=http://127.0.0.1/2015/05/2015/05/01/css3huan-dong-gong-shi/&text=Css3动画思路和缓动公式" target="_blank"></a>-->
+      <!--<a id="icon-cc" href="http://creativecommons.org/licenses/by-nc-sa/3.0" target="_blank"></a>-->
+      <!--<a id="icon-weibo" href="http://v.t.sina.com.cn/share/share.php?url=http://127.0.0.1/2015/05/2015/05/01/css3huan-dong-gong-shi/&title=Css3动画思路和缓动公式" target="_blank"></a>-->
+    <!--</div> &lt;!&ndash; end #post__share &ndash;&gt;-->
+    <div id="dsData" data-id="20" data-title="Css3动画思路和缓动公式" data-url="/2015/05/01/css3huan-dong-gong-shi/"></div>
+    <!--PC版-->
+    <div id="cyss" sid="/2015/05/01/css3huan-dong-gong-shi/"></div>
+    <div id="SOHUCS" sid="/2015/05/01/css3huan-dong-gong-shi/"></div>
+
+      </div> <!-- end #pjax -->
+
+      <div id="post__toc-trigger">
+        <div id="post__toc">
+          <span id="post__toc-title">Table of Contents</span>
+          <ul id="post__toc-ul"></ul>
+        </div>
+      </div>
+    </div> <!-- end #post -->
+
+    <!-- 收缩箭头 -->
+    <button id="js-fullscreen"><span class="fa fa-chevron-right" id="icon-arrow"></span></button>
+
+    <footer>
+      <div>Powered by <a href="https://ghost.org" target="_blank">Ghost</a>  |  ©zak wu 2015<a href="http://www.miitbeian.gov.cn/">粤ICP备15007095</a></div>
+    </footer>
+
+    <script src="../../../../assets/js/jquery-2.0.3.min.js"></script>
+    <script src="../../../../assets/js/jquery.pjax.js"></script>
+    <script src="../../../../assets/js/nprogress.js"></script>
+    <script src="../../../../assets/js/prism.js"></script>
+    <script src="../../../../assets/js/script.js"></script>
+    <script src="../../../../public/jquery.js?v=fdf87e4899"></script>
+  </body>

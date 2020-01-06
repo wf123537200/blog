@@ -1,0 +1,316 @@
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>git远程操作（转）</title>
+    <meta name="description" content="">
+    <meta name="HandheldFriendly" content="True">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="baidu-site-verification" content="1B8AemIXSQ">
+    <!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/ie.html"><![endif]-->
+    <link rel="canonical" href="http://127.0.0.1/2015/11/13/gityuan-cheng-cao-zuo-zhuan/">
+    
+    <meta property="og:site_name" content="zakwu的成长记录">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="git远程操作（转）">
+    <meta property="og:description" content="Git有很多优势，其中之一就是远程操作非常简便。本文详细介绍5个Git命令，它们的概念和用法，理解了这些内容，你就会完全掌握Git远程操作。 git clone  git remote  git fetch  git pull  git push 本文针对初级用户，从最简单的讲起，但是需要读者对Git的基本用法有所了解。同时，本文覆盖了上面5个命令的几乎所有的常用用法，所以对于熟练用户也有参考价值。 git 一、git clone 远程操作的第一步，通常是从远程主机克隆一个版本库，这时就要用到git clone命令。 $ git clone &amp;lt;版本库的网址&gt; 比如，克隆jQuery的版本库。 $ git clone https://github....">
+    <meta property="og:url" content="http://127.0.0.1/2015/11/13/gityuan-cheng-cao-zuo-zhuan/">
+    <meta property="article:published_time" content="2015-11-13T05:48:39.000Z">
+    <meta property="article:modified_time" content="2015-11-13T05:48:39.000Z">
+    <meta property="article:tag" content="ghost">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="git远程操作（转）">
+    <meta name="twitter:description" content="Git有很多优势，其中之一就是远程操作非常简便。本文详细介绍5个Git命令，它们的概念和用法，理解了这些内容，你就会完全掌握Git远程操作。 git clone  git remote  git fetch  git pull  git push 本文针对初级用户，从最简单的讲起，但是需要读者对Git的基本用法有所了解。同时，本文覆盖了上面5个命令的几乎所有的常用用法，所以对于熟练用户也有参考价值。 git 一、git clone 远程操作的第一步，通常是从远程主机克隆一个版本库，这时就要用到git clone命令。 $ git clone &amp;lt;版本库的网址&gt; 比如，克隆jQuery的版本库。 $ git clone https://github....">
+    <meta name="twitter:url" content="http://127.0.0.1/2015/11/13/gityuan-cheng-cao-zuo-zhuan/">
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "zakwu的成长记录",
+    "author": {
+        "@type": "Person",
+        "name": "zakwu",
+        "url": "http://127.0.0.1/author/zakwu",
+        "sameAs": null
+    },
+    "headline": "git远程操作（转）",
+    "url": "http://127.0.0.1/2015/11/13/gityuan-cheng-cao-zuo-zhuan/",
+    "datePublished": "2015-11-13T05:48:39.000Z",
+    "dateModified": "2015-11-13T05:48:39.000Z",
+    "keywords": "ghost",
+    "description": "Git有很多优势，其中之一就是远程操作非常简便。本文详细介绍5个Git命令，它们的概念和用法，理解了这些内容，你就会完全掌握Git远程操作。 git clone  git remote  git fetch  git pull  git push 本文针对初级用户，从最简单的讲起，但是需要读者对Git的基本用法有所了解。同时，本文覆盖了上面5个命令的几乎所有的常用用法，所以对于熟练用户也有参考价值。 git 一、git clone 远程操作的第一步，通常是从远程主机克隆一个版本库，这时就要用到git clone命令。 $ git clone &amp;lt;版本库的网址&gt; 比如，克隆jQuery的版本库。 $ git clone https://github...."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.5">
+    <link rel="alternate" type="application/rss+xml" title="zakwu的成长记录" href="http://127.0.0.1/rss/">
+
+    <!-- link -->
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/style.css">
+  </head>
+  <body>
+    <aside id="sidebar">
+      <nav id="tags">
+        <a href="http://zakwu.me/node/assets/about/about.html" target="_blank" title="about me" id="avatar"></a>
+
+        <ul id="tags__ul">
+          <!--&lt;!&ndash; connect &ndash;&gt;-->
+          <!--<li id="sthfuns" class="tags__li tags-btn">作品集</li>-->
+          <!--<li id="shareppt" class="tags__li tags-btn">分享ppt</li>-->
+
+          <!-- acts -->
+          <li id="js-label1" class="tags__li tags-btn active">全部文章</li>
+          <li id="js-label2" class="tags__li tags-btn">ghost</li>
+          <li id="js-label3" class="tags__li tags-btn">js 技术</li>
+          <li id="js-label4" class="tags__li tags-btn">css 技术</li>
+          <li id="js-label5" class="tags__li tags-btn">前端架构</li>
+          <li id="js-label6" class="tags__li tags-btn">心随意转</li>
+        </ul>
+
+        <div id="tags__bottom">
+          <a href="http://github.com/wf123537200/" target="_blank" class="tags-btn show-icon-right fa fa-github" title="加我github"></a>
+          <a href="http://zakwu.me/node/assets/about/about.html" target="_blank" class="tags-btn show-icon-right fa fa-user" title="关于我"></a>
+          <a href="mailto:wfsheep@163.com" title="给我邮件" class="tags-btn show-icon-right fa fa-envelope-o"></a>
+          <a href="http://zakwu.me/rss/" title="订阅我的blog" class="tags-btn fa fa-rss"></a>
+        </div>
+      </nav> <!-- end #tags -->
+
+      <div id="posts-list">
+        <form action="index.html" id="search-form">
+          <a href="http://127.0.0.1" id="mobile-avatar"></a>
+          <!-- NOTE: input field is disabled by default -->
+          <input id="search-input" type="text" placeholder="Search...">
+        </form>
+
+        <nav id="pl__container">
+        </nav>
+      </div> <!-- end #posts-list -->
+    </aside> <!-- end #sidebar -->
+
+    <div id="post">
+      <div id="pjax">
+        
+    <article id="post__content">
+      <h1 id="post__title" data-identifier="20151113">git远程操作（转）</h1>
+      <p>Git有很多优势，其中之一就是远程操作非常简便。本文详细介绍5个Git命令，它们的概念和用法，理解了这些内容，你就会完全掌握Git远程操作。</p>
+
+<p>git clone <br>
+git remote <br>
+git fetch <br>
+git pull <br>
+git push</p>
+
+<p>本文针对初级用户，从最简单的讲起，但是需要读者对Git的基本用法有所了解。同时，本文覆盖了上面5个命令的几乎所有的常用用法，所以对于熟练用户也有参考价值。</p>
+
+<h3 id="git">git</h3>
+
+<h5 id="gitclone">一、git clone</h5>
+
+<p>远程操作的第一步，通常是从远程主机克隆一个版本库，这时就要用到git clone命令。</p>
+
+<p>$ git clone &lt;版本库的网址&gt;
+比如，克隆jQuery的版本库。</p>
+
+<p>$ git clone <a href="https://github.com/jquery/jquery.git">https://github.com/jquery/jquery.git</a>
+该命令会在本地主机生成一个目录，与远程主机的版本库同名。如果要指定不同的目录名，可以将目录名作为git clone命令的第二个参数。</p>
+
+<p>$ git clone &lt;版本库的网址&gt; &lt;本地目录名&gt;
+git clone支持多种协议，除了HTTP(s)以外，还支持SSH、Git、本地文件协议等，下面是一些例子。</p>
+
+<p>$ git clone http[s]://example.com/path/to/repo.git/
+$ git clone ssh://example.com/path/to/repo.git/
+$ git clone git://example.com/path/to/repo.git/
+$ git clone /opt/git/project.git 
+$ git clone file:///opt/git/project.git
+$ git clone ftp[s]://example.com/path/to/repo.git/
+$ git clone rsync://example.com/path/to/repo.git/
+SSH协议还有另一种写法。</p>
+
+<p>$ git clone [user@]example.com:path/to/repo.git/
+通常来说，Git协议下载速度最快，SSH协议用于需要用户认证的场合。各种协议优劣的详细讨论请参考官方文档。</p>
+
+<h5 id="gitremote">二、git remote</h5>
+
+<p>为了便于管理，Git要求每个远程主机都必须指定一个主机名。git remote命令就用于管理主机名。
+不带选项的时候，git remote命令列出所有远程主机。</p>
+
+<p>$ git remote
+origin <br>
+使用-v选项，可以参看远程主机的网址。</p>
+
+<p>$ git remote -v
+origin  git@github.com:jquery/jquery.git (fetch) <br>
+origin  git@github.com:jquery/jquery.git (push) <br>
+上面命令表示，当前只有一台远程主机，叫做origin，以及它的网址。
+克隆版本库的时候，所使用的远程主机自动被Git命名为origin。如果想用其他的主机名，需要用git clone命令的-o选项指定。</p>
+
+<p>$ git clone -o jQuery <a href="https://github.com/jquery/jquery.git">https://github.com/jquery/jquery.git</a>
+$ git remote
+jQuery <br>
+上面命令表示，克隆的时候，指定远程主机叫做jQuery。
+git remote show命令加上主机名，可以查看该主机的详细信息。</p>
+
+<p>$ git remote show &lt;主机名&gt;
+git remote add命令用于添加远程主机。</p>
+
+<p>$ git remote add &lt;主机名&gt; &lt;网址&gt;
+git remote rm命令用于删除远程主机。</p>
+
+<p>$ git remote rm &lt;主机名&gt;
+git remote rename命令用于远程主机的改名。</p>
+
+<p>$ git remote rename &lt;原主机名&gt; &lt;新主机名&gt;</p>
+
+<h5 id="gitfetch">三、git fetch</h5>
+
+<p>一旦远程主机的版本库有了更新（Git术语叫做commit），需要将这些更新取回本地，这时就要用到git fetch命令。</p>
+
+<p>$ git fetch &lt;远程主机名&gt;
+上面命令将某个远程主机的更新，全部取回本地。
+默认情况下，git fetch取回所有分支（branch）的更新。如果只想取回特定分支的更新，可以指定分支名。</p>
+
+<p>$ git fetch &lt;远程主机名&gt; &lt;分支名&gt;
+比如，取回origin主机的master分支。</p>
+
+<p>$ git fetch origin master
+所取回的更新，在本地主机上要用"远程主机名/分支名"的形式读取。比如origin主机的master，就要用origin/master读取。
+git branch命令的-r选项，可以用来查看远程分支，-a选项查看所有分支。</p>
+
+<p>$ git branch -r
+origin/master</p>
+
+<p>$ git branch -a
+* master
+  remotes/origin/master
+上面命令表示，本地主机的当前分支是master，远程分支是origin/master。
+取回远程主机的更新以后，可以在它的基础上，使用git checkout命令创建一个新的分支。</p>
+
+<p>$ git checkout -b newBrach origin/master
+上面命令表示，在origin/master的基础上，创建一个新分支。
+此外，也可以使用git merge命令或者git rebase命令，在本地分支上合并远程分支。</p>
+
+<p>$ git merge origin/master
+<strong>或者</strong>
+$ git rebase origin/master
+上面命令表示在当前分支上，合并origin/master。</p>
+
+<h5 id="gitpull">四、git pull</h5>
+
+<p>git pull命令的作用是，取回远程主机某个分支的更新，再与本地的指定分支合并。它的完整格式稍稍有点复杂。</p>
+
+<p>$ git pull &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;
+比如，取回origin主机的next分支，与本地的master分支合并，需要写成下面这样。</p>
+
+<p>$ git pull origin next:master
+如果远程分支是与当前分支合并，则冒号后面的部分可以省略。</p>
+
+<p>$ git pull origin next
+上面命令表示，取回origin/next分支，再与当前分支合并。实质上，这等同于先做git fetch，再做git merge。</p>
+
+<p>$ git fetch origin
+$ git merge origin/next
+在某些场合，Git会自动在本地分支与远程分支之间，建立一种追踪关系（tracking）。比如，在git clone的时候，所有本地分支默认与远程主机的同名分支，建立追踪关系，也就是说，本地的master分支自动"追踪"origin/master分支。
+Git也允许手动建立追踪关系。</p>
+
+<p>git branch --set-upstream master origin/next <br>
+上面命令指定master分支追踪origin/next分支。
+如果当前分支与远程分支存在追踪关系，git pull就可以省略远程分支名。</p>
+
+<p>$ git pull origin
+上面命令表示，本地的当前分支自动与对应的origin主机"追踪分支"（remote-tracking branch）进行合并。
+如果当前分支只有一个追踪分支，连远程主机名都可以省略。</p>
+
+<p>$ git pull
+上面命令表示，当前分支自动与唯一一个追踪分支进行合并。
+如果合并需要采用rebase模式，可以使用--rebase选项。</p>
+
+<p>$ git pull --rebase &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;
+如果远程主机删除了某个分支，默认情况下，git pull 不会在拉取远程分支的时候，删除对应的本地分支。这是为了防止，由于其他人操作了远程主机，导致git pull不知不觉删除了本地分支。
+但是，你可以改变这个行为，加上参数 -p 就会在本地删除远程已经删除的分支。</p>
+
+<p>$ git pull -p <strong>等同于下面的命令</strong>
+$ git fetch --prune origin 
+$ git fetch -p</p>
+
+<h5 id="gitpush">五、git push</h5>
+
+<p>git push命令用于将本地分支的更新，推送到远程主机。它的格式与git pull命令相仿。</p>
+
+<p>$ git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;
+注意，分支推送顺序的写法是&lt;来源地&gt;:&lt;目的地&gt;，所以git pull是&lt;远程分支&gt;:&lt;本地分支&gt;，而git push是&lt;本地分支&gt;:&lt;远程分支&gt;。
+如果省略远程分支名，则表示将本地分支推送与之存在"追踪关系"的远程分支（通常两者同名），如果该远程分支不存在，则会被新建。</p>
+
+<p>$ git push origin master
+上面命令表示，将本地的master分支推送到origin主机的master分支。如果后者不存在，则会被新建。
+如果省略本地分支名，则表示删除指定的远程分支，因为这等同于推送一个空的本地分支到远程分支。</p>
+
+<p>$ git push origin :master <strong>等同于</strong>
+$ git push origin --delete master
+上面命令表示删除origin主机的master分支。
+如果当前分支与远程分支之间存在追踪关系，则本地分支和远程分支都可以省略。</p>
+
+<p>$ git push origin
+上面命令表示，将当前分支推送到origin主机的对应分支。
+如果当前分支只有一个追踪分支，那么主机名都可以省略。</p>
+
+<p>$ git push
+如果当前分支与多个主机存在追踪关系，则可以使用-u选项指定一个默认主机，这样后面就可以不加任何参数使用git push。</p>
+
+<p>$ git push -u origin master
+上面命令将本地的master分支推送到origin主机，同时指定origin为默认主机，后面就可以不加任何参数使用git push了。
+不带任何参数的git push，默认只推送当前分支，这叫做simple方式。此外，还有一种matching方式，会推送所有有对应的远程分支的本地分支。Git 2.0版本之前，默认采用matching方法，现在改为默认采用simple方式。如果要修改这个设置，可以采用git config命令。</p>
+
+<p>$ git config --global push.default matching <strong>或者</strong>
+$ git config --global push.default simple
+还有一种情况，就是不管是否存在对应的远程分支，将本地的所有分支都推送到远程主机，这时需要使用--all选项。</p>
+
+<p>$ git push --all origin
+上面命令表示，将所有本地分支都推送到origin主机。
+如果远程主机的版本比本地版本更新，推送时Git会报错，要求先在本地做git pull合并差异，然后再推送到远程主机。这时，如果你一定要推送，可以使用--force选项。</p>
+
+<p>$ git push --force origin 
+上面命令使用--force选项，结果导致远程主机上更新的版本被覆盖。除非你很确定要这样做，否则应该尽量避免使用--force选项。
+最后，git push不会推送标签（tag），除非使用--tags选项。</p>
+
+<p>$ git push origin --tags</p>
+    </article> <!-- end #post__content -->
+
+    <!--<div id="post__share">-->
+      <!--<a id="icon-twitter" href="https://twitter.com/intent/tweet?url=http://127.0.0.1/2015/11/2015/11/13/gityuan-cheng-cao-zuo-zhuan/&text=git远程操作（转）" target="_blank"></a>-->
+      <!--<a id="icon-cc" href="http://creativecommons.org/licenses/by-nc-sa/3.0" target="_blank"></a>-->
+      <!--<a id="icon-weibo" href="http://v.t.sina.com.cn/share/share.php?url=http://127.0.0.1/2015/11/2015/11/13/gityuan-cheng-cao-zuo-zhuan/&title=git远程操作（转）" target="_blank"></a>-->
+    <!--</div> &lt;!&ndash; end #post__share &ndash;&gt;-->
+    <div id="dsData" data-id="27" data-title="git远程操作（转）" data-url="/2015/11/13/gityuan-cheng-cao-zuo-zhuan/"></div>
+    <!--PC版-->
+    <div id="cyss" sid="/2015/11/13/gityuan-cheng-cao-zuo-zhuan/"></div>
+    <div id="SOHUCS" sid="/2015/11/13/gityuan-cheng-cao-zuo-zhuan/"></div>
+
+      </div> <!-- end #pjax -->
+
+      <div id="post__toc-trigger">
+        <div id="post__toc">
+          <span id="post__toc-title">Table of Contents</span>
+          <ul id="post__toc-ul"></ul>
+        </div>
+      </div>
+    </div> <!-- end #post -->
+
+    <!-- 收缩箭头 -->
+    <button id="js-fullscreen"><span class="fa fa-chevron-right" id="icon-arrow"></span></button>
+
+    <footer>
+      <div>Powered by <a href="https://ghost.org" target="_blank">Ghost</a>  |  ©zak wu 2015<a href="http://www.miitbeian.gov.cn/">粤ICP备15007095</a></div>
+    </footer>
+
+    <script src="../../../../assets/js/jquery-2.0.3.min.js"></script>
+    <script src="../../../../assets/js/jquery.pjax.js"></script>
+    <script src="../../../../assets/js/nprogress.js"></script>
+    <script src="../../../../assets/js/prism.js"></script>
+    <script src="../../../../assets/js/script.js"></script>
+    <script src="../../../../public/jquery.js?v=fdf87e4899"></script>
+  </body>

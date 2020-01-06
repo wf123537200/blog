@@ -1,0 +1,173 @@
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>浏览器缩放比例</title>
+    <meta name="description" content="screen.width window.innerWidth document.documentElement.clientWidth
+document.documentElement.offsetWidth">
+    <meta name="HandheldFriendly" content="True">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="baidu-site-verification" content="1B8AemIXSQ">
+    <!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/ie.html"><![endif]-->
+    <link rel="canonical" href="http://127.0.0.1/2016/06/22/pan-duan-liu-lan-qi-shi-fou-fang-da-de-fang-fa/">
+    
+    <meta property="og:site_name" content="zakwu的成长记录">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="浏览器缩放比例">
+    <meta property="og:description" content="screen.width window.innerWidth document.documentElement.clientWidth
+document.documentElement.offsetWidth...">
+    <meta property="og:url" content="http://127.0.0.1/2016/06/22/pan-duan-liu-lan-qi-shi-fou-fang-da-de-fang-fa/">
+    <meta property="article:published_time" content="2016-06-22T14:14:55.000Z">
+    <meta property="article:modified_time" content="2016-06-22T14:19:46.000Z">
+    <meta property="article:tag" content="js">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="浏览器缩放比例">
+    <meta name="twitter:description" content="screen.width window.innerWidth document.documentElement.clientWidth
+document.documentElement.offsetWidth...">
+    <meta name="twitter:url" content="http://127.0.0.1/2016/06/22/pan-duan-liu-lan-qi-shi-fou-fang-da-de-fang-fa/">
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "zakwu的成长记录",
+    "author": {
+        "@type": "Person",
+        "name": "zakwu",
+        "url": "http://127.0.0.1/author/zakwu",
+        "sameAs": null
+    },
+    "headline": "浏览器缩放比例",
+    "url": "http://127.0.0.1/2016/06/22/pan-duan-liu-lan-qi-shi-fou-fang-da-de-fang-fa/",
+    "datePublished": "2016-06-22T14:14:55.000Z",
+    "dateModified": "2016-06-22T14:19:46.000Z",
+    "keywords": "js",
+    "description": "screen.width window.innerWidth document.documentElement.clientWidth\ndocument.documentElement.offsetWidth..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.5">
+    <link rel="alternate" type="application/rss+xml" title="zakwu的成长记录" href="http://127.0.0.1/rss/">
+
+    <!-- link -->
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/style.css">
+  </head>
+  <body>
+    <aside id="sidebar">
+      <nav id="tags">
+        <a href="http://zakwu.me/node/assets/about/about.html" target="_blank" title="about me" id="avatar"></a>
+
+        <ul id="tags__ul">
+          <!--&lt;!&ndash; connect &ndash;&gt;-->
+          <!--<li id="sthfuns" class="tags__li tags-btn">作品集</li>-->
+          <!--<li id="shareppt" class="tags__li tags-btn">分享ppt</li>-->
+
+          <!-- acts -->
+          <li id="js-label1" class="tags__li tags-btn active">全部文章</li>
+          <li id="js-label2" class="tags__li tags-btn">ghost</li>
+          <li id="js-label3" class="tags__li tags-btn">js 技术</li>
+          <li id="js-label4" class="tags__li tags-btn">css 技术</li>
+          <li id="js-label5" class="tags__li tags-btn">前端架构</li>
+          <li id="js-label6" class="tags__li tags-btn">心随意转</li>
+        </ul>
+
+        <div id="tags__bottom">
+          <a href="http://github.com/wf123537200/" target="_blank" class="tags-btn show-icon-right fa fa-github" title="加我github"></a>
+          <a href="http://zakwu.me/node/assets/about/about.html" target="_blank" class="tags-btn show-icon-right fa fa-user" title="关于我"></a>
+          <a href="mailto:wfsheep@163.com" title="给我邮件" class="tags-btn show-icon-right fa fa-envelope-o"></a>
+          <a href="http://zakwu.me/rss/" title="订阅我的blog" class="tags-btn fa fa-rss"></a>
+        </div>
+      </nav> <!-- end #tags -->
+
+      <div id="posts-list">
+        <form action="index.html" id="search-form">
+          <a href="http://127.0.0.1" id="mobile-avatar"></a>
+          <!-- NOTE: input field is disabled by default -->
+          <input id="search-input" type="text" placeholder="Search...">
+        </form>
+
+        <nav id="pl__container">
+        </nav>
+      </div> <!-- end #posts-list -->
+    </aside> <!-- end #sidebar -->
+
+    <div id="post">
+      <div id="pjax">
+        
+    <article id="post__content">
+      <h1 id="post__title" data-identifier="20160622">判断浏览器缩放比例的方法</h1>
+      <p>首先，需要知道一些基础知识：</p>
+
+<h2 id="1css">1、css 像素和实际像素</h2>
+
+<p>实际像素：设备的固有像素值</p>
+
+<p>css像素：当浏览器不进行缩放时，css像素等同于实际像素</p>
+
+<h2 id="2">2、四个屏幕宽度属性</h2>
+
+<p><strong>screen.width</strong>：设备的屏幕宽度，不会改变，比如笔记本的实际像素为1280，得出的结果将一直是1280，单位为px</p>
+
+<p><strong>window.innerWidth</strong>：度量的是浏览器窗口的宽度。度量单位是css pixels。
+如下图： <br>
+<img src="../../../../content/images/2016/06/4203045417-56fdea1cf235f_articlex.png" alt="alt"></p>
+
+<p><strong>document.documentElement.clientWidth</strong>:可以理解为视口宽度，和浏览器窗口的宽度（window.innerWidth）相差为垂直滚动条的宽度，此属性的单位为物理px</p>
+
+<p><strong>document.documentElement.offsetWidth</strong>：这个属性取得是html的宽度</p>
+
+<p>简单来说，可以这样来看：
+当浏览器满屏幕时：screen.width = window.innerWidth</p>
+
+<p>当缩放比例为100%时：window.innerWidth = document.documentElement.clientWidth</p>
+
+<p>当屏幕html元素宽度为100%时：document.documentElement.offsetWidth = document.documentElement.clientWidth
+简单来说，如下图：
+<img src="../../../../content/images/2016/06/2-pic.jpg" alt="alt"></p>
+
+<p>所以，判断浏览器缩放比例的方法就很简单了,直接上代码。</p>
+
+<pre><code class="language-js">    var ratio = document.documentElement.clientWidth / window.innerWidth
+</code></pre>
+
+<p><a href="https://segmentfault.com/a/1190000004403496">参考文献，深度好文</a></p>
+    </article> <!-- end #post__content -->
+
+    <!--<div id="post__share">-->
+      <!--<a id="icon-twitter" href="https://twitter.com/intent/tweet?url=http://127.0.0.1/2016/06/2016/06/22/pan-duan-liu-lan-qi-shi-fou-fang-da-de-fang-fa/&text=判断浏览器缩放比例的方法" target="_blank"></a>-->
+      <!--<a id="icon-cc" href="http://creativecommons.org/licenses/by-nc-sa/3.0" target="_blank"></a>-->
+      <!--<a id="icon-weibo" href="http://v.t.sina.com.cn/share/share.php?url=http://127.0.0.1/2016/06/2016/06/22/pan-duan-liu-lan-qi-shi-fou-fang-da-de-fang-fa/&title=判断浏览器缩放比例的方法" target="_blank"></a>-->
+    <!--</div> &lt;!&ndash; end #post__share &ndash;&gt;-->
+    <div id="dsData" data-id="37" data-title="判断浏览器缩放比例的方法" data-url="/2016/06/22/pan-duan-liu-lan-qi-shi-fou-fang-da-de-fang-fa/"></div>
+    <!--PC版-->
+    <div id="cyss" sid="/2016/06/22/pan-duan-liu-lan-qi-shi-fou-fang-da-de-fang-fa/"></div>
+    <div id="SOHUCS" sid="/2016/06/22/pan-duan-liu-lan-qi-shi-fou-fang-da-de-fang-fa/"></div>
+
+      </div> <!-- end #pjax -->
+
+      <div id="post__toc-trigger">
+        <div id="post__toc">
+          <span id="post__toc-title">Table of Contents</span>
+          <ul id="post__toc-ul"></ul>
+        </div>
+      </div>
+    </div> <!-- end #post -->
+
+    <!-- 收缩箭头 -->
+    <button id="js-fullscreen"><span class="fa fa-chevron-right" id="icon-arrow"></span></button>
+
+    <footer>
+      <div>Powered by <a href="https://ghost.org" target="_blank">Ghost</a>  |  ©zak wu 2015<a href="http://www.miitbeian.gov.cn/">粤ICP备15007095</a></div>
+    </footer>
+
+    <script src="../../../../assets/js/jquery-2.0.3.min.js"></script>
+    <script src="../../../../assets/js/jquery.pjax.js"></script>
+    <script src="../../../../assets/js/nprogress.js"></script>
+    <script src="../../../../assets/js/prism.js"></script>
+    <script src="../../../../assets/js/script.js"></script>
+    <script src="../../../../public/jquery.js?v=fdf87e4899"></script>
+  </body>

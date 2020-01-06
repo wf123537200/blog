@@ -1,0 +1,237 @@
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>vue双向绑定 原理分析</title>
+    <meta name="description" content="vue双向绑定，原理分析">
+    <meta name="HandheldFriendly" content="True">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="baidu-site-verification" content="1B8AemIXSQ">
+    <!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/ie.html"><![endif]-->
+    <link rel="canonical" href="http://127.0.0.1/2016/08/15/vueshuang-xiang-bang-ding-xiang-jie/">
+    
+    <meta property="og:site_name" content="zakwu的成长记录">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="vue双向绑定 原理分析">
+    <meta property="og:description" content="vue双向绑定，原理分析...">
+    <meta property="og:url" content="http://127.0.0.1/2016/08/15/vueshuang-xiang-bang-ding-xiang-jie/">
+    <meta property="article:published_time" content="2016-08-15T03:47:19.000Z">
+    <meta property="article:modified_time" content="2016-08-15T06:11:42.000Z">
+    <meta property="article:tag" content="js">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="vue双向绑定 原理分析">
+    <meta name="twitter:description" content="vue双向绑定，原理分析...">
+    <meta name="twitter:url" content="http://127.0.0.1/2016/08/15/vueshuang-xiang-bang-ding-xiang-jie/">
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "zakwu的成长记录",
+    "author": {
+        "@type": "Person",
+        "name": "zakwu",
+        "url": "http://127.0.0.1/author/zakwu",
+        "sameAs": null
+    },
+    "headline": "vue双向绑定 原理分析",
+    "url": "http://127.0.0.1/2016/08/15/vueshuang-xiang-bang-ding-xiang-jie/",
+    "datePublished": "2016-08-15T03:47:19.000Z",
+    "dateModified": "2016-08-15T06:11:42.000Z",
+    "keywords": "js",
+    "description": "vue双向绑定，原理分析..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.5">
+    <link rel="alternate" type="application/rss+xml" title="zakwu的成长记录" href="http://127.0.0.1/rss/">
+
+    <!-- link -->
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/style.css">
+  </head>
+  <body>
+    <aside id="sidebar">
+      <nav id="tags">
+        <a href="http://zakwu.me/node/assets/about/about.html" target="_blank" title="about me" id="avatar"></a>
+
+        <ul id="tags__ul">
+          <!--&lt;!&ndash; connect &ndash;&gt;-->
+          <!--<li id="sthfuns" class="tags__li tags-btn">作品集</li>-->
+          <!--<li id="shareppt" class="tags__li tags-btn">分享ppt</li>-->
+
+          <!-- acts -->
+          <li id="js-label1" class="tags__li tags-btn active">全部文章</li>
+          <li id="js-label2" class="tags__li tags-btn">ghost</li>
+          <li id="js-label3" class="tags__li tags-btn">js 技术</li>
+          <li id="js-label4" class="tags__li tags-btn">css 技术</li>
+          <li id="js-label5" class="tags__li tags-btn">前端架构</li>
+          <li id="js-label6" class="tags__li tags-btn">心随意转</li>
+        </ul>
+
+        <div id="tags__bottom">
+          <a href="http://github.com/wf123537200/" target="_blank" class="tags-btn show-icon-right fa fa-github" title="加我github"></a>
+          <a href="http://zakwu.me/node/assets/about/about.html" target="_blank" class="tags-btn show-icon-right fa fa-user" title="关于我"></a>
+          <a href="mailto:wfsheep@163.com" title="给我邮件" class="tags-btn show-icon-right fa fa-envelope-o"></a>
+          <a href="http://zakwu.me/rss/" title="订阅我的blog" class="tags-btn fa fa-rss"></a>
+        </div>
+      </nav> <!-- end #tags -->
+
+      <div id="posts-list">
+        <form action="index.html" id="search-form">
+          <a href="http://127.0.0.1" id="mobile-avatar"></a>
+          <!-- NOTE: input field is disabled by default -->
+          <input id="search-input" type="text" placeholder="Search...">
+        </form>
+
+        <nav id="pl__container">
+        </nav>
+      </div> <!-- end #posts-list -->
+    </aside> <!-- end #sidebar -->
+
+    <div id="post">
+      <div id="pjax">
+        
+    <article id="post__content">
+      <h1 id="post__title" data-identifier="20160815">vue双向绑定</h1>
+      <p>单向绑定，首先是m--&gt;v，比如对下面html模板：</p>
+
+<pre><code class="language-html">    &lt;div id="test"&gt;
+      &lt;p&gt;{{msg}}&lt;/p&gt;
+      &lt;p&gt;{{msg}}&lt;/p&gt;
+      &lt;p&gt;{{msg}}&lt;/p&gt;
+      &lt;p&gt;{{what}}&lt;/p&gt;
+      &lt;p&gt;{{hey}}&lt;/p&gt;
+    &lt;/div&gt;
+</code></pre>
+
+<pre><code class="language-javascript">// 绑定标示字段，用于匹配
+var bindingMark = 'data-element-binding'
+
+function Element (id, initData) {
+    var self     = this,
+        el       = self.el = document.getElementById(id)
+        bindings = {} // the internal copy
+        data     = self.data = {} // the external interface
+
+        // 扫描dom结构，将el中的{{xx}}绑定都替换掉，代换成span
+        function markToken (match, variable) {
+            bindings[variable] = {}
+            return '<span bindingmark variable></span>'
+        }
+        content  = el.innerHTML.replace(/\{\{(.*)\}\}/g, markToken)
+        el.innerHTML = content
+
+        // 建立关联，当变量改变时改变dom
+        // 初始化数据
+        if (initData) {
+            for (var variable in initData) {
+                data[variable] = initData[variable]
+            }
+        }
+
+        // 绑定函数
+        function bind (variable) {
+            // 根据之前的扫描去掉属性，并获取到需要绑定的span节点
+            bindings[variable].els = el.querySelectorAll('[' + bindingMark + '="' + variable + '"]')
+            ;[].forEach.call(bindings[variable].els, function (e) {
+                e.removeAttribute(bindingMark)
+            })
+
+            // 核心函数，
+            Object.defineProperty(data, variable, {
+                set: function (newVal) {
+                    [].forEach.call(bindings[variable].els, function (e) {
+                        // 改变变量到dom，并赋值到缓存体系
+                        bindings[variable].value = e.textContent = newVal
+                    })
+                },
+
+                get: function () {
+                    return bindings[variable].value
+                }
+            })
+        }
+
+        //  变量绑定入口
+        for (var variable in bindings) {
+            bind(variable)
+        }
+
+
+}
+// 方式
+var app = new Element('test', {
+    msg: 'hello'
+})
+</code></pre>
+
+<p>双向绑定，view交互，input，select等：
+以input（v-model）为例：</p>
+
+<pre><code class="language-javascript">
+// 绑定事件
+this.on('change', this.rawListener)
+if (!lazy) {
+    this.on('input', this.listener)
+}
+
+// 更新变量
+    this.listener = this.rawListener = function () {
+      if (composing || !self._bound) {
+        return
+      }
+      var val = number || isRange
+        ? toNumber(el.value)
+        : el.value
+      // 对事件进行响应，更新变量
+      self.set(val)
+      // 刷新dom
+      nextTick(function () {
+        if (self._bound &amp;&amp; !self.focused) {
+          self.update(self._watcher.value)
+        }
+      })
+    }
+</code></pre>
+
+<p>其余大同小异，具体参看vue/src/directives/public/model</p>
+    </article> <!-- end #post__content -->
+
+    <!--<div id="post__share">-->
+      <!--<a id="icon-twitter" href="https://twitter.com/intent/tweet?url=http://127.0.0.1/2016/08/2016/08/15/vueshuang-xiang-bang-ding-xiang-jie/&text=vue双向绑定" target="_blank"></a>-->
+      <!--<a id="icon-cc" href="http://creativecommons.org/licenses/by-nc-sa/3.0" target="_blank"></a>-->
+      <!--<a id="icon-weibo" href="http://v.t.sina.com.cn/share/share.php?url=http://127.0.0.1/2016/08/2016/08/15/vueshuang-xiang-bang-ding-xiang-jie/&title=vue双向绑定" target="_blank"></a>-->
+    <!--</div> &lt;!&ndash; end #post__share &ndash;&gt;-->
+    <div id="dsData" data-id="44" data-title="vue双向绑定" data-url="/2016/08/15/vueshuang-xiang-bang-ding-xiang-jie/"></div>
+    <!--PC版-->
+    <div id="cyss" sid="/2016/08/15/vueshuang-xiang-bang-ding-xiang-jie/"></div>
+    <div id="SOHUCS" sid="/2016/08/15/vueshuang-xiang-bang-ding-xiang-jie/"></div>
+
+      </div> <!-- end #pjax -->
+
+      <div id="post__toc-trigger">
+        <div id="post__toc">
+          <span id="post__toc-title">Table of Contents</span>
+          <ul id="post__toc-ul"></ul>
+        </div>
+      </div>
+    </div> <!-- end #post -->
+
+    <!-- 收缩箭头 -->
+    <button id="js-fullscreen"><span class="fa fa-chevron-right" id="icon-arrow"></span></button>
+
+    <footer>
+      <div>Powered by <a href="https://ghost.org" target="_blank">Ghost</a>  |  ©zak wu 2015<a href="http://www.miitbeian.gov.cn/">粤ICP备15007095</a></div>
+    </footer>
+
+    <script src="../../../../assets/js/jquery-2.0.3.min.js"></script>
+    <script src="../../../../assets/js/jquery.pjax.js"></script>
+    <script src="../../../../assets/js/nprogress.js"></script>
+    <script src="../../../../assets/js/prism.js"></script>
+    <script src="../../../../assets/js/script.js"></script>
+    <script src="../../../../public/jquery.js?v=fdf87e4899"></script>
+  </body>

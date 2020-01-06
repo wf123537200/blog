@@ -1,0 +1,254 @@
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>js精确四则运算</title>
+    <meta name="description" content="为防止js四则运算丢失精度，并排除js中四则运算自动类型转换问题。">
+    <meta name="HandheldFriendly" content="True">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="baidu-site-verification" content="1B8AemIXSQ">
+    <!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/ie.html"><![endif]-->
+    <link rel="canonical" href="http://127.0.0.1/2015/03/09/jsjing-que-si-ze-yun-suan/">
+    
+    <meta property="og:site_name" content="zakwu的成长记录">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="js精确四则运算">
+    <meta property="og:description" content="为防止js四则运算丢失精度，并排除js中四则运算自动类型转换问题。...">
+    <meta property="og:url" content="http://127.0.0.1/2015/03/09/jsjing-que-si-ze-yun-suan/">
+    <meta property="article:published_time" content="2015-03-09T02:39:11.000Z">
+    <meta property="article:modified_time" content="2015-03-09T02:39:11.000Z">
+    <meta property="article:tag" content="js">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="js精确四则运算">
+    <meta name="twitter:description" content="为防止js四则运算丢失精度，并排除js中四则运算自动类型转换问题。...">
+    <meta name="twitter:url" content="http://127.0.0.1/2015/03/09/jsjing-que-si-ze-yun-suan/">
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "zakwu的成长记录",
+    "author": {
+        "@type": "Person",
+        "name": "zakwu",
+        "url": "http://127.0.0.1/author/zakwu",
+        "sameAs": null
+    },
+    "headline": "js精确四则运算",
+    "url": "http://127.0.0.1/2015/03/09/jsjing-que-si-ze-yun-suan/",
+    "datePublished": "2015-03-09T02:39:11.000Z",
+    "dateModified": "2015-03-09T02:39:11.000Z",
+    "keywords": "js",
+    "description": "为防止js四则运算丢失精度，并排除js中四则运算自动类型转换问题。..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.5">
+    <link rel="alternate" type="application/rss+xml" title="zakwu的成长记录" href="http://127.0.0.1/rss/">
+
+    <!-- link -->
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/style.css">
+  </head>
+  <body>
+    <aside id="sidebar">
+      <nav id="tags">
+        <a href="http://zakwu.me/node/assets/about/about.html" target="_blank" title="about me" id="avatar"></a>
+
+        <ul id="tags__ul">
+          <!--&lt;!&ndash; connect &ndash;&gt;-->
+          <!--<li id="sthfuns" class="tags__li tags-btn">作品集</li>-->
+          <!--<li id="shareppt" class="tags__li tags-btn">分享ppt</li>-->
+
+          <!-- acts -->
+          <li id="js-label1" class="tags__li tags-btn active">全部文章</li>
+          <li id="js-label2" class="tags__li tags-btn">ghost</li>
+          <li id="js-label3" class="tags__li tags-btn">js 技术</li>
+          <li id="js-label4" class="tags__li tags-btn">css 技术</li>
+          <li id="js-label5" class="tags__li tags-btn">前端架构</li>
+          <li id="js-label6" class="tags__li tags-btn">心随意转</li>
+        </ul>
+
+        <div id="tags__bottom">
+          <a href="http://github.com/wf123537200/" target="_blank" class="tags-btn show-icon-right fa fa-github" title="加我github"></a>
+          <a href="http://zakwu.me/node/assets/about/about.html" target="_blank" class="tags-btn show-icon-right fa fa-user" title="关于我"></a>
+          <a href="mailto:wfsheep@163.com" title="给我邮件" class="tags-btn show-icon-right fa fa-envelope-o"></a>
+          <a href="http://zakwu.me/rss/" title="订阅我的blog" class="tags-btn fa fa-rss"></a>
+        </div>
+      </nav> <!-- end #tags -->
+
+      <div id="posts-list">
+        <form action="index.html" id="search-form">
+          <a href="http://127.0.0.1" id="mobile-avatar"></a>
+          <!-- NOTE: input field is disabled by default -->
+          <input id="search-input" type="text" placeholder="Search...">
+        </form>
+
+        <nav id="pl__container">
+        </nav>
+      </div> <!-- end #posts-list -->
+    </aside> <!-- end #sidebar -->
+
+    <div id="post">
+      <div id="pjax">
+        
+    <article id="post__content">
+      <h1 id="post__title" data-identifier="20150309">js精确四则运算</h1>
+      <p>由于js的乘除和加减运算有时会出现丢失精度的问题，同时，两个非数字相加也会出现类型转换的问题，所以特地写了一个四则运算的js不丢失精度版来处理js中的四则运算。</p>
+
+<pre><code class="language-javascript">     /**
+     * 精确加法
+     *
+     * @param {String | Number} arg1
+     * @param {String | Number} arg2
+     *
+     * @returns {number} arg1 + arg2
+     */
+    exports.add = function add(arg1, arg2) {
+        // 数字化
+        var num1 = parseFloat(arg1);
+        var num2 = parseFloat(arg2);
+
+        var r1, r2, m;
+        try {
+            r1 = num1.toString().split(".")[1].length;
+        } catch (e) {
+            r1 = 0;
+        }
+
+        try {
+            r2 = num2.toString().split(".")[1].length;
+        } catch (e) {
+            r2 = 0;
+        }
+
+        m = Math.pow(10, Math.max(r1, r2));
+
+        return (num1 * m + num2 * m) / m;
+    };
+
+    /**
+     * 精确减法
+     *
+     * @param {Number | String} arg1
+     * @param {Number | String} arg2
+     *
+     * @returns {number} arg1 - arg2
+     */
+    exports.sub = function sub(arg1, arg2) {
+        // 数字化
+        var num1 = parseFloat(arg1);
+        var num2 = parseFloat(arg2);
+
+        var r1, r2, m, n;
+        try {
+            r1 = num1.toString().split(".")[1].length;
+        } catch (e) {
+            r1 = 0;
+        }
+        try {
+            r2 = num2.toString().split(".")[1].length;
+        } catch (e) {
+            r2 = 0;
+        }
+
+        m = Math.pow(10, Math.max(r1, r2));
+
+        return ((num1 * m - num2 * m) / m);
+    };
+
+    /**
+     * 精确乘法
+     *
+     * @param {Number | String} arg1
+     * @param {Number | String} arg2
+     * @returns {number} arg1 * arg2s
+     */
+    exports.mul = function mul(arg1, arg2) {
+        // 数字化
+        var num1 = parseFloat(arg1);
+        var num2 = parseFloat(arg2);
+
+        var m = 0, s1 = num1.toString(), s2 = num2.toString();
+        try {
+            m += s1.split(".")[1].length;
+        } catch (e) {
+        }
+        try {
+            m += s2.split(".")[1].length;
+        } catch (e) {
+        }
+        return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m);
+    };
+
+
+    /**
+     * 精确除法
+     *
+     * @param {Number | String} arg1
+     * @param {Number | String} arg2
+     * @returns {number}
+     */
+    exports.div = function div(arg1, arg2) {
+        // 数字化
+        var num1 = parseFloat(arg1);
+        var num2 = parseFloat(arg2);
+
+        var t1 = 0, t2 = 0, r1, r2;
+
+        try {
+            t1 = num1.toString().split(".")[1].length;
+        } catch (e) {
+        }
+
+        try {
+            t2 = num2.toString().split(".")[1].length;
+        } catch (e) {
+        }
+
+        r1 = Number(num1.toString().replace(".", ""));
+        r2 = Number(num2.toString().replace(".", ""));
+        return (r1 / r2) * Math.pow(10, t2 - t1);
+    };
+</code></pre>
+
+<p>有需要的同学可以自取。</p>
+    </article> <!-- end #post__content -->
+
+    <!--<div id="post__share">-->
+      <!--<a id="icon-twitter" href="https://twitter.com/intent/tweet?url=http://127.0.0.1/2015/03/2015/03/09/jsjing-que-si-ze-yun-suan/&text=js精确四则运算" target="_blank"></a>-->
+      <!--<a id="icon-cc" href="http://creativecommons.org/licenses/by-nc-sa/3.0" target="_blank"></a>-->
+      <!--<a id="icon-weibo" href="http://v.t.sina.com.cn/share/share.php?url=http://127.0.0.1/2015/03/2015/03/09/jsjing-que-si-ze-yun-suan/&title=js精确四则运算" target="_blank"></a>-->
+    <!--</div> &lt;!&ndash; end #post__share &ndash;&gt;-->
+    <div id="dsData" data-id="18" data-title="js精确四则运算" data-url="/2015/03/09/jsjing-que-si-ze-yun-suan/"></div>
+    <!--PC版-->
+    <div id="cyss" sid="/2015/03/09/jsjing-que-si-ze-yun-suan/"></div>
+    <div id="SOHUCS" sid="/2015/03/09/jsjing-que-si-ze-yun-suan/"></div>
+
+      </div> <!-- end #pjax -->
+
+      <div id="post__toc-trigger">
+        <div id="post__toc">
+          <span id="post__toc-title">Table of Contents</span>
+          <ul id="post__toc-ul"></ul>
+        </div>
+      </div>
+    </div> <!-- end #post -->
+
+    <!-- 收缩箭头 -->
+    <button id="js-fullscreen"><span class="fa fa-chevron-right" id="icon-arrow"></span></button>
+
+    <footer>
+      <div>Powered by <a href="https://ghost.org" target="_blank">Ghost</a>  |  ©zak wu 2015<a href="http://www.miitbeian.gov.cn/">粤ICP备15007095</a></div>
+    </footer>
+
+    <script src="../../../../assets/js/jquery-2.0.3.min.js"></script>
+    <script src="../../../../assets/js/jquery.pjax.js"></script>
+    <script src="../../../../assets/js/nprogress.js"></script>
+    <script src="../../../../assets/js/prism.js"></script>
+    <script src="../../../../assets/js/script.js"></script>
+    <script src="../../../../public/jquery.js?v=fdf87e4899"></script>
+  </body>

@@ -1,0 +1,237 @@
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>前端监控</title>
+    <meta name="description" content="前端监控场景和分类">
+    <meta name="HandheldFriendly" content="True">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="baidu-site-verification" content="1B8AemIXSQ">
+    <!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/ie.html"><![endif]-->
+    <link rel="canonical" href="http://127.0.0.1/2019/08/29/liao-liao-qian-duan-jian-kong/">
+    
+    <meta property="og:site_name" content="zakwu的成长记录">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="前端监控">
+    <meta property="og:description" content="前端监控场景和分类...">
+    <meta property="og:url" content="http://127.0.0.1/2019/08/29/liao-liao-qian-duan-jian-kong/">
+    <meta property="og:image" content="http://127.0.0.1/content/images/2019/08/image.png">
+    <meta property="article:published_time" content="2019-08-29T09:03:46.000Z">
+    <meta property="article:modified_time" content="2019-09-17T08:54:26.000Z">
+    <meta property="article:tag" content="other">
+    <meta property="article:tag" content="js">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="前端监控">
+    <meta name="twitter:description" content="前端监控场景和分类...">
+    <meta name="twitter:url" content="http://127.0.0.1/2019/08/29/liao-liao-qian-duan-jian-kong/">
+    <meta name="twitter:image:src" content="http://127.0.0.1/content/images/2019/08/image.png">
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "zakwu的成长记录",
+    "author": {
+        "@type": "Person",
+        "name": "zakwu",
+        "url": "http://127.0.0.1/author/zakwu",
+        "sameAs": null
+    },
+    "headline": "前端监控",
+    "url": "http://127.0.0.1/2019/08/29/liao-liao-qian-duan-jian-kong/",
+    "datePublished": "2019-08-29T09:03:46.000Z",
+    "dateModified": "2019-09-17T08:54:26.000Z",
+    "image": "http://127.0.0.1/content/images/2019/08/image.png",
+    "keywords": "other, js",
+    "description": "前端监控场景和分类..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.5">
+    <link rel="alternate" type="application/rss+xml" title="zakwu的成长记录" href="http://127.0.0.1/rss/">
+
+    <!-- link -->
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/style.css">
+  </head>
+  <body>
+    <aside id="sidebar">
+      <nav id="tags">
+        <a href="http://zakwu.me/node/assets/about/about.html" target="_blank" title="about me" id="avatar"></a>
+
+        <ul id="tags__ul">
+          <!--&lt;!&ndash; connect &ndash;&gt;-->
+          <!--<li id="sthfuns" class="tags__li tags-btn">作品集</li>-->
+          <!--<li id="shareppt" class="tags__li tags-btn">分享ppt</li>-->
+
+          <!-- acts -->
+          <li id="js-label1" class="tags__li tags-btn active">全部文章</li>
+          <li id="js-label2" class="tags__li tags-btn">ghost</li>
+          <li id="js-label3" class="tags__li tags-btn">js 技术</li>
+          <li id="js-label4" class="tags__li tags-btn">css 技术</li>
+          <li id="js-label5" class="tags__li tags-btn">前端架构</li>
+          <li id="js-label6" class="tags__li tags-btn">心随意转</li>
+        </ul>
+
+        <div id="tags__bottom">
+          <a href="http://github.com/wf123537200/" target="_blank" class="tags-btn show-icon-right fa fa-github" title="加我github"></a>
+          <a href="http://zakwu.me/node/assets/about/about.html" target="_blank" class="tags-btn show-icon-right fa fa-user" title="关于我"></a>
+          <a href="mailto:wfsheep@163.com" title="给我邮件" class="tags-btn show-icon-right fa fa-envelope-o"></a>
+          <a href="http://zakwu.me/rss/" title="订阅我的blog" class="tags-btn fa fa-rss"></a>
+        </div>
+      </nav> <!-- end #tags -->
+
+      <div id="posts-list">
+        <form action="index.html" id="search-form">
+          <a href="http://127.0.0.1" id="mobile-avatar"></a>
+          <!-- NOTE: input field is disabled by default -->
+          <input id="search-input" type="text" placeholder="Search...">
+        </form>
+
+        <nav id="pl__container">
+        </nav>
+      </div> <!-- end #posts-list -->
+    </aside> <!-- end #sidebar -->
+
+    <div id="post">
+      <div id="pjax">
+        
+    <article id="post__content">
+      <h1 id="post__title" data-identifier="20190829">聊聊前端监控（一）--场景和类型</h1>
+      <p>最近半年一直都在研究前端监控，发现对于前端来说，监控真的很重要，萌发了想写一系列文章全面梳理一下对前端监控的了解和总结。</p>
+
+<h3 id="1">1、主要场景</h3>
+
+<p>产品，首先要建立在使用场景上，所以首先讨论下监控使用的几个主要使用场景。纵观当前市面上各个前端监控产品，无外乎是满足两个方面的需求，监察<strong>用户</strong>的使用情况，监察<strong>系统</strong>的运行状态。所以当前也从 用户 和 系统 两个维度来讨论主要的使用场景。</p>
+
+<h4 id="11">1.1、用户使用情况</h4>
+
+<p>系统前端直面用户，即是和用户交流的窗口，也是产品运营数据第一手数据收集地，所以这是任何完备版的监控系统都绕不过去的话题。</p>
+
+<h5 id="pvuv">pv、uv等运行数据</h5>
+
+<p><img src="../../../../content/images/2019/08/1-1.jpg" alt="百度统计的行为数据"></p>
+
+<p>运维一个网站，有多少人来访问了，每天访问的人次是多少，这些数据是衡量一个网站运行好坏的晴雨表。当前比较主要的维度列举如下：</p>
+
+<ul>
+<li>pv： 访问人次，一般每次刷新页面都会 + 1</li>
+<li>uv： 访问人数，每人一天内只计数一次，一般小于等于pv</li>
+<li>ip数：访问的ip数量</li>
+<li>跳出率：打开一个网页的次数／总的网页访问数</li>
+<li>平均访问时长：访问总时长 / 访问页数</li>
+<li>平均访问深度：在当前域名跳转的次数 / 访问次数</li>
+<li>会话数：用户发起的session的数量</li>
+<li><strong>路由切换量（rpv）</strong>：由于当前很多较复杂的网站都是采用spa结构，使用传统的pv，uv不能反映用户真实使用状况，所以这个指标就显得非常重要了，一般来说路由切换一次 rpv + 1，最终得到一个路由访问的次数</li>
+</ul>
+
+<p>各个统计网站都根据不同的维度和认知对行为数据进行统计，然后通过时间维度，按（时/天/月）来对网站的运行数据进行分析，得到当前网站的运行状态。</p>
+
+<h5 id="">埋点，点击流</h5>
+
+<p>为了要记录用户在网站上的点击，拖动，跳转等行为，对页面上元素绑定的一些事件并上报记录，称作埋点。有的网站只针对重点操作进行埋点，用作审计和时候追查，而另一些网站做全量事件拦截，对用户的所有行为数据都进行记录。通过埋点，可以知道用户在网站上做了哪些操作，为事后审计和查找问题提供帮助。</p>
+
+<p>点击流，是基于以上的埋点的记录，把一系列事件串起来，形成一个用户操作的链条。</p>
+
+<p>通过点击流和埋点，可以分析用户的使用习惯，找到用户在网站使用上碰到的问题，帮助网站做的更好。比如，在点击购买链接前，如果多数都会点击对比商品的按钮，那么对比按钮的位置就需要得到凸显等等。</p>
+
+<h5 id="">场景回放</h5>
+
+<p>基于埋点和点击流，我们可以做到对用户使用场景的回放和还原，比如用户点击了一些敏感操作按钮，可以帮助用户找到操作失误记录，再比如对于较难复现的bug，可以通过场景回放来重放用户的操作步骤，复现bug。</p>
+
+<h5 id="">录屏</h5>
+
+<p>场景回放的进阶版，终极大法。通过视频对用户操作进行还原，直观且强大。不过这种科技是要付出代价的，在实现上，可能会碰到不小的麻烦。后面我们在讲实现的时候再具体讨论。</p>
+
+<h4 id="12">1.2 系统运行情况</h4>
+
+<p>除了对用户行为的监看，前端监控和后端监控有很多类似场景，存在很多监控系统运行的场景，据当前收集的资料和对一些系统的调研来看，包含了以下几个主要方面：</p>
+
+<h5 id="">错误感知</h5>
+
+<p>感知前端页面运行时产生的错误，错误包含多个维度，根据不同系统监控程度不同，一般分成：</p>
+
+<ul>
+<li>控制台错误： runtime报出的错误，一般会打印在浏览器开发工具的控制台，这样</li>
+<li>网络错误： 一般包括 http 等与服务器交互产生的请求错误，比如 http response 返回值为4xx，5xx等错误</li>
+<li>业务系统自定义错误：一般是各系统自己定义的需要上报的业务错误，比如 http 返回 200，但其实接口返回错误码</li>
+</ul>
+
+<h5 id="">耗时统计</h5>
+
+<p>时间，是影响用户网站体验的主要因素之一。所以打开速度、各种响应速度，都成了监控统计的主要项目，对于耗时，一般根据侧重点不同，分成：</p>
+
+<ul>
+<li><p>页面加载耗时：主要是收集由performace.timing对象提供计算出的各种时间实现的，具体时间可以参考下图 
+<img src="../../../../content/images/2019/08/1-2.png" alt="alt"></p></li>
+<li><p>接口请求耗时：主要用于统计对后端接口的耗时情况</p></li>
+</ul>
+
+<h5 id="">全链路状态感知</h5>
+
+<p>全链路状态感知，也称作端到端的全链路监控，基本会收集从请求从 web server 到 db 的全生命周期的状态，基本会记录整个请求在处理过程中各个环节的具体耗时等信息。</p>
+
+<h4 id="2">2、对应场景的监控类型</h4>
+
+<p>以上说明了当前了解到的各个监控的使用场景，我的理解，当前监控的类型大致可以分为以下3类：行为监控，异常监控，链路监控。按照之前的场景说明来归纳和对应下。</p>
+
+<h5 id="21">2.1、行为监控</h5>
+
+<p>主要负责监控用户的使用情况，比如点击流，pv，uv等指标都属于此类。还有上面提到的场景回放和录屏也可以归到这一类上面。</p>
+
+<p>行为监控一般的展现形式都是图表，同时提供基于时间等维度的对比功能，能够比较直观的看出数据的变化和趋势对比。</p>
+
+<h5 id="22">2.2、异常监控</h5>
+
+<p>包括浏览器主动抛出的错误和接口错误的情况，一般来说异常监控会以列表的形式展示收集到的错误信息，可能包括用户 UA，Ip，网络状态，请求url等等信息的展示。</p>
+
+<p>很多异常监控也结合sourcemap来还原错误堆栈和现场，提供快速查找错误的能力。</p>
+
+<h5 id="23">2.3、链路监控</h5>
+
+<p>链路监控对应上面全链路感知的场景，一般的展示场景可以参考开发者工具中的timeline类似，可以直观的看出各阶段耗时情况。</p>
+
+<p><img src="../../../../content/images/2019/08/1-3.png" alt="alt"></p>
+
+<p>同时由于链路监控涉及到后端系统的改造工作，当前大部分前端监控系统是缺少这方面能力的，如何将链路监控很好的融合到当前监控系统中去，是一个值得思考的命题。</p>
+
+<p>好了，第一篇讲了一些前端监控的场景和分类，第二篇，我们来讨论一些监控等等技术实现。</p>
+    </article> <!-- end #post__content -->
+
+    <!--<div id="post__share">-->
+      <!--<a id="icon-twitter" href="https://twitter.com/intent/tweet?url=http://127.0.0.1/2019/08/2019/08/29/liao-liao-qian-duan-jian-kong/&text=聊聊前端监控（一）--场景和类型" target="_blank"></a>-->
+      <!--<a id="icon-cc" href="http://creativecommons.org/licenses/by-nc-sa/3.0" target="_blank"></a>-->
+      <!--<a id="icon-weibo" href="http://v.t.sina.com.cn/share/share.php?url=http://127.0.0.1/2019/08/2019/08/29/liao-liao-qian-duan-jian-kong/&title=聊聊前端监控（一）--场景和类型" target="_blank"></a>-->
+    <!--</div> &lt;!&ndash; end #post__share &ndash;&gt;-->
+    <div id="dsData" data-id="72" data-title="聊聊前端监控（一）--场景和类型" data-url="/2019/08/29/liao-liao-qian-duan-jian-kong/"></div>
+    <!--PC版-->
+    <div id="cyss" sid="/2019/08/29/liao-liao-qian-duan-jian-kong/"></div>
+    <div id="SOHUCS" sid="/2019/08/29/liao-liao-qian-duan-jian-kong/"></div>
+
+      </div> <!-- end #pjax -->
+
+      <div id="post__toc-trigger">
+        <div id="post__toc">
+          <span id="post__toc-title">Table of Contents</span>
+          <ul id="post__toc-ul"></ul>
+        </div>
+      </div>
+    </div> <!-- end #post -->
+
+    <!-- 收缩箭头 -->
+    <button id="js-fullscreen"><span class="fa fa-chevron-right" id="icon-arrow"></span></button>
+
+    <footer>
+      <div>Powered by <a href="https://ghost.org" target="_blank">Ghost</a>  |  ©zak wu 2015<a href="http://www.miitbeian.gov.cn/">粤ICP备15007095</a></div>
+    </footer>
+
+    <script src="../../../../assets/js/jquery-2.0.3.min.js"></script>
+    <script src="../../../../assets/js/jquery.pjax.js"></script>
+    <script src="../../../../assets/js/nprogress.js"></script>
+    <script src="../../../../assets/js/prism.js"></script>
+    <script src="../../../../assets/js/script.js"></script>
+    <script src="../../../../public/jquery.js?v=fdf87e4899"></script>
+  </body>

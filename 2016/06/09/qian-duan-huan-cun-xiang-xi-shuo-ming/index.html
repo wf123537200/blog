@@ -1,0 +1,185 @@
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>http缓存</title>
+    <meta name="description" content="http缓存头 http缓存详解 前端缓存机制">
+    <meta name="HandheldFriendly" content="True">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="baidu-site-verification" content="1B8AemIXSQ">
+    <!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/ie.html"><![endif]-->
+    <link rel="canonical" href="http://127.0.0.1/2016/06/09/qian-duan-huan-cun-xiang-xi-shuo-ming/">
+    
+    <meta property="og:site_name" content="zakwu的成长记录">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="http缓存">
+    <meta property="og:description" content="http缓存头 http缓存详解 前端缓存机制...">
+    <meta property="og:url" content="http://127.0.0.1/2016/06/09/qian-duan-huan-cun-xiang-xi-shuo-ming/">
+    <meta property="article:published_time" content="2016-06-09T15:06:22.000Z">
+    <meta property="article:modified_time" content="2016-06-13T13:05:40.000Z">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="http缓存">
+    <meta name="twitter:description" content="http缓存头 http缓存详解 前端缓存机制...">
+    <meta name="twitter:url" content="http://127.0.0.1/2016/06/09/qian-duan-huan-cun-xiang-xi-shuo-ming/">
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "zakwu的成长记录",
+    "author": {
+        "@type": "Person",
+        "name": "zakwu",
+        "url": "http://127.0.0.1/author/zakwu",
+        "sameAs": null
+    },
+    "headline": "http缓存",
+    "url": "http://127.0.0.1/2016/06/09/qian-duan-huan-cun-xiang-xi-shuo-ming/",
+    "datePublished": "2016-06-09T15:06:22.000Z",
+    "dateModified": "2016-06-13T13:05:40.000Z",
+    "description": "http缓存头 http缓存详解 前端缓存机制..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.5">
+    <link rel="alternate" type="application/rss+xml" title="zakwu的成长记录" href="http://127.0.0.1/rss/">
+
+    <!-- link -->
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/style.css">
+  </head>
+  <body>
+    <aside id="sidebar">
+      <nav id="tags">
+        <a href="http://zakwu.me/node/assets/about/about.html" target="_blank" title="about me" id="avatar"></a>
+
+        <ul id="tags__ul">
+          <!--&lt;!&ndash; connect &ndash;&gt;-->
+          <!--<li id="sthfuns" class="tags__li tags-btn">作品集</li>-->
+          <!--<li id="shareppt" class="tags__li tags-btn">分享ppt</li>-->
+
+          <!-- acts -->
+          <li id="js-label1" class="tags__li tags-btn active">全部文章</li>
+          <li id="js-label2" class="tags__li tags-btn">ghost</li>
+          <li id="js-label3" class="tags__li tags-btn">js 技术</li>
+          <li id="js-label4" class="tags__li tags-btn">css 技术</li>
+          <li id="js-label5" class="tags__li tags-btn">前端架构</li>
+          <li id="js-label6" class="tags__li tags-btn">心随意转</li>
+        </ul>
+
+        <div id="tags__bottom">
+          <a href="http://github.com/wf123537200/" target="_blank" class="tags-btn show-icon-right fa fa-github" title="加我github"></a>
+          <a href="http://zakwu.me/node/assets/about/about.html" target="_blank" class="tags-btn show-icon-right fa fa-user" title="关于我"></a>
+          <a href="mailto:wfsheep@163.com" title="给我邮件" class="tags-btn show-icon-right fa fa-envelope-o"></a>
+          <a href="http://zakwu.me/rss/" title="订阅我的blog" class="tags-btn fa fa-rss"></a>
+        </div>
+      </nav> <!-- end #tags -->
+
+      <div id="posts-list">
+        <form action="index.html" id="search-form">
+          <a href="http://127.0.0.1" id="mobile-avatar"></a>
+          <!-- NOTE: input field is disabled by default -->
+          <input id="search-input" type="text" placeholder="Search...">
+        </form>
+
+        <nav id="pl__container">
+        </nav>
+      </div> <!-- end #posts-list -->
+    </aside> <!-- end #sidebar -->
+
+    <div id="post">
+      <div id="pjax">
+        
+    <article id="post__content">
+      <h1 id="post__title" data-identifier="20160609">一问就蒙(2)----http缓存头</h1>
+      <p>接着上文，这一次我们来聊聊http缓存头。这个问题也是时常会在面试中出现的。</p>
+
+<p>http缓存发展分为了两个阶段。http1.0阶段，基本上通过expries来进行缓存，http1.1阶段，缓存基本上是三组对应的属来进行判断。由于http1.1向下兼容，这里就以http1.1为蓝本来进行讨论。</p>
+
+<h3 id="cachecontrolexpries">一、cache-control/expries</h3>
+
+<p>这两个属性都是用来设置文件过期时间，典型的设置方法如下，详情可以参考<a href="http://www.ietf.org/rfc/rfc2616.txt">这里</a></p>
+
+<p>Expires: Fri, 30 Oct 1998 14:19:41</p>
+
+<p>Cache-Control: max-age=3600, must-revalidate</p>
+
+<p>当每次需要拉取文件时，浏览器会判断文件是否超时，如果超时将发起请求，如果未超时就不发起请求或者发起200（from cache）的请求（304的情况后面会说到），cache-control是http1.1标准的，所以对其中的配置参数比expries要丰富，当两者都存在时，先判断cache-control，再执行expries。</p>
+
+<p>当然，如果客户端需要显示的声明该文件不需要缓存，可以使用meta标签来告诉浏览器，文件不需要缓存，每次都从服务器拉取最新的，具体写法如下：</p>
+
+<p><meta http-equiv="Cache-Control" content="max-age=7200"></p>
+
+<p><meta http-equiv="Expires" content="Mon, 20 Jul 2009 23:00:00 GMT"></p>
+
+<h3 id="lastmodifiedifmodifiedsince">二、last-modified/if-modified-since</h3>
+
+<p>这一对http缓存都用于判断文的最后修改时间，以断定文件是否已经过期，需要从服务器重新拉取。</p>
+
+<p>每次服务器返回文件后，会返回last-modified的http response头部，这个值会说明当前文件的最后修改时间。而if-modified-since是一个require头部，他会向服务器询问在头部给定时间之前文件是否有改变。</p>
+
+<p>这两个属性的工作方式一般如：
+1、浏览器向服务器发起请求，服务器会返回带有last-modified response头部的请求，典型写法如：Last-Modified:Tue, 17 May 2016 08:13:58 GMT。 <br>
+2、浏览器再次向服务器请求时，可以带上if-modified-since头部，并将之前last-modified的服务器时间带回 <br>
+3、服务器发现在该时间之后文件有改动，则会返回文件，如果没有改动，则会返回一个304，告诉浏览器文件没有变更。</p>
+
+<p>由于304的返回包远小于返回整个文件，所以这里其实是http1.1做了优化的地方。</p>
+
+<h3 id="etagifnonematch">三、etag/if-none-match</h3>
+
+<p>由于2中所提到的last-modified/if-modified-since头部，最小单位精确到“秒”，无法满足部分高精度需求，所以，诞生了etag/if-none-match这一对够精确判断文件是否改变的值，它们主要通过比对HASH值来进行判断文件是否被修改。</p>
+
+<p>这一对头部除了精度外，工作方式基本和二中提到一对头部类似。</p>
+
+<h3 id="">四、总结</h3>
+
+<p>Expires/Cache-Control 是控制浏览器是否直接从浏览器缓存取数据还是重新发请求到服务器取数据。</p>
+
+<p>Last-Modified/If-Modified-Since和ETag/If-None-Match是浏览器发送请求到服务器后判断文件是否已经修改过，如果没有修改过就只发送一个304返回浏览器，告诉浏览器直接从自己本地的缓存取数据，如果修改过那就整个数据重新发给浏览器。</p>
+
+<p>所以，缓存机制可以简单的优先级排列为：
+Cache-Control &gt; Expires &gt; ETag/If-None-Match == Last-Modified/If-Modified-Since。</p>
+
+<h3 id="5">5、参考链接</h3>
+
+<p><a href="http://www.ietf.org/rfc/rfc2616.txt">http://www.ietf.org/rfc/rfc2616.txt</a> <br>
+<a href="http://www.51testing.com/html/28/116228-238337.html">http://www.51testing.com/html/28/116228-238337.html</a></p>
+    </article> <!-- end #post__content -->
+
+    <!--<div id="post__share">-->
+      <!--<a id="icon-twitter" href="https://twitter.com/intent/tweet?url=http://127.0.0.1/2016/06/2016/06/09/qian-duan-huan-cun-xiang-xi-shuo-ming/&text=一问就蒙(2)----http缓存头" target="_blank"></a>-->
+      <!--<a id="icon-cc" href="http://creativecommons.org/licenses/by-nc-sa/3.0" target="_blank"></a>-->
+      <!--<a id="icon-weibo" href="http://v.t.sina.com.cn/share/share.php?url=http://127.0.0.1/2016/06/2016/06/09/qian-duan-huan-cun-xiang-xi-shuo-ming/&title=一问就蒙(2)----http缓存头" target="_blank"></a>-->
+    <!--</div> &lt;!&ndash; end #post__share &ndash;&gt;-->
+    <div id="dsData" data-id="39" data-title="一问就蒙(2)----http缓存头" data-url="/2016/06/09/qian-duan-huan-cun-xiang-xi-shuo-ming/"></div>
+    <!--PC版-->
+    <div id="cyss" sid="/2016/06/09/qian-duan-huan-cun-xiang-xi-shuo-ming/"></div>
+    <div id="SOHUCS" sid="/2016/06/09/qian-duan-huan-cun-xiang-xi-shuo-ming/"></div>
+
+      </div> <!-- end #pjax -->
+
+      <div id="post__toc-trigger">
+        <div id="post__toc">
+          <span id="post__toc-title">Table of Contents</span>
+          <ul id="post__toc-ul"></ul>
+        </div>
+      </div>
+    </div> <!-- end #post -->
+
+    <!-- 收缩箭头 -->
+    <button id="js-fullscreen"><span class="fa fa-chevron-right" id="icon-arrow"></span></button>
+
+    <footer>
+      <div>Powered by <a href="https://ghost.org" target="_blank">Ghost</a>  |  ©zak wu 2015<a href="http://www.miitbeian.gov.cn/">粤ICP备15007095</a></div>
+    </footer>
+
+    <script src="../../../../assets/js/jquery-2.0.3.min.js"></script>
+    <script src="../../../../assets/js/jquery.pjax.js"></script>
+    <script src="../../../../assets/js/nprogress.js"></script>
+    <script src="../../../../assets/js/prism.js"></script>
+    <script src="../../../../assets/js/script.js"></script>
+    <script src="../../../../public/jquery.js?v=fdf87e4899"></script>
+  </body>

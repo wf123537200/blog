@@ -1,0 +1,218 @@
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>http2简介</title>
+    <meta name="description" content="http2协议介绍 http2特性">
+    <meta name="HandheldFriendly" content="True">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="baidu-site-verification" content="1B8AemIXSQ">
+    <!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/ie.html"><![endif]-->
+    <link rel="canonical" href="http://127.0.0.1/2016/11/02/spdyhe-http2chai-bie-zong-jie/">
+    
+    <meta property="og:site_name" content="zakwu的成长记录">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="http2简介">
+    <meta property="og:description" content="http2协议介绍 http2特性...">
+    <meta property="og:url" content="http://127.0.0.1/2016/11/02/spdyhe-http2chai-bie-zong-jie/">
+    <meta property="article:published_time" content="2016-11-02T03:33:06.000Z">
+    <meta property="article:modified_time" content="2016-11-02T03:34:58.000Z">
+    <meta property="article:tag" content="js">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="http2简介">
+    <meta name="twitter:description" content="http2协议介绍 http2特性...">
+    <meta name="twitter:url" content="http://127.0.0.1/2016/11/02/spdyhe-http2chai-bie-zong-jie/">
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "zakwu的成长记录",
+    "author": {
+        "@type": "Person",
+        "name": "zakwu",
+        "url": "http://127.0.0.1/author/zakwu",
+        "sameAs": null
+    },
+    "headline": "http2简介",
+    "url": "http://127.0.0.1/2016/11/02/spdyhe-http2chai-bie-zong-jie/",
+    "datePublished": "2016-11-02T03:33:06.000Z",
+    "dateModified": "2016-11-02T03:34:58.000Z",
+    "keywords": "js",
+    "description": "http2协议介绍 http2特性..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.5">
+    <link rel="alternate" type="application/rss+xml" title="zakwu的成长记录" href="http://127.0.0.1/rss/">
+
+    <!-- link -->
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/style.css">
+  </head>
+  <body>
+    <aside id="sidebar">
+      <nav id="tags">
+        <a href="http://zakwu.me/node/assets/about/about.html" target="_blank" title="about me" id="avatar"></a>
+
+        <ul id="tags__ul">
+          <!--&lt;!&ndash; connect &ndash;&gt;-->
+          <!--<li id="sthfuns" class="tags__li tags-btn">作品集</li>-->
+          <!--<li id="shareppt" class="tags__li tags-btn">分享ppt</li>-->
+
+          <!-- acts -->
+          <li id="js-label1" class="tags__li tags-btn active">全部文章</li>
+          <li id="js-label2" class="tags__li tags-btn">ghost</li>
+          <li id="js-label3" class="tags__li tags-btn">js 技术</li>
+          <li id="js-label4" class="tags__li tags-btn">css 技术</li>
+          <li id="js-label5" class="tags__li tags-btn">前端架构</li>
+          <li id="js-label6" class="tags__li tags-btn">心随意转</li>
+        </ul>
+
+        <div id="tags__bottom">
+          <a href="http://github.com/wf123537200/" target="_blank" class="tags-btn show-icon-right fa fa-github" title="加我github"></a>
+          <a href="http://zakwu.me/node/assets/about/about.html" target="_blank" class="tags-btn show-icon-right fa fa-user" title="关于我"></a>
+          <a href="mailto:wfsheep@163.com" title="给我邮件" class="tags-btn show-icon-right fa fa-envelope-o"></a>
+          <a href="http://zakwu.me/rss/" title="订阅我的blog" class="tags-btn fa fa-rss"></a>
+        </div>
+      </nav> <!-- end #tags -->
+
+      <div id="posts-list">
+        <form action="index.html" id="search-form">
+          <a href="http://127.0.0.1" id="mobile-avatar"></a>
+          <!-- NOTE: input field is disabled by default -->
+          <input id="search-input" type="text" placeholder="Search...">
+        </form>
+
+        <nav id="pl__container">
+        </nav>
+      </div> <!-- end #posts-list -->
+    </aside> <!-- end #sidebar -->
+
+    <div id="post">
+      <div id="pjax">
+        
+    <article id="post__content">
+      <h1 id="post__title" data-identifier="20161102">http2特性简介</h1>
+      <p>  http2现在越来越普及了，加上现在的ng都可以自动做降级处理，所以http2的实装也变得越来越轻松便捷了。</p>
+
+<p>  http2脱胎于google的spdy v2版本，用于替换老旧的http1.x，那么http2给我们带来了什么好处呢？现在对http2的几个特性做一些总结：</p>
+
+<h3 id="1">1、二进制分帧</h3>
+
+<p>   和http1.x的包传输不同，http2采用了<strong>二进制数据流</strong>来作为数据传输的载体，通过将原来传输的包拆解为小单位的<strong>帧</strong>（frame，http2数据的最小单位），通过<strong>连接</strong>（Tcp连接）,发送<strong>消息</strong>（message，由多个帧组成）。消息可以是乱序的，数据接收方会根据帧首部的流标识符对数据进行重新组装，以保持数据的正确性。分帧示例如下图</p>
+
+<p><img src="../../../../content/images/2016/11/1-pic.jpg" alt="二进制分帧"></p>
+
+<p>  二进制分帧是http2的基石，后续的多路复用等性能优化都是建立在二进制分帧的基础上的。</p>
+
+<h3 id="2">2、头部压缩</h3>
+
+<p>  由于http1.x的头部字段复杂，而且每次都会请求，都会将全量的头部进行上传，显著的增加了网络开销。</p>
+
+<p><img src="../../../../content/images/2016/11/4-pic_hd.jpg" alt="http1.x头部"></p>
+
+<p>这是一个典型的http1.1头部，可以看到作为文本数据传输的还是略显庞大的。而对于当使用http2协议时，协议采用<strong>首部表</strong>(此表将在连接生命周期内由客户端和服务器端共同维护)来进行首部字段存储，只有当首部表中的数据新增（变更）或者未发送过时，才会发送http头部字段，具体示例可见下图。</p>
+
+<p><img src="../../../../content/images/2016/11/2-pic_hd.jpg" alt="首部压缩"></p>
+
+<p>  ps：大家注意，上图中的首部表分为<strong>静态表</strong>（static table：包含常用字段）和<strong>动态表</strong>（Dynamic table：包含自定义字段等非常用字段）。当新增或者改变字段时，会增加或修改动态表中的数据。</p>
+
+<h3 id="3">3、多路复用</h3>
+
+<p>  对于http1.x来说，每次加载页面会发起一排请求，而由于浏览器的限制，每个域名同时的并发请求被限制到了6~8个不等。由此诞生了前端很多的优化方式，比如：雪碧图，合并js/css，域名拆分等各种方法。</p>
+
+<p><img src="../../../../content/images/2016/11/3-pic_hd.jpg" alt="6并发限制"></p>
+
+<p>  这种限制会造成很多问题：</p>
+
+<p>    a）频繁建立tcp连接，资源消耗较大</p>
+
+<p>    b）cpu和内存使用率高</p>
+
+<p>    c）不断发送无法精简的首部</p>
+
+<p>    d）优化造成的代码复杂度提升</p>
+
+<p>  而对于http2协议，将对同一域名建立一条双向的数据流通道，通道将发送各类帧数据，帧数据可以是乱序的。这也是服务端推送的基础。</p>
+
+<h3 id="4">4、服务端推送</h3>
+
+<p>  采用http2协议时，服务端可以向客户端进行一些数据推送，推送受到同源限制。</p>
+
+<p>  服务端推送我们可以收获以下特性：</p>
+
+<p>    a）根据收到的index.html建立依赖关系，再次请求时对其依赖进行推送。</p>
+
+<p>    b）当页面离线后，对页面进行推送，并使客户端对资源进行缓存，以达到快速打开的目的。</p>
+
+<h3 id="5">5、流优先级</h3>
+
+<p>  在http1.x时代，有时需要对一些比较重要图片做优先，希望图片尽量快速的展示给用户，有时需要对一些不需要展示的图片进行延迟加载。</p>
+
+<p>  http2将会根据请求的type/content进行优先级判断，即可以<strong>发现同时加载</strong>，也可以<strong>延迟加载</strong>。具体实现可以参看下图：</p>
+
+<p><img src="../../../../content/images/2016/11/5-pic.jpg" alt="流优先级"></p>
+
+<p>可以看到</p>
+
+<p>    a）每个流都会带有一个id</p>
+
+<p>    b）流可以有依赖</p>
+
+<p>    c）流可以设置权重，其中权重数值越小优先级越高，比如图中的资源‘d’就将会被提前于资源‘c’节点进行下发。</p>
+
+<h3 id="6">6、协议协商</h3>
+
+<p>  协议协商主要是指http2对http1.x的协议的升级和降级，具体的内容会根据服务器端配置来进行，简而言之，就是如果服务器端支持，客户端和服务器端会同时升级http1.x到http2，并采用http2作为通信协议，如不支持，将继续使用http1.x作为通信协议。</p>
+
+<h3 id="">总结</h3>
+
+<p>  最后给一张对比图，以清晰的阐述http1.x和http2的不同：</p>
+
+<p><img src="../../../../content/images/2016/11/6-pic_hd.jpg" alt="对比图"></p>
+
+<p>  总之，了解了http2的特性以后，前端的一些优化思路可能需要改变，比如多路复用性能使图片压缩等方式变得鸡肋了。所以具体的方案还是需要继续探索。</p>
+
+<h3 id="">参考文献</h3>
+
+<p><a href="https://docs.google.com/presentation/d/1r7QXGYOLCh4fcUq0jDdDwKJWNqWK1o4xMtYpKZCJYjM/present?slide=id.g4ec7b01d4_5_150">http2 is here！llya Grigorik@google</a></p>
+    </article> <!-- end #post__content -->
+
+    <!--<div id="post__share">-->
+      <!--<a id="icon-twitter" href="https://twitter.com/intent/tweet?url=http://127.0.0.1/2016/11/2016/11/02/spdyhe-http2chai-bie-zong-jie/&text=http2特性简介" target="_blank"></a>-->
+      <!--<a id="icon-cc" href="http://creativecommons.org/licenses/by-nc-sa/3.0" target="_blank"></a>-->
+      <!--<a id="icon-weibo" href="http://v.t.sina.com.cn/share/share.php?url=http://127.0.0.1/2016/11/2016/11/02/spdyhe-http2chai-bie-zong-jie/&title=http2特性简介" target="_blank"></a>-->
+    <!--</div> &lt;!&ndash; end #post__share &ndash;&gt;-->
+    <div id="dsData" data-id="36" data-title="http2特性简介" data-url="/2016/11/02/spdyhe-http2chai-bie-zong-jie/"></div>
+    <!--PC版-->
+    <div id="cyss" sid="/2016/11/02/spdyhe-http2chai-bie-zong-jie/"></div>
+    <div id="SOHUCS" sid="/2016/11/02/spdyhe-http2chai-bie-zong-jie/"></div>
+
+      </div> <!-- end #pjax -->
+
+      <div id="post__toc-trigger">
+        <div id="post__toc">
+          <span id="post__toc-title">Table of Contents</span>
+          <ul id="post__toc-ul"></ul>
+        </div>
+      </div>
+    </div> <!-- end #post -->
+
+    <!-- 收缩箭头 -->
+    <button id="js-fullscreen"><span class="fa fa-chevron-right" id="icon-arrow"></span></button>
+
+    <footer>
+      <div>Powered by <a href="https://ghost.org" target="_blank">Ghost</a>  |  ©zak wu 2015<a href="http://www.miitbeian.gov.cn/">粤ICP备15007095</a></div>
+    </footer>
+
+    <script src="../../../../assets/js/jquery-2.0.3.min.js"></script>
+    <script src="../../../../assets/js/jquery.pjax.js"></script>
+    <script src="../../../../assets/js/nprogress.js"></script>
+    <script src="../../../../assets/js/prism.js"></script>
+    <script src="../../../../assets/js/script.js"></script>
+    <script src="../../../../public/jquery.js?v=fdf87e4899"></script>
+  </body>

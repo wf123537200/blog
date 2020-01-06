@@ -1,0 +1,166 @@
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>javascript语言精粹 读书笔记 第五章 继承</title>
+    <meta name="description" content="javascript语言精粹 第五章 继承和第六章 数组 的读书笔记，用于记录一下觉得有价值的书中观点和思想">
+    <meta name="HandheldFriendly" content="True">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="baidu-site-verification" content="1B8AemIXSQ">
+    <!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/ie.html"><![endif]-->
+    <link rel="canonical" href="http://127.0.0.1/2015/02/26/javascriptyu-yan-jing-cui-du-shu-bi-ji/">
+    
+    <meta property="og:site_name" content="zakwu的成长记录">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="javascript语言精粹 读书笔记 第五章 继承">
+    <meta property="og:description" content="javascript语言精粹 第五章 继承和第六章 数组 的读书笔记，用于记录一下觉得有价值的书中观点和思想...">
+    <meta property="og:url" content="http://127.0.0.1/2015/02/26/javascriptyu-yan-jing-cui-du-shu-bi-ji/">
+    <meta property="og:image" content="http://127.0.0.1/content/images/2015/02/22872884-1_w_1.jpg">
+    <meta property="article:published_time" content="2015-02-26T06:35:16.000Z">
+    <meta property="article:modified_time" content="2015-03-02T15:12:18.000Z">
+    <meta property="article:tag" content="js">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="javascript语言精粹 读书笔记 第五章 继承">
+    <meta name="twitter:description" content="javascript语言精粹 第五章 继承和第六章 数组 的读书笔记，用于记录一下觉得有价值的书中观点和思想...">
+    <meta name="twitter:url" content="http://127.0.0.1/2015/02/26/javascriptyu-yan-jing-cui-du-shu-bi-ji/">
+    <meta name="twitter:image:src" content="http://127.0.0.1/content/images/2015/02/22872884-1_w_1.jpg">
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "zakwu的成长记录",
+    "author": {
+        "@type": "Person",
+        "name": "zakwu",
+        "url": "http://127.0.0.1/author/zakwu",
+        "sameAs": null
+    },
+    "headline": "javascript语言精粹 读书笔记 第五章 继承",
+    "url": "http://127.0.0.1/2015/02/26/javascriptyu-yan-jing-cui-du-shu-bi-ji/",
+    "datePublished": "2015-02-26T06:35:16.000Z",
+    "dateModified": "2015-03-02T15:12:18.000Z",
+    "image": "http://127.0.0.1/content/images/2015/02/22872884-1_w_1.jpg",
+    "keywords": "js",
+    "description": "javascript语言精粹 第五章 继承和第六章 数组 的读书笔记，用于记录一下觉得有价值的书中观点和思想..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.5">
+    <link rel="alternate" type="application/rss+xml" title="zakwu的成长记录" href="http://127.0.0.1/rss/">
+
+    <!-- link -->
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/style.css">
+  </head>
+  <body>
+    <aside id="sidebar">
+      <nav id="tags">
+        <a href="http://zakwu.me/node/assets/about/about.html" target="_blank" title="about me" id="avatar"></a>
+
+        <ul id="tags__ul">
+          <!--&lt;!&ndash; connect &ndash;&gt;-->
+          <!--<li id="sthfuns" class="tags__li tags-btn">作品集</li>-->
+          <!--<li id="shareppt" class="tags__li tags-btn">分享ppt</li>-->
+
+          <!-- acts -->
+          <li id="js-label1" class="tags__li tags-btn active">全部文章</li>
+          <li id="js-label2" class="tags__li tags-btn">ghost</li>
+          <li id="js-label3" class="tags__li tags-btn">js 技术</li>
+          <li id="js-label4" class="tags__li tags-btn">css 技术</li>
+          <li id="js-label5" class="tags__li tags-btn">前端架构</li>
+          <li id="js-label6" class="tags__li tags-btn">心随意转</li>
+        </ul>
+
+        <div id="tags__bottom">
+          <a href="http://github.com/wf123537200/" target="_blank" class="tags-btn show-icon-right fa fa-github" title="加我github"></a>
+          <a href="http://zakwu.me/node/assets/about/about.html" target="_blank" class="tags-btn show-icon-right fa fa-user" title="关于我"></a>
+          <a href="mailto:wfsheep@163.com" title="给我邮件" class="tags-btn show-icon-right fa fa-envelope-o"></a>
+          <a href="http://zakwu.me/rss/" title="订阅我的blog" class="tags-btn fa fa-rss"></a>
+        </div>
+      </nav> <!-- end #tags -->
+
+      <div id="posts-list">
+        <form action="index.html" id="search-form">
+          <a href="http://127.0.0.1" id="mobile-avatar"></a>
+          <!-- NOTE: input field is disabled by default -->
+          <input id="search-input" type="text" placeholder="Search...">
+        </form>
+
+        <nav id="pl__container">
+        </nav>
+      </div> <!-- end #posts-list -->
+    </aside> <!-- end #sidebar -->
+
+    <div id="post">
+      <div id="pjax">
+        
+    <article id="post__content">
+      <h1 id="post__title" data-identifier="20150226">《javascript语言精粹》读书笔记三</h1>
+      <h2 id="">第五章 继承</h2>
+
+<p>值得一提的是每章的开头都提到了，一句名言，瞬间正本书从一部严肃的学术著作，变成了一部颇有意思的引人入胜的有趣读物。</p>
+
+<p>第五章讲的是js的继承，js的继承有很多种，比如借用原型，call（apply）法，原型继承，等等，不一而足，书里提到了一种很不错的挺新颖的属性扩充的方法，具体简单实现如下：</p>
+
+<pre><code class="language-javascript">js code:
+    var extend = function(child) {
+        // 附加属性和实例方法
+        child.a = 'aaa';
+        child.b = 'bbb';
+        child.insMethod = function() {
+            console.log('i am instants method');
+        }
+
+        return child;
+    }
+    // 调用方法
+    var x = extend({});
+</code></pre>
+
+<p>你一定看出来了，其实这个函数，就是一个对象的构造器，之所以这样说，是因为每当一个对象被创建的时候会产生这样一个东西 this.prototype = {constructor: this}, 当this为一个函数时，new这个对象的时候将会执行这个函数，以上这种方式，将构造函数固定下来，防止由于this指针的变化，导致构造函数的变化，也就是说这种方式可以静态化构造函数，使得构造函数不被改变。</p>
+
+<h2 id="">第六章 数组</h2>
+
+<p>对于js来说，其中的数组是一个带有length长度属性和一系列方法的对象，和很多语言不同，当给length赋一个大值并不能导致系统给这个数组分配更多的空间，而减小length的长度，将导致数组被清空。</p>
+
+<p>数组的一系列自带方式是很好用的，另外，对一个数组使用typeof的结果是‘object’，当判断一个对象是否为数组时，需要使用Object.prototype.toString.call([]) === '[object Array]'来进行判断。</p>
+    </article> <!-- end #post__content -->
+
+    <!--<div id="post__share">-->
+      <!--<a id="icon-twitter" href="https://twitter.com/intent/tweet?url=http://127.0.0.1/2015/02/2015/02/26/javascriptyu-yan-jing-cui-du-shu-bi-ji/&text=《javascript语言精粹》读书笔记三" target="_blank"></a>-->
+      <!--<a id="icon-cc" href="http://creativecommons.org/licenses/by-nc-sa/3.0" target="_blank"></a>-->
+      <!--<a id="icon-weibo" href="http://v.t.sina.com.cn/share/share.php?url=http://127.0.0.1/2015/02/2015/02/26/javascriptyu-yan-jing-cui-du-shu-bi-ji/&title=《javascript语言精粹》读书笔记三" target="_blank"></a>-->
+    <!--</div> &lt;!&ndash; end #post__share &ndash;&gt;-->
+    <div id="dsData" data-id="7" data-title="《javascript语言精粹》读书笔记三" data-url="/2015/02/26/javascriptyu-yan-jing-cui-du-shu-bi-ji/"></div>
+    <!--PC版-->
+    <div id="cyss" sid="/2015/02/26/javascriptyu-yan-jing-cui-du-shu-bi-ji/"></div>
+    <div id="SOHUCS" sid="/2015/02/26/javascriptyu-yan-jing-cui-du-shu-bi-ji/"></div>
+
+      </div> <!-- end #pjax -->
+
+      <div id="post__toc-trigger">
+        <div id="post__toc">
+          <span id="post__toc-title">Table of Contents</span>
+          <ul id="post__toc-ul"></ul>
+        </div>
+      </div>
+    </div> <!-- end #post -->
+
+    <!-- 收缩箭头 -->
+    <button id="js-fullscreen"><span class="fa fa-chevron-right" id="icon-arrow"></span></button>
+
+    <footer>
+      <div>Powered by <a href="https://ghost.org" target="_blank">Ghost</a>  |  ©zak wu 2015<a href="http://www.miitbeian.gov.cn/">粤ICP备15007095</a></div>
+    </footer>
+
+    <script src="../../../../assets/js/jquery-2.0.3.min.js"></script>
+    <script src="../../../../assets/js/jquery.pjax.js"></script>
+    <script src="../../../../assets/js/nprogress.js"></script>
+    <script src="../../../../assets/js/prism.js"></script>
+    <script src="../../../../assets/js/script.js"></script>
+    <script src="../../../../public/jquery.js?v=fdf87e4899"></script>
+  </body>
