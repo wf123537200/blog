@@ -1,0 +1,223 @@
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>异常监控 前端监控</title>
+    <meta name="description" content="前端监控，异常监控">
+    <meta name="HandheldFriendly" content="True">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="baidu-site-verification" content="1B8AemIXSQ">
+    <!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/ie.html"><![endif]-->
+    <link rel="canonical" href="http://127.0.0.1/2020/02/19/liao-liao-qian-duan-jian-kong-er-xing-wei-jian-kong-de-ji-zhu-shi-xian/">
+    
+    <meta property="og:site_name" content="zakwu的成长记录">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="异常监控 前端监控">
+    <meta property="og:description" content="前端监控，异常监控...">
+    <meta property="og:url" content="http://127.0.0.1/2020/02/19/liao-liao-qian-duan-jian-kong-er-xing-wei-jian-kong-de-ji-zhu-shi-xian/">
+    <meta property="article:published_time" content="2020-02-19T09:28:14.000Z">
+    <meta property="article:modified_time" content="2020-02-19T09:41:17.000Z">
+    <meta property="article:tag" content="js">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="异常监控 前端监控">
+    <meta name="twitter:description" content="前端监控，异常监控...">
+    <meta name="twitter:url" content="http://127.0.0.1/2020/02/19/liao-liao-qian-duan-jian-kong-er-xing-wei-jian-kong-de-ji-zhu-shi-xian/">
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "zakwu的成长记录",
+    "author": {
+        "@type": "Person",
+        "name": "zakwu",
+        "url": "http://127.0.0.1/author/zakwu",
+        "sameAs": null
+    },
+    "headline": "异常监控 前端监控",
+    "url": "http://127.0.0.1/2020/02/19/liao-liao-qian-duan-jian-kong-er-xing-wei-jian-kong-de-ji-zhu-shi-xian/",
+    "datePublished": "2020-02-19T09:28:14.000Z",
+    "dateModified": "2020-02-19T09:41:17.000Z",
+    "keywords": "js",
+    "description": "前端监控，异常监控..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.5">
+    <link rel="alternate" type="application/rss+xml" title="zakwu的成长记录" href="http://127.0.0.1/rss/">
+
+    <!-- link -->
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/style.css">
+  </head>
+  <body>
+    <aside id="sidebar">
+      <nav id="tags">
+        <a href="http://zakwu.me/node/assets/about/about.html" target="_blank" title="about me" id="avatar"></a>
+
+        <ul id="tags__ul">
+          <!--&lt;!&ndash; connect &ndash;&gt;-->
+          <!--<li id="sthfuns" class="tags__li tags-btn">作品集</li>-->
+          <!--<li id="shareppt" class="tags__li tags-btn">分享ppt</li>-->
+
+          <!-- acts -->
+          <li id="js-label1" class="tags__li tags-btn active">全部文章</li>
+          <li id="js-label2" class="tags__li tags-btn">ghost</li>
+          <li id="js-label3" class="tags__li tags-btn">js 技术</li>
+          <li id="js-label4" class="tags__li tags-btn">css 技术</li>
+          <li id="js-label5" class="tags__li tags-btn">前端架构</li>
+          <li id="js-label6" class="tags__li tags-btn">心随意转</li>
+        </ul>
+
+        <div id="tags__bottom">
+          <a href="http://github.com/wf123537200/" target="_blank" class="tags-btn show-icon-right fa fa-github" title="加我github"></a>
+          <a href="http://zakwu.me/node/assets/about/about.html" target="_blank" class="tags-btn show-icon-right fa fa-user" title="关于我"></a>
+          <a href="mailto:wfsheep@163.com" title="给我邮件" class="tags-btn show-icon-right fa fa-envelope-o"></a>
+          <a href="http://zakwu.me/rss/" title="订阅我的blog" class="tags-btn fa fa-rss"></a>
+        </div>
+      </nav> <!-- end #tags -->
+
+      <div id="posts-list">
+        <form action="index.html" id="search-form">
+          <a href="http://127.0.0.1" id="mobile-avatar"></a>
+          <!-- NOTE: input field is disabled by default -->
+          <input id="search-input" type="text" placeholder="Search...">
+        </form>
+
+        <nav id="pl__container">
+        </nav>
+      </div> <!-- end #posts-list -->
+    </aside> <!-- end #sidebar -->
+
+    <div id="post">
+      <div id="pjax">
+        
+    <article id="post__content">
+      <h1 id="post__title" data-identifier="20200219">聊聊前端监控（三）--异常监控的实现</h1>
+      <p>前两篇已经总结了前端监控的主要使用场景和行为监控的实现方式，这一篇，主要来聊一下异常监控的实现方式。</p>
+
+<h3 id="">总体思路</h3>
+
+<p>和行为监控的设计的思路一致，<strong>无侵入</strong>也是最值得思考的系统设计重点。和前面一样，由于篇幅，这里只简单的谈一谈设计实现，如果需要了解细节，可以留言一起探讨。在本文最后，会说明一下，当捕获到错误之后的上报的方法。</p>
+
+<h3 id="">全局异常</h3>
+
+<p>全局异常是异常漏斗的最下一层，基本上用于捕获抛到<code>window.onerror</code> 事件里面捕获的异常，同时采用这种方式捕获的异常最简单的方式，一般异常捕获系统都会实现一个托底异常捕获。具体实现方式如下：</p>
+
+<pre><code class="language-javascript">    // 覆盖window.onerror函数及注意点
+    window.onerror = function(message, source, lineno, colno, error) {
+        // Script error 不需要上报，因为同源限制，上报了也没有意义
+        if("Script error."=== messaage &amp;&amp; !source) return false;
+        // 这里要注意用setTimeout包装一下，防止报错太多，卡住主线程
+        setTimeout(function(){
+         // do something 上报
+        })
+    }
+</code></pre>
+
+<p>重写window.onerror函数，确实可以使异常监控有一定的托底作用，但是受到同源等安全策略的限制，很多异常不会如我们预期的一样报错，即使上报上来也没有什么意义。如果报上来都是没有意义的数据，那就无端增加了监控系统的消耗。</p>
+
+<p>这里也提供另一个全局捕获思路，来自于 <a href="https://github.com/getsentry/sentry-javascript/blob/master/packages/raven-js/src/raven.js">sentry raven.js</a>，可以参看 _instrumentTryCatch 函数，基本思路是通过包装各类事件，来捕获事件异常，构造自己的异常捕获系统，这里就不再展开了，有兴趣的同学可以自己阅读相关源码。这种方式相比直接重写window.error更加先进，但是也更加复杂，好在有sentry帮忙维护了。</p>
+
+<p>总的来说，通过全局sdk的方式，我们可以简单直接的获取一层托底异常。但是可能有几个问题：</p>
+
+<ul>
+<li>1、代码中有try{}catch(e){}类的异常不会抛到最外层，window.onerror无法捕获错误</li>
+<li>2、有些需要自定义的上报信息无法及时捕获</li>
+</ul>
+
+<h3 id="">自定义异常上报</h3>
+
+<p>为了解决以上全局上报的问题，自定义异常上报作为全局上报系统的补充，是各个监控系统必不可少的功能，这个功能的完善与否，直接决定这框架的好坏。</p>
+
+<p>一般来说，自定义上报都会提供如下信息：</p>
+
+<ul>
+<li>1、自动增加上报时间</li>
+<li>2、自动增加用户信息</li>
+<li>3、可配置增加错误信息</li>
+<li>4、用户上报的信息</li>
+</ul>
+
+<p>值得一提的是，自定义上报信息的解析很多监控系统的后端做法都不一样，有些是让用户导出数据，自己格式化，拆解做分析，更智能一些的是让用户上传结构数据，然后对结构智能拆解，输出报表。个人觉得没有什么优劣，智能拆解相对来说使用成本变低，但是易用性要求和开发难度也会相应变高。</p>
+
+<h3 id="">异常分级</h3>
+
+<p>写过后端代码的同学都知道，异常一般分为很多级别的，对于各种级别和类型的异常处理方式也不一样。普遍来说，一般 info，warn，error 几个级别都是有的。</p>
+
+<p>这里主要说下error类错误的处理方式，一般来说，error类错误会实时上报后端，因为和监控系统联动的告警系统很需要这类实时数据，以便及时告警。其他类型的错误，如果不是致命类异常错误，可能会用到离线（空闲）上报的策略，以减少消耗，提高性能。</p>
+
+<h3 id="">实时上报</h3>
+
+<p>上节说到，上报方式有两种，这一节介绍下实时上报的方式。实时上报本质上就是系统的一个sendMessage的方式，一般来说，只要构造一个get请求就可以了。</p>
+
+<p>举个例子：</p>
+
+<pre><code class="language-javascript">    // 使用image的方式send info
+    function sendInfo(url) {
+        var _image = new Image(1, 1);
+        // 挂载到监控全局上，保证同时只有一个，减少消耗
+        monitor.img=_image;
+        // 发送完成后清除掉相关函数，离线上报需要改造一些
+        _image.onload = _image.onerror = _image.onabort = function() {
+            _image.onload = _image.onerror = _image.onabort = null;
+            monitor.img = null;
+        }
+    }
+</code></pre>
+
+<p>以上，一般的系统上报方式大同小异，本质上原理是提一个发后不理的get请求，但是由于浏览器的并发数量限制，如果上报触发太多的话，有可能会影响宿主系统的性能。为了解决这个问题，离线（空闲）上报方式就诞生了。</p>
+
+<h3 id="">离线上报</h3>
+
+<p>离线上报主要是为了解决两个问题：</p>
+
+<ul>
+<li>1、上文提到的宿主系统性能的问题</li>
+<li>2、补充一些失败的日志，这儿要在上文提到的上报部分做一些改造</li>
+</ul>
+
+<p>代码比较多，这里就提一下思路先：对于非error类的需要实时收集的异常，可以采用本地存储的方式存储起来，寻机上传。至于寻机，可能是根据网络和系统的情况变化，比如从弱网情况恢复到良好网络情况，可以统一上传，这里注意上传时的节奏即可。这儿还会有一些退化重试的上传的时间间隔的算法。</p>
+
+<p>总的来说，就是不必要实时上报、当前无法上报、上报失败的数据可以先存起来，择机上报。至于存在哪里，什么时候上报，是不是可以手动触发，看各个系统自己的实现了。</p>
+
+<p>综上，异常监控的基本已经说清楚了，下一篇看看聊聊性能监控的实现。</p>
+    </article> <!-- end #post__content -->
+
+    <!--<div id="post__share">-->
+      <!--<a id="icon-twitter" href="https://twitter.com/intent/tweet?url=http://127.0.0.1/2020/02/2020/02/19/liao-liao-qian-duan-jian-kong-er-xing-wei-jian-kong-de-ji-zhu-shi-xian/&text=聊聊前端监控（三）--异常监控的实现" target="_blank"></a>-->
+      <!--<a id="icon-cc" href="http://creativecommons.org/licenses/by-nc-sa/3.0" target="_blank"></a>-->
+      <!--<a id="icon-weibo" href="http://v.t.sina.com.cn/share/share.php?url=http://127.0.0.1/2020/02/2020/02/19/liao-liao-qian-duan-jian-kong-er-xing-wei-jian-kong-de-ji-zhu-shi-xian/&title=聊聊前端监控（三）--异常监控的实现" target="_blank"></a>-->
+    <!--</div> &lt;!&ndash; end #post__share &ndash;&gt;-->
+    <div id="dsData" data-id="76" data-title="聊聊前端监控（三）--异常监控的实现" data-url="/2020/02/19/liao-liao-qian-duan-jian-kong-er-xing-wei-jian-kong-de-ji-zhu-shi-xian/"></div>
+    <!--PC版-->
+    <div id="cyss" sid="/2020/02/19/liao-liao-qian-duan-jian-kong-er-xing-wei-jian-kong-de-ji-zhu-shi-xian/"></div>
+    <div id="SOHUCS" sid="/2020/02/19/liao-liao-qian-duan-jian-kong-er-xing-wei-jian-kong-de-ji-zhu-shi-xian/"></div>
+
+      </div> <!-- end #pjax -->
+
+      <div id="post__toc-trigger">
+        <div id="post__toc">
+          <span id="post__toc-title">Table of Contents</span>
+          <ul id="post__toc-ul"></ul>
+        </div>
+      </div>
+    </div> <!-- end #post -->
+
+    <!-- 收缩箭头 -->
+    <button id="js-fullscreen"><span class="fa fa-chevron-right" id="icon-arrow"></span></button>
+
+    <footer>
+      <div>Powered by <a href="https://ghost.org" target="_blank">Ghost</a>  |  ©zak wu 2015<a href="http://www.miitbeian.gov.cn/">粤ICP备15007095</a></div>
+    </footer>
+
+    <script src="../../../../assets/js/jquery-2.0.3.min.js"></script>
+    <script src="../../../../assets/js/jquery.pjax.js"></script>
+    <script src="../../../../assets/js/nprogress.js"></script>
+    <script src="../../../../assets/js/prism.js"></script>
+    <script src="../../../../assets/js/script.js"></script>
+    <script src="../../../../public/jquery.js?v=1ddaf0efa3"></script>
+  </body>
